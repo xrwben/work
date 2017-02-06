@@ -1,0 +1,150 @@
+<!doctype html><!--声明当前文档为html文档-->
+<html lang="en"><!--语言为英语-->
+	<head><!--头部-->
+		<meta charset="UTF-8"><!--字符编码：utf-8国际编码  gb2312中文编码-->
+		<meta name="Keywords" content="关键词">
+		<meta name="Description" content="描述">
+		<title>Document</title>
+		<style>/*css样式表的衣柜*/
+		*{margin:0px;padding:0px;}/*去除默认外边距、内边距*/
+		#wrapper{
+		width:1160px;
+		margin:100px auto;/*上下  左右*/
+		height:500px;
+		font-family:"微软雅黑";
+		}
+		#wrapper ul li{
+		list-style:none;
+		width:260px;
+		height:260px;
+		float:left;
+		margin-right:30px;
+		margin-bottom:30px;
+		position:relative;/*相对定位*/
+		perspective:500px;/*元素和视图的距离*/
+		transform-style:preserve-3d;/**/
+		}
+		#wrapper ul li div.txt{
+			width:240px;
+			height:240px;
+			padding:10px;
+			background:url(img/lineBg.png);
+			transform:rotateY(180deg);/*翻转180度*/
+		}
+		#wrapper ul li div.txt div.text{
+			height:180px;
+			padding:60px 26px 0;
+			text-align:center;
+			background:#fff;
+		}
+		#wrapper ul li div.txt div.text h3{
+			font-weight:500;
+			margin-top:10px;
+			margin-bottom:10px;
+		}
+		#wrapper ul li div.txt div.text p{
+			color:#bbb;
+		}
+		.img,.txt{
+			position:absolute;/*绝对定位*/
+			left:0px;
+			top:0px;
+			transform-origin:0;/*设置旋转轴*/
+			backface-visibility:hidden;/*隐藏旋转了的内容*/
+			transition:all 0.8s linear;/*匀速*/
+		}
+		#wrapper ul li:hover div.img{
+			transform:rotateY(180deg);/*翻转180度*/
+		}
+		#wrapper ul li:hover div.txt{
+			transform:rotateY(360deg);/*翻转180度*/
+		}
+		</style>
+	</head>
+	<body><!--身体-->
+		<div id="wrapper">
+			<ul>
+				<li>
+					<div class="img"><img width="260" height="260" src="img/2.jpg"/></div>
+					<div class="txt">
+						<div class="text">
+							<h2>瘦身</h2>
+							<h3>七个诀窍不再嘴馋</h3>
+							<p>冬天到了，天气一冷，人自然需要通过摄取食物中的热量来抵御</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="img"><img width="260" height="260" src="img/3.jpg"/></div>
+					<div class="txt">
+						<div class="text">
+							<h2>瘦身</h2>
+							<h3>七个诀窍不再嘴馋</h3>
+							<p>冬天到了，天气一冷，人自然需要通过摄取食物中的热量来抵御</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="img"><img width="260" height="260" src="img/4.jpg"/></div>
+					<div class="txt">
+						<div class="text">
+							<h2>瘦身</h2>
+							<h3>七个诀窍不再嘴馋</h3>
+							<p>冬天到了，天气一冷，人自然需要通过摄取食物中的热量来抵御</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="img"><img width="260" height="260" src="img/5.jpg"/></div>
+					<div class="txt">
+						<div class="text">
+							<h2>瘦身</h2>
+							<h3>七个诀窍不再嘴馋</h3>
+							<p>冬天到了，天气一冷，人自然需要通过摄取食物中的热量来抵御</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="img"><img width="260" height="260" src="img/6.jpg"/></div>
+					<div class="txt">
+						<div class="text">
+							<h2>瘦身</h2>
+							<h3>七个诀窍不再嘴馋</h3>
+							<p>冬天到了，天气一冷，人自然需要通过摄取食物中的热量来抵御</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="img"><img width="260" height="260" src="img/7.jpg"/></div>
+					<div class="txt">
+						<div class="text">
+							<h2>瘦身</h2>
+							<h3>七个诀窍不再嘴馋</h3>
+							<p>冬天到了，天气一冷，人自然需要通过摄取食物中的热量来抵御</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="img"><img width="260" height="260" src="img/8.jpg"/></div>
+					<div class="txt">
+						<div class="text">
+							<h2>瘦身</h2>
+							<h3>七个诀窍不再嘴馋</h3>
+							<p>冬天到了，天气一冷，人自然需要通过摄取食物中的热量来抵御</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="img"><img width="260" height="260" src="img/9.jpg"/></div>
+					<div class="txt">
+						<div class="text">
+							<h2>瘦身</h2>
+							<h3>七个诀窍不再嘴馋</h3>
+							<p>冬天到了，天气一冷，人自然需要通过摄取食物中的热量来抵御</p>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

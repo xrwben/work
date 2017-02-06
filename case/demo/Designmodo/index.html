@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Designmodo</title>
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{color:#4C4C4C;background:#f6f8f8;line-height:25px;}
+	li{list-style:none;}
+	a{text-decoration:none;}
+	.clearfix::after {
+		display: block;
+		content: " ";
+		height: 0;
+		visibility: hidden;
+		clear: both;
+		font-size: 0;
+		line-height: 0;
+		}
+	.header{width:100%;height:55px;background:#446CB3;position:fixed;}
+	.hd{height:55px;}
+	.hd_left{height:100%;float:left;}
+	.hd_left li{height:100%;float:left;line-height:55px;
+		text-align:center;position:relative;
+		border-right:1px solid rgba(0,0,0,0.1);
+		box-shadow:1px 0 0 rgba(255,255,255,0.11);}
+	.hd_left li a{height:100%;display:block;}
+	.hd_left li a span{color:#fff;font-size:18px;
+		display:inline-block;float:left;}
+	.hd_left li:hover a{background:#fff;}
+
+	.categories_list{width:238px;position:absolute;top:55px;
+		z-index:5;border:1px solid #eee;
+		box-shadow:0px 1px 1px rgba(0,0,0,0.3);display:none;}
+	.categories_list ul li{width:100%;height:54px;background:#fff;
+		text-align:left;border-bottom:1px solid #eee;
+		font-size:18px;}
+	.categories_list ul li a{padding-left:23px;color:#7d7d7d;}
+	.categories_list ul li:hover a{color:#446cb3;}
+	.hd_left li.categories:hover .categories_list{display:block;}
+
+	.hd_right{height:100%;float:right;
+		border-left:1px solid rgba(0,0,0,0.1);
+		box-shadow:-1px 0 0 rgba(255,255,255,0.11);
+		position:relative;}
+	.hd_right li{height:100%;float:left;line-height:55px;
+			text-align:center;
+			border-right:1px solid rgba(0,0,0,0.1);
+			box-shadow:1px 0 0 rgba(255,255,255,0.11);}
+	.hd_right li a{display:block;}
+	.hd_right li:hover a{background:#fff;}
+
+	.follow_list{width:252px;position:absolute;top:55px;right:0px;
+		z-index:5;border:1px solid #ddd;
+		box-shadow:0px 1px 0px rgba(0,0,0,0.3);display:none;}
+	.follow_list ul li{width:100%;line-height:40px;background:#fff;
+		text-align:left;border-bottom:1px solid #eee;
+		font-size:18px;}
+	.follow_list ul li a{padding-left:20px;transition:all 0.3s;}
+	.follow_list ul li:nth-child(1) a{color:#ffaa31;}
+	.follow_list ul li:nth-child(2) a{color:#07beed;}
+	.follow_list ul li:nth-child(3) a{color:#314d91;}
+	.follow_list ul li:nth-child(4) a{color:#2d2d2d;}
+	.follow_list ul li:nth-child(5) a{color:#e84788;}
+	.follow_list ul li:last-child{background:#eee;color:#4C4C4C;
+		font-size:12px;text-align:center;}
+	.hd_right li:hover .follow_list{display:block;}
+	.follow_list ul li a:hover{padding-left:30px;color:#fff;}
+	.follow_list ul li:nth-child(1):hover a{background:#ffaa31;}
+	.follow_list ul li:nth-child(2):hover a{background:#07beed;}
+	.follow_list ul li:nth-child(3):hover a{background:#314d91;}
+	.follow_list ul li:nth-child(4):hover a{background:#2d2d2d;}
+	.follow_list ul li:nth-child(5):hover a{background:#e84788;}
+
+	.search_box{width:100%;position:absolute;top:55px;left:0;
+		background:#fff;padding:13px 0;font-size:14px;
+		box-shadow:0px 1px 1px rgba(0,0,0,0.4);line-height:0;
+		display:none;}
+	.search_box input:nth-child(1){width:68%;height:35px;
+		border:1px solid #dadada;background:#f8f8f8;padding-left:2.4%;
+		color:#4C4C4C;margin-right:0.7%;}
+	.search_box input:nth-child(2){width:22.5%;height:36px;
+		padding-left:2.4%;border:none;margin-right:0.7%;
+		background:#5BC4BE url("images/search.png")no-repeat center;
+		cursor:pointer;}
+	.hd_left li.search:hover .search_box{display:block;}
+
+	.logo{max-width:1108px;margin:0 auto;}
+	.logo a{padding:103px 0 27px 0;display:block;}
+	/* 身体内容开始 */
+	.wrapper{border:1px solid #E7E6E6;border-radius:8px;background:#fff;}
+	.mainCon{width:61%;float:left;}
+	.conLeft{height:100%;margin:0 5.5% 40px;}
+	.article{border-bottom:1px dotted #ccc;padding-bottom:50px;
+		margin-top:40px;}
+	.article h2{margin-bottom:15px;}
+	.article h2 a{font-size:36px;font-weight:normal;line-height:1.3em;
+		color:#000;}
+	.arc_author{color:#999;}
+	.arc_author a{color:#446db4;}
+	.arc_img{padding:35px 0;}
+	.arc_img a img{display:block;max-width:100%;}
+	.arc_con{margin-bottom:25px;font-size:14px;}
+	.arc_more a{font-size:14px;color:#fff;padding:8px 12px;
+		background:#446db2;border-radius:5px;
+		transition:all 0.4s linear;}
+	.arc_more a:hover{background:#5bc4be;}
+
+	.page{width:90%;margin:30px 4.5%;}
+	.page ul li{display:inline;color:#666;padding:6px 12px;cursor:pointer;}
+	.page ul li.curr{background:#446db2;border-radius:5px;color:#fff;}
+	
+	.sideRight{width:39%;float:right;
+		padding-top:40px;}
+	.rightCon{padding-right:6.7%;}
+	.con_module h3{color:#999;font-weight:normal;font-size:16px;
+		margin-bottom:30px;}
+	.con_module h3 a{float:right;color:#446DB2;}
+	.con_module h3 a:hover{color:#5bc4be;}
+	.con_module ul li{margin-bottom:35px;}
+	.con_module ul li img{width:40%;float:left;margin-right:7.2%;
+		border-radius:4px;max-width:175px;}
+	.con_module ul li span{background:#5bc4be;color:#fff;font-size:11px;
+		line-height:13px;padding:2px 4px;text-align:center;
+		border-radius:3px;display:inline-block;}
+	.con_module ul li strong{font-size:20px;color:#000;margin:14px 0 3px 40%;
+		font-weight:normal;display:block;}
+	.con_module ul li p{color:#999;margin-left:34%;font-size:22px;}
+
+	.separate_line{border-bottom:1px dotted #ccc;margin-top:30px;}
+
+	.module{padding-top:30px;}
+	.module h3{margin-bottom:20px;}
+	.module_search p{font-size:14px;margin-bottom:15px;}
+	.module_search input:nth-child(1){width:72%;height:35px;
+		background:#f8f8f8;border:1px solid #dadada;
+		border-radius:4px;color:#dadada;font-size:14px;
+		margin-right:0.7%;padding-left:2.4%;}
+	.module_search .sub{width:22%;height:37px;padding:12px 2.8%;line-height:10px;
+		font-size:14px;cursor:pointer;background:#5bc4be;outline:0;
+		color:#fff;border:none;border-radius:4px;}
+
+	.advertise{width:420px;margin-top:30px;}
+	.adv a{width:200px;margin:0 10px 15px 0;display:block;float:left;}
+	.adv a img{display:block;}
+	.adv_bottom{margin-top:15px;font-size:14px;text-align:center;}
+	.adv_bottom a{color:#446db2;}
+
+	.arcUL h3{margin-top:30px;margin-bottom:10px;}
+	.arcUL ul li{padding:10px 8px 7px 0;margin:0;}
+	.arcUL ul li a{color:#446db2;}
+	.arcUL ul li a:hover{color:#5bc4be;}
+	
+
+	.footer{max-width:1108px;padding:30px 0;font-size:12px;
+		margin:10px auto;text-align:center;}
+	.footer .f_link a{font-size:15px;color:#446db2;margin:0 9px;}
+	.footer span a{color:#666;}
+	.footer span a:hover{color:#446db2;}
+
+	/* pc端样式 */
+	@media screen and (min-width:1108px){
+		.hd{width:1108px;margin:0 auto;}
+		.hd_left{border-left:1px solid rgba(0,0,0,0.1);
+			box-shadow:-1px 0 0 rgba(255,255,255,0.11);}
+		.hd_left li a{padding:0px 27px 0px;}
+		.hd_left li.first a{padding:0px 23px 0px;}
+		.hd_left li a i{float:left;margin-top:15px;display:none;}
+		.hd_left li.first a i{width:23px;height:29px;display:block;
+			background:url("images/logo_icon.jpg")no-repeat;}
+		.hd_left li:hover a span{color:#486fb4;}
+		.hd_left li.first:hover a i{
+			background:url("images/logo_icon_hover.jpg")no-repeat;}
+
+		.hd_right li a{height:100%;padding:0px 27px 0px;}
+		.hd_right li.sign_in a{padding:0px 33px 0px;}
+		.hd_right li a i{display:none;}
+		.hd_right li a span{color:#fff;font-size:18px;
+			display:inline-block;float:left;}
+		.hd_right li:hover a span{color:#486fb4;}
+
+		.search_box{width:275px;padding:0;line-height:55px;top:0;}
+		.search_box input:nth-child(1){border:none;background:#fff;}
+		.search_box input:nth-child(2){
+			background:url("images/search2.png")no-repeat center;}
+
+		.logo{text-align:left;}
+		.wrapper{width:1108px;margin:0 auto;}
+		.module_search input:nth-child(3){display:none;}
+	}
+	/* 平板端样式 */
+	@media screen and (min-width:825px) and (max-width:1108px){
+		.hd{width:100%;}
+		.hd_left li a{padding:0px 27px 0px;}
+		.hd_left li.first a{padding:0px 23px 0px;}
+		.hd_left li a i{float:left;margin-top:15px;display:none;}
+		.hd_left li.first a i{width:23px;height:29px;display:block;
+			background:url("images/logo_icon.jpg")no-repeat;}
+		.hd_left li.search{display:none;}
+		.hd_left li:hover a span{color:#486fb4;}
+		.hd_left li.first:hover a i{
+			background:url("images/logo_icon_hover.jpg")no-repeat;}
+
+	
+		.hd_right li a{height:100%;padding:0px 27px 0px;}
+		.hd_right li.sign_in a{padding:0px 33px 0px;}
+		.hd_right li a i{display:none;}
+		.hd_right li a span{color:#fff;font-size:18px;
+			display:inline-block;float:left;}
+		.hd_right li:hover a span{color:#486fb4;}
+
+		.logo{text-align:left;padding-left:3.4%;}
+		/* 身体内容开始 */
+		
+		.module_search input:nth-child(2){display:none;}
+
+		.advertise{display:none;}
+	}
+	/* 手机端样式 */
+	@media screen and (min-width:560px) and (max-width:824px){
+		.hd{width:100%;}
+		.hd_left li.first{display:none;}
+		.hd_left li.search{position:static;}
+		.hd_left li a{padding:0px 23px 0px;}
+		.hd_left li a i{width:15px;height:15px;display:inline-block;
+			float:left;margin-top:20px;
+			background:url("images/header_icon.png")no-repeat;}
+		.hd_left li.categories a i{background-position:0px 0px;}
+		.hd_left li.shop a i{background-position:-19px 0px;}
+		.hd_left li.search a i{background-position:-39px 0px;}
+		.hd_left li a span{margin-left:10px;}
+		.hd_left li.search a span{display:none;}
+		.hd_left li:hover a span{color:#486fb4;}
+		.hd_left li.categories:hover a i{background-position:0px -15px;}
+		.hd_left li.shop:hover a i{background-position:-19px -15px;}
+		.hd_left li.search:hover a i{background-position:-39px -15px;}
+
+		.hd_right li{width:62px;}
+		.hd_right li a i{width:15px;height:15px;display:inline-block;
+			background:url("images/header_icon.png")no-repeat;}
+		.hd_right li.follow_us a i{background-position:-59px 0px;}
+		.hd_right li.sign_in a i{background-position:-75px 0px;}
+		.hd_right li a span{display:none;}
+		.hd_right li.follow_us:hover a i{background-position:-59px -15px;}
+		.hd_right li.sign_in:hover a i{background-position:-75px -15px;}
+
+		.logo{text-align:center;}
+		/* 身体内容开始 */
+		.wrapper,.mainCon{width:100%;}
+		.page{text-align:center;}
+		.page ul li:nth-child(1){display:none;}
+		.sideRight{float:left;width:90%;margin:0 4.5% 40px;}
+		.rightCon{padding:0;}
+		.advertise{display:none;}
+		.module_search input:nth-child(3){display:none;}
+	}
+	/* 最小样式 */
+	@media screen and (max-width:560px){
+		.hd{width:100%;}
+		.hd_left li{width:46px;border:none;box-shadow:none;
+			position:static;}
+		.hd_left li.first{display:none;}
+		.hd_left li a i{width:15px;height:15px;display:inline-block;
+			background:url("images/header_icon.png")no-repeat;}
+		.hd_left li.categories a i{background-position:0px 0px;}
+		.hd_left li.shop a i{background-position:-19px 0px;}
+		.hd_left li.search a i{background-position:-39px 0px;}
+		.hd_left li a span{display:none;}
+		.hd_left li.categories:hover a i{background-position:0px -15px;}
+		.hd_left li.shop:hover a i{background-position:-19px -15px;}
+		.hd_left li.search:hover a i{background-position:-39px -15px;}
+		
+		.categories_list{width:100%;}
+		
+		.hd_right{border:none;box-shadow:none;position:static;}
+		.hd_right li{width:46px;border:none;box-shadow:none;}
+		.hd_right li a i{width:15px;height:15px;display:inline-block;
+			background:url("images/header_icon.png")no-repeat;}
+		.hd_right li.follow_us a i{background-position:-59px 0px;}
+		.hd_right li.sign_in a i{background-position:-75px 0px;}
+		.hd_right li a span{display:none;}
+		.hd_right li.follow_us:hover a i{background-position:-59px -15px;}
+		.hd_right li.sign_in:hover a i{background-position:-75px -15px;}
+
+		.follow_list{width:100%;}
+
+		.logo{text-align:center;}
+		/* 身体内容开始 */
+		.wrapper,.mainCon{width:100%;}
+		.page{text-align:center;}
+		.page ul li:nth-child(1){display:none;}
+		.page ul li:last-child{display:none;}
+		.sideRight{float:left;width:90%;margin:0 4.5% 40px;}
+		.rightCon{padding:0;}
+		.advertise{display:none;}
+		.module_search input:nth-child(2){display:none;}
+	}
+  </style>
+ </head>
+ <body>
+	<div class="header">
+		<div class="hd">
+			<ul class="hd_left">
+				<li class="first">
+					<a href="">
+						<i></i>
+					</a>
+				</li>
+				<li class="categories">
+					<a class="clearfix"href="">
+						<i></i>
+						<span>Categories</span>
+					</a>
+					<div class="categories_list">
+						<ul>
+							<li>
+								<a href="">Design</a>
+							</li>
+							<li>
+								<a href="">Freebies</a>
+							</li>
+							<li>
+								<a href="">Tutorials</a>
+							</li>
+							<li>
+								<a href="">Coding</a>
+							</li>
+							<li>
+								<a href="">Inspiration</a>
+							</li>
+							<li>
+								<a href="">WordPress</a>
+							</li>
+							<li>
+								<a href="">Resources</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="shop">
+					<a class="clearfix" href="">
+						<i></i>
+						<span>Shop</span>
+					</a>
+				</li>
+				<li class="search">
+					<a class="clearfix" href="">
+						<i></i>
+						<span>Search</span>
+					</a>
+					<div class="search_box">
+						<form>
+							<input class="s_txt"type="text" name="">
+							<input class="s_btn"type="submit" value="">
+						</form>
+					</div>
+				</li>
+			</ul>
+			<ul class="hd_right">
+				<li class="follow_us">
+					<a class="clearfix" href="">
+						<i></i>
+						<span>Follow us</span>
+					</a>
+					<div class="follow_list">
+						<ul>
+							<li>
+								<a href="">
+									<span class=""></span>RSS
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class=""></span>Twitter
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class=""></span>Facebook
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class=""></span>Google+
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class=""></span>Dirbbble
+								</a>
+							</li>
+							<li>
+								271261 Subscribers & Followers
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="sign_in">
+					<a class="clearfix" href="">
+						<i></i>
+						<span>Sign In</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="logo">
+		<a href="">
+			<img src="images/sitelogo.png"/>
+		</a>
+	</div>
+	<div class="wrapper clearfix">
+		<div class="mainCon">
+			<div class="conLeft">
+				<div class="article">
+					<h2>
+						<a href="">10 Type Rules for an Excellent User Experience</a>
+					</h2>
+					<div class="arc_author">
+						Carrie Cousins  
+						<span class="">  •  </span>
+						<a href="">UX Design</a>
+						<span class="">  •  </span>
+						March 31, 2016
+					</div>
+					<div class="arc_img">
+						<a href="">
+							<img src="images/article1.jpg"/>
+						</a>
+					</div>
+					<div class="arc_con">
+						When it comes to websites and apps, good typography is more than just a pretty typeface. Letting has to be highly readable – and scannable – while providing a solid visual connection to the content. It’s a pretty tall order, but something most designers can do with a little practice. Today, we’re going to look at 10 “rules” you can follow to help create an awesome...
+					</div>
+					<div class="arc_more">
+						<a href="">Read More</a>
+					</div>
+				</div>
+				<div class="article">
+					<h2>
+						<a href="">10 Type Rules for an Excellent User Experience</a>
+					</h2>
+					<div class="arc_author">
+						Carrie Cousins  
+						<span class="">  •  </span>
+						<a href="">UX Design</a>
+						<span class="">  •  </span>
+						March 31, 2016
+					</div>
+					<div class="arc_img">
+						<a href="">
+							<img src="images/article5.jpg"/>
+						</a>
+					</div>
+					<div class="arc_con">
+						When it comes to websites and apps, good typography is more than just a pretty typeface. Letting has to be highly readable – and scannable – while providing a solid visual connection to the content. It’s a pretty tall order, but something most designers can do with a little practice. Today, we’re going to look at 10 “rules” you can follow to help create an awesome...
+					</div>
+					<div class="arc_more">
+						<a href="">Read More</a>
+					</div>
+				</div>
+				<div class="article">
+					<h2>
+						<a href="">10 Type Rules for an Excellent User Experience</a>
+					</h2>
+					<div class="arc_author">
+						Carrie Cousins  
+						<span class="">  •  </span>
+						<a href="">UX Design</a>
+						<span class="">  •  </span>
+						March 31, 2016
+					</div>
+					<div class="arc_img">
+						<a href="">
+							<img src="images/article6.jpg"/>
+						</a>
+					</div>
+					<div class="arc_con">
+						When it comes to websites and apps, good typography is more than just a pretty typeface. Letting has to be highly readable – and scannable – while providing a solid visual connection to the content. It’s a pretty tall order, but something most designers can do with a little practice. Today, we’re going to look at 10 “rules” you can follow to help create an awesome...
+					</div>
+					<div class="arc_more">
+						<a href="">Read More</a>
+					</div>
+				</div>
+				<div class="article">
+					<h2>
+						<a href="">10 Type Rules for an Excellent User Experience</a>
+					</h2>
+					<div class="arc_author">
+						Carrie Cousins  
+						<span class="">  •  </span>
+						<a href="">UX Design</a>
+						<span class="">  •  </span>
+						March 31, 2016
+					</div>
+					<div class="arc_img">
+						<a href="">
+							<img src="images/article7.jpg"/>
+						</a>
+					</div>
+					<div class="arc_con">
+						When it comes to websites and apps, good typography is more than just a pretty typeface. Letting has to be highly readable – and scannable – while providing a solid visual connection to the content. It’s a pretty tall order, but something most designers can do with a little practice. Today, we’re going to look at 10 “rules” you can follow to help create an awesome...
+					</div>
+					<div class="arc_more">
+						<a href="">Read More</a>
+					</div>
+				</div>
+				<div class="article">
+					<h2>
+						<a href="">10 Type Rules for an Excellent User Experience</a>
+					</h2>
+					<div class="arc_author">
+						Carrie Cousins  
+						<span class="">  •  </span>
+						<a href="">UX Design</a>
+						<span class="">  •  </span>
+						March 31, 2016
+					</div>
+					<div class="arc_img">
+						<a href="">
+							<img src="images/article4.jpg"/>
+						</a>
+					</div>
+					<div class="arc_con">
+						When it comes to websites and apps, good typography is more than just a pretty typeface. Letting has to be highly readable – and scannable – while providing a solid visual connection to the content. It’s a pretty tall order, but something most designers can do with a little practice. Today, we’re going to look at 10 “rules” you can follow to help create an awesome...
+					</div>
+					<div class="arc_more">
+						<a href="">Read More</a>
+					</div>
+				</div>
+				<div class="article">
+					<h2>
+						<a href="">10 Type Rules for an Excellent User Experience</a>
+					</h2>
+					<div class="arc_author">
+						Carrie Cousins  
+						<span class="">  •  </span>
+						<a href="">UX Design</a>
+						<span class="">  •  </span>
+						March 31, 2016
+					</div>
+					<div class="arc_img">
+						<a href="">
+							<img src="images/article3.jpg"/>
+						</a>
+					</div>
+					<div class="arc_con">
+						When it comes to websites and apps, good typography is more than just a pretty typeface. Letting has to be highly readable – and scannable – while providing a solid visual connection to the content. It’s a pretty tall order, but something most designers can do with a little practice. Today, we’re going to look at 10 “rules” you can follow to help create an awesome...
+					</div>
+					<div class="arc_more">
+						<a href="">Read More</a>
+					</div>
+				</div>
+				<div class="article">
+					<h2>
+						<a href="">10 Type Rules for an Excellent User Experience</a>
+					</h2>
+					<div class="arc_author">
+						Carrie Cousins  
+						<span class="">  •  </span>
+						<a href="">UX Design</a>
+						<span class="">  •  </span>
+						March 31, 2016
+					</div>
+					<div class="arc_img">
+						<a href="">
+							<img src="images/article8.jpg"/>
+						</a>
+					</div>
+					<div class="arc_con">
+						When it comes to websites and apps, good typography is more than just a pretty typeface. Letting has to be highly readable – and scannable – while providing a solid visual connection to the content. It’s a pretty tall order, but something most designers can do with a little practice. Today, we’re going to look at 10 “rules” you can follow to help create an awesome...
+					</div>
+					<div class="arc_more">
+						<a href="">Read More</a>
+					</div>
+				</div>
+				<div class="article">
+					<h2>
+						<a href="">10 Type Rules for an Excellent User Experience</a>
+					</h2>
+					<div class="arc_author">
+						Carrie Cousins  
+						<span class="">  •  </span>
+						<a href="">UX Design</a>
+						<span class="">  •  </span>
+						March 31, 2016
+					</div>
+					<div class="arc_img">
+						<a href="">
+							<img src="images/article2.jpg"/>
+						</a>
+					</div>
+					<div class="arc_con">
+						When it comes to websites and apps, good typography is more than just a pretty typeface. Letting has to be highly readable – and scannable – while providing a solid visual connection to the content. It’s a pretty tall order, but something most designers can do with a little practice. Today, we’re going to look at 10 “rules” you can follow to help create an awesome...
+					</div>
+					<div class="arc_more">
+						<a href="">Read More</a>
+					</div>
+				</div>
+				<div class="article">
+					<h2>
+						<a href="">10 Type Rules for an Excellent User Experience</a>
+					</h2>
+					<div class="arc_author">
+						Carrie Cousins  
+						<span class="">  •  </span>
+						<a href="">UX Design</a>
+						<span class="">  •  </span>
+						March 31, 2016
+					</div>
+					<div class="arc_img">
+						<a href="">
+							<img src="images/article9.jpg"/>
+						</a>
+					</div>
+					<div class="arc_con">
+						When it comes to websites and apps, good typography is more than just a pretty typeface. Letting has to be highly readable – and scannable – while providing a solid visual connection to the content. It’s a pretty tall order, but something most designers can do with a little practice. Today, we’re going to look at 10 “rules” you can follow to help create an awesome...
+					</div>
+					<div class="arc_more">
+						<a href="">Read More</a>
+					</div>
+				</div>
+				<div class="page">
+					<ul>
+						<li>Pages:</li>
+						<li class="curr">1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+						<li>...</li>
+						<li>100</li>
+						<li>>></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="sideRight">
+			<div class="rightCon">
+				<div class="con_module">
+					<h3>
+						Our Products
+						<a href="">Show more</a>
+					</h3>
+					<ul>
+						<li>
+							<a href="">
+								<img src="images/right1.jpg"/>
+							</a>
+							<span class="">WEBSITE FRAMEWORK</span>
+							<strong>Slides</strong>
+							<p>$249</p>
+						</li>
+						<li>
+							<a href="">
+								<img src="images/right1.jpg"/>
+							</a>
+							<span class="">WEBSITE FRAMEWORK</span>
+							<strong>Slides</strong>
+							<p>$249</p>
+						</li>
+						<li>
+							<a href="">
+								<img src="images/right1.jpg"/>
+							</a>
+							<span class="">WEBSITE FRAMEWORK</span>
+							<strong>Slides</strong>
+							<p>$249</p>
+						</li>
+						<li>
+							<a href="">
+								<img src="images/right1.jpg"/>
+							</a>
+							<span class="">WEBSITE FRAMEWORK</span>
+							<strong>Slides</strong>
+							<p>$249</p>
+						</li>
+					</ul>
+				</div>
+				<div class="con_module">
+					<h3>
+						Designmodo Market
+						<a href="">Show more</a>
+					</h3>
+					<ul>
+						<li>
+							<a href="">
+								<img src="images/right2.jpg"/>
+							</a>
+							<span class="">WEBSITE FRAMEWORK</span>
+							<strong>Slides</strong>
+							<p>$249</p>
+						</li>
+						<li>
+							<a href="">
+								<img src="images/right2.jpg"/>
+							</a>
+							<span class="">WEBSITE FRAMEWORK</span>
+							<strong>Slides</strong>
+							<p>$249</p>
+						</li>
+						<li>
+							<a href="">
+								<img src="images/right2.jpg"/>
+							</a>
+							<span class="">WEBSITE FRAMEWORK</span>
+							<strong>Slides</strong>
+							<p>$249</p>
+						</li>
+						<li>
+							<a href="">
+								<img src="images/right2.jpg"/>
+							</a>
+							<span class="">WEBSITE FRAMEWORK</span>
+							<strong>Slides</strong>
+							<p>$249</p>
+						</li>
+					</ul>
+				</div>
+				<div class="separate_line"></div>
+				<div class="con_module module">
+					<h3>Newsletter</h3>
+					<div class="module_search">
+						<p>Get our products/news earlier than others, let’s get in touch.</p>
+						<form>
+							<input type="text" name="" placeholder="Enter your email address">
+							<input class="sub"type="submit" value="Subscribe">
+							<input class="sub"type="submit" value="Go">
+						</form>
+					</div>
+				</div>
+				<div class="separate_line"></div>
+				<div class="con_module advertise">
+					<h3>Spoisors</h3>
+					<div class="adv clearfix">
+						<a href="">
+							<img src="images/adv1.jpg"/>
+						</a>
+						<a href="">
+							<img src="images/adv1.jpg"/>
+						</a>
+						<a href="">
+							<img src="images/adv1.jpg"/>
+						</a>
+						<a href="">
+							<img src="images/adv1.jpg"/>
+						</a>
+						<a href="">
+							<img src="images/adv1.jpg"/>
+						</a>
+					</div>
+					<div class="adv_bottom">
+						<a href="">- Advertise With Us -</a>
+					</div>
+				</div>
+				<div class="separate_line"></div>
+				<div class="con_module arcUL">
+					<h3>Popular Posts (Month)</h3>
+					<ul>
+						<li>
+							<a href="">How to Migrate from Bootstrap Version 3 to 4</a>
+						</li>
+						<li>
+							<a href="">Free Bootstrap PSD Grids for Crafting Excellent Website Designs</a>
+						</li>
+						<li>
+							<a href="">Typography is Loud: Type-Focused Front Pages</a>
+						</li>
+						<li>
+							<a href="">Introducing Slides 2: the Next Step in Static Website Generators</a>
+						</li>
+						<li>
+							<a href="">10 Type Rules for an Excellent User Experience</a>
+						</li>
+					</ul>
+				</div>
+				<div class="separate_line"></div>
+				<div class="con_module arcUL">
+					<h3>Top Articles</h3>
+					<ul>
+						<li>
+							<a href="">How to Migrate from Bootstrap Version 3 to 4</a>
+						</li>
+						<li>
+							<a href="">Free Bootstrap PSD Grids for Crafting Excellent Website Designs</a>
+						</li>
+						<li>
+							<a href="">Typography is Loud: Type-Focused Front Pages</a>
+						</li>
+						<li>
+							<a href="">Introducing Slides 2: the Next Step in Static Website Generators</a>
+						</li>
+						<li>
+							<a href="">10 Type Rules for an Excellent User Experience</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="f_link">
+			<a href="">Contact Us</a>
+			<a href="">About</a>
+			<a href="">Privacy</a>
+			<a href="">Terms</a>
+			<a href="">Journal</a>
+			<a href="">Advertise</a>
+			<a href="">Affiliates</a>
+			<a href="">Newsletter</a>
+		</div>
+		<span class="">Copyright © 2016 <a href="">Designmodo</a>. All Rights Reserved.</span>
+		<p>Designmodo is a popular web design blog and shop.</p>
+	</div>
+ </body>
+</html>

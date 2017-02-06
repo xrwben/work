@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>3D立体水晶相册</title>
+  <style type="text/css">
+	.album{width:400px;height:400px;margin:150px auto;perspective:1200px;perspective-origin:50% 100px;}
+	.con{width:280px;margin:0 auto;transform-style:preserve-3D;
+		-moz-animation:picture_rotate 4s linear infinite;}
+	@-moz-keyframes picture_rotate{
+		0% {-moz-transform:rotateY(0deg);}
+		25% {-moz-transform:rotateY(90deg);}
+		50% {-moz-transform:rotateY(180deg);}
+		75% {-moz-transform:rotateY(270deg);}
+		100% {-moz-transform:rotateY(360deg);}
+	}
+	.con:hover{-moz-animation-play-state:paused;}
+	.con div{width:280px;height:280px;position:absolute;opacity:0.9;
+		backface-visibility:hidde;}
+	.con div.left{-moz-transform:rotateY(-90deg) translateX(-140px);
+		-moz-transform-origin:center left ;}
+	.con div.right{-moz-transform:rotateY(90deg) translateX(140px);
+		-moz-transform-origin:right center;}
+	.con div.top{-moz-transform:rotateX(90deg) translateY(-140px);
+		-moz-transform-origin:center top;}
+	.con div.bottom{-moz-transform:rotateX(-90deg) translateY(140px);
+		-moz-transform-origin:center bottom;}
+	.con div.back{-moz-transform:rotateY(180deg) translateZ(140px);}
+	.con div.front{-moz-transform:rotate(0deg) translateZ(140px);}
+  </style>
+ </head>
+ <body>
+	<div class="album">
+		<div class="con">
+			<div class="front"><img src="images/1.jpg" /></div>
+			<div class="back"><img src="images/2.jpg" /></div>
+			<div class="top"><img src="images/3.jpg" /></div>
+			<div class="bottom"><img src="images/4.jpg" /></div>
+			<div class="left"><img src="images/5.jpg" /></div>
+			<div class="right"><img src="images/6.jpg" /></div>
+		</div>
+	</div>
+ </body>
+</html>

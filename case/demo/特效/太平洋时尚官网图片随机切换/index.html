@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	.container{width:1120px;height:610px;margin:10px auto;}
+	.box{width:360px;float:left;}
+	.box_3{width:400px;}
+	.box .hover{position:relative;overflow:hidden;}
+	.box .hover a{display:block;width:350px;height:100%;position:absolute;left:0;
+		top:0;}
+	.box_3 .hover a{width:400px;}
+	.hover span{width:100%;height:40px;padding-top:25px;line-height:40px;
+		text-align:center;background:url("images/star_shadow_bg.png");
+		font-size:14px;font-family:"微软雅黑";color:#fff;position:absolute;
+		left:0;bottom:-65px;}
+	.box_1_top{height:251px;}
+	.box_1_bottom{height:340px;margin-top:10px;}
+	.box_2_top{height:180px;}
+	.box_2_center{height:221px;margin:10px 0;}
+	.box_2_bottom{height:180px;}
+	.box_3_top{height:340px;}
+	.box_3_bottom{height:251px;margin-top:10px;}
+  </style>
+ </head>
+ <body>
+	<div class="container">
+		<div class="box box_1">
+			<div class="box_1_top hover">
+				<a href="#">
+					<img src="images/1.jpg">
+					<span class="title_alpha">海底月是天上月 眼前人是心上人</span>
+				</a>
+				<a href="#">
+					<img src="images/2.jpg">
+					<span class="title_alpha">海底月是天上月 眼前人是心上人</span>
+				</a>
+			</div>
+			<div class="box_1_bottom hover">
+				<a href="#">
+					<img src="images/3.jpg">
+					<span class="title_alpha">海底月是天上月 眼前人是心上人</span>
+				</a>
+				<a href="#">
+					<img src="images/4.jpg">
+					<span class="title_alpha">海底月是天上月 眼前人是心上人</span>
+				</a>
+			</div>
+		</div>
+		<div class="box box_2">
+			<div class="box_2_top hover">
+				<a href="#">
+					<img src="images/5.jpg">
+					<span class="title_alpha">海底月是天上月 眼前人是心上人</span>
+				</a>
+				<a href="#">
+					<img src="images/6.jpg">
+					<span class="title_alpha">海底月是天上月 眼前人是心上人</span>
+				</a>
+			</div>
+			<div class="box_2_center hover">
+				<a href="#">
+					<img src="images/7.jpg">
+					<span class="title_alpha">海底月是天上月 眼前人是心上人</span>
+				</a>
+				<a href="#">
+					<img src="images/8.jpg">
+					<span class="title_alpha">海底月是天上月 眼前人是心上人</span>
+				</a>
+			</div>
+			<div class="box_2_bottom hover">
+				<a href="#">
+					<img src="images/9.jpg">
+					<span class="title_alpha">海底月是天上月 眼前人是心上人</span>
+				</a>
+				<a href="#">
+					<img src="images/10.jpg">
+					<span class="title_alpha">海底月是天上月 眼前人是心上人</span>
+				</a>
+			</div>
+		</div>
+		<div class="box box_3">
+			<div class="box_3_top hover">
+				<a href="#">
+					<img src="images/11.jpg">
+					<span class="title_alpha">海底月是天上月 眼前人是心上人</span>
+				</a>
+				<a href="#">
+					<img src="images/12.jpg">
+					<span class="title_alpha">海底月是天上月 眼前人是心上人</span>
+				</a>
+			</div>
+			<div class="box_3_bottom hover">
+				<a href="#">
+					<img src="images/13.jpg"width="400"height="251">
+					<span class="title_alpha">海底月是天上月 眼前人是心上人</span>
+				</a>
+				<a href="#">
+					<img src="images/14.jpg"width="400"height="251">
+					<span class="title_alpha">海底月是天上月 眼前人是心上人</span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var _hieght,_width;
+			var direction = [];
+			$(".hover").hover(function(){
+				_height = $(this).find("a").height();
+				_width = $(this).find("a").width();
+				direction = [
+					{
+						"top" : _height+'px',
+						"left" : 0
+					},
+					{
+						"top" : -_height+'px',
+						"left" : 0
+					},
+					{
+						"top" :0,
+						"left" : _width+'px'
+					},
+					{
+						"top" : 0,
+						"left" : -_width+'px'
+					}
+				];
+				$(this).find("span").animate({"bottom":"0px"},100);
+			},function(){
+				$(this).find("span").animate({"bottom":"-65px"},100);
+				$(this).find("a").eq(1).animate(
+					direction[Math.floor(Math.random()*4)]
+				,100,function(){ //链函数
+					$(this).css({
+						"top" : 0,
+						"left" : 0
+					}).prependTo($(this).parent());;
+					
+				});
+				
+			});
+		})
+	</script>
+ </body>
+</html>

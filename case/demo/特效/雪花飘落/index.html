@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>雪花飘落js</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:url("images/bg.jpg");overflow:hidden;}
+  </style>
+ </head>
+ <body id="body">
+	<script type="text/javascript">
+		setInterval(function(){
+			var xh = document.createElement("div");
+			var bd = document.getElementById("body");
+			bd.appendChild(xh);
+			//var w_width = screen.availWidth;
+			var w_width = screen.width; //屏幕的宽度
+			//var w_height = screen.availHeight; //屏幕的可用高度，window任务栏除外
+			var w_height = screen.height;
+			//console.log(w_width+"-"+w_height);
+			var _left = Math.random()*w_width-100;
+			var font_size = Math.random()*50;
+			xh.innerHTML="&#10052;";
+			xh.style.color = "#fff";
+			xh.style.fontSize = font_size +'px';
+			xh.style.position = "absolute";
+			xh.style.left = _left+'px';
+			xh.style.top = -100+'px';
+			var _top = -100;
+			setInterval(function(){
+				xh.style.top = _top+'px';
+				_top = _top + 1;
+				if(_top>w_height){
+					bd.removeChild(xh);
+				}
+			},5)
+			
+			
+		},500)
+	</script>
+ </body>
+</html>

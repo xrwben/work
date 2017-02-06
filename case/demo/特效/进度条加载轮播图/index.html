@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>进度条加载轮播</title>
+  <style type="text/css">
+	html,body,div,ul,li,img{margin:0;padding:0;}
+	.banner{width:100%;height:490px;position:relative;}
+	.pic ul li{list-style:none;position:absolute;left:0;top:0;}
+	.pic ul li img{width:100%;height:100%;}
+	.bar ul{position:absolute;bottom:0px;left:50%;margin-left:-600px;}
+	.bar ul li{width:300px;height:10px;border:1px solid green;
+		list-style:none;float:left;}
+	.bar ul li span{width:0px;height:10px;display:block;background:green;}
+  </style>
+ </head>
+ <body>
+	<div class="banner">
+		<div class="pic">
+			<ul>
+				<li><img src="images/1.jpg"></li>
+				<li><img src="images/2.jpg"></li>
+				<li><img src="images/3.jpg"></li>
+				<li><img src="images/4.jpg"></li>
+			</ul>
+		</div>
+		<div class="bar">
+			<ul>
+				<li><span></span></li>
+				<li><span></span></li>
+				<li><span></span></li>
+				<li><span></span></li>
+			</ul>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var _index = 0;
+			/*$(".bar ul li").click(function(){
+				_index = $(this).index();
+				$(".bar ul li").find("span").animate({width:"0px"},0);
+				clearInterval(timer);
+				$("span",this).animate({
+					width:"100%"
+				},5000,function(){
+					$(this).siblings().find("span").hide();
+				})
+			})*/
+
+			$(".pic ul li").eq(_index).show().siblings().hide();
+			autoplay();
+			function autoplay(){
+				//$(".bar ul li span").css({width:"0px"});
+				$(".bar ul li").find("span").animate({width:"0px"},0);
+				$(".pic ul li").eq(_index).fadeIn("slow").siblings().fadeOut();
+				$(".bar ul li").eq(_index).find("span").animate({
+					"width":"100%"
+				},5000);
+				_index++;
+				if(_index>3){
+					_index = 0;
+				}
+			}
+			var timer = setInterval(autoplay,5000);
+
+		})
+	</script>
+ </body>
+</html>

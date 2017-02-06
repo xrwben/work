@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>音乐随心听</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:url(images/afternoon.jpg);}
+	#MusicPlayer{width:610px;
+		height:430px;
+		box-shadow:2px 2px 5px #000;
+		margin:100px auto 0;
+		}
+	/*音乐控件*/
+	.Player{width:260px;
+		height:100%;
+		border-top-left-radius:5px;
+		border-bottom-left-radius:5px;
+		background:#fff;
+		font-family:"微软雅黑";
+		float:left;
+		}
+	.Player img{width:260px;
+		margin:10px 0;
+		}
+	.Player h3{margin-left:10px;
+		}
+	.Player p{font-size:14px;
+		margin-left:10px;
+		line-height:30px;
+		}
+	.button{width:100%;
+		height:40px;
+		}
+	.button span{width:30px;
+		height:30px;
+		display:block;
+		float:left;
+		margin-top:10px;
+		margin-left:30px;
+		cursor:pointer;
+		}
+	/*图标控件*/
+	@font-face {font-family: 'iconfont';
+    src: url('iconfont/iconfont.eot'); /* IE9*/
+    src: url('iconfont/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('iconfont/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('iconfont/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('iconfont/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+	}
+	.iconfont{
+    font-family:"iconfont" !important;
+    font-size:24px;font-style:normal;
+	}
+	/*进度条*/
+	.Bar{width:240px;
+		height:3px;
+		background:#ccc;
+		margin:15px auto 0;
+		cursor:pointer;
+		}
+	.playing{width:0px;
+		height:3px;
+		background:#6600ff;}
+	/*歌词部分*/
+	.Lrc{width:350px;
+		height:100%;
+		background:rgba(0,0,0,0.5);
+		float:right;
+		font-family:"微软雅黑";
+		overflow-y:scroll;
+		border-top-right-radius:5px;
+		border-bottom-right-radius:5px;
+		}
+	.Lrc p{color:#ccc;text-align:center;line-height:30px;font-size:14px;}
+	.Lrc p.curr{font-size:18px;color:#fff;}
+	::-webkit-scrollbar{width:8px;background:#797b7e;border-radius:4px;}
+	::-webkit-scrollbar-thumb{background:#555;border-radius:4px;}
+	::-moz-scrollbar{width:5px;background:#797b7e;}
+	::-moz-scrollbar-thumb{background:#575757;}
+  </style>
+ </head>
+ <body>
+	<div id="MusicPlayer">
+		<!--左边控件开始-->
+		<div class="Player">
+			<img src="images/musicbg.jpg"/>
+			<h3>父亲</h3>
+			<p>演唱：古巨基</p>
+			<div class="button">
+				<span class="iconfont ">&#xf0069;</span>
+				<span class="iconfont play">&#xe610;</span>
+				<span class="iconfont pause" style="display:none;">&#xf006b;</span>
+				<span class="iconfont">&#xf006a;</span>
+			</div>
+			<!--进度条开始-->
+			<div class="Bar">
+				<div class="playing"></div>
+			</div>
+		</div>
+		<!--右边歌词开始-->
+		<div class="Lrc"></div>
+	</div>
+
+	<!--音乐-->
+	<audio src="mp3/古巨基-父亲(现场版).mp3"controls></audio>
+	<div class="lrc_txt" style="display:none;">
+		[00:01.60]父亲(现场版) - 古巨基
+		[00:03.22]作词：王太利 作曲：王太利
+		[00:41.72]总是向你索取
+		[00:44.13]却不曾说谢谢你
+		[00:48.59]直到长大以后
+		[00:51.08]才懂得你不容易
+		[00:55.55]每次离开总是
+		[00:57.34]装作轻松的样子
+		[01:02.08]微笑着说回去吧
+		[01:05.19]转身泪湿眼底
+		[01:08.74]多想和从前一样
+		[01:12.21]牵你温暖手掌
+		[01:15.28]可是你不在我身旁
+		[01:18.88]托清风捎去安康
+		[01:25.73]时光时光慢些吧
+		[01:29.30]不要再让你变老了
+		[01:32.62]我愿用我一切
+		[01:34.70]换你岁月长留
+		[01:39.49]一生要强的爸爸
+		[01:42.96]我能为你做些什么
+		[01:46.37]微不足道的关心
+		[01:49.14]收下吧
+		[02:03.58]多想和从前一样
+		[02:06.99]牵你温暖手掌
+		[02:09.87]可是你不在我身旁
+		[02:13.67]托清风捎去安康
+		[02:20.56]时光时光慢些吧
+		[02:23.83]不要再让你变老了
+		[02:27.27]我愿用我一切
+		[02:29.41]换你岁月长留
+		[02:34.19]一生要强的爸爸
+		[02:37.65]我能为你做些什么
+		[02:41.12]微不足道的关心
+		[02:44.19]收下吧
+		[02:48.03]时光时光慢些吧
+		[02:51.42]不要再让你变老啦
+		[02:58.44]谢谢你做的一切
+		[03:01.69]双手撑起我们的家
+		[03:05.27]总是竭尽所有
+		[03:07.10]把最好的给我
+		[03:12.05]我是你的骄傲吗
+		[03:15.37]还在为我而担心吗
+		[03:18.86]你牵挂的孩子啊
+		[03:21.77]长大啦
+		[03:25.88]感谢一路上有你
+		[03:53.17]时光时光慢些吧
+		[03:56.54]时光时光慢些吧
+		[04:15.41]总是向你索取
+		[04:18.54]却不曾说谢谢你
+		[04:24.14]直到长大以后
+		[04:27.74]才懂得你不容易
+		[04:36.73]感谢一路上有你
+	</div>
+	<!--js样式-->
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		//点击播放按钮
+		var music=$("audio").get(0);
+		$(".button span.play").click(function(){
+			music.play();
+			$(".button span.play").hide();
+			$(".button span.pause").show();
+			//设置定时器
+			setInterval(changebar,1000);
+		});
+		//点击暂停按钮
+		$(".button span.pause").click(function(){
+			music.pause();
+			$(".button span.pause").hide();
+			$(".button span.play").show();
+		});
+		//进度条控制
+		function changebar(){
+			var alltime=music.duration;//获取总时间
+			var curtime=music.currentTime;//获取当前时间
+			console.log(alltime);
+			console.log(curtime);
+			var bl=curtime/alltime;
+			var oWidth=$(".Bar").width()*bl;
+			$(".playing").css("width",oWidth);
+		} 
+		$(".Bar").click(function(e){
+			var _left = e.clientX - $(this).offset().left;
+			$(".playing").css("width",_left);
+			var alltime=music.duration;
+			var curtime=_left/$(this).width()*alltime;
+			console.log(curtime);
+			music.currentTime = curtime;
+			music.play();
+		})
+		function scrollLrc(){
+			var lrc = $(".lrc_txt").text();
+			var arr = lrc.split("[");
+			var html="";
+			//alert(arr instanceof Array)
+			for(var i=0;i<arr.length;i++){
+				var timeAndTxt = arr[i].split("]");
+				var time = timeAndTxt[0];
+				var txt = timeAndTxt[1];
+				
+				var stime = time.split(":");
+				var seconds = stime[0]*60 + stime[1]*1;
+
+				if(txt){
+					html += "<p id="+parseInt(seconds)+">"+txt+"</p>";
+				}
+			}
+			$(".Lrc").html(html);
+		}
+		scrollLrc();
+		music.addEventListener("timeupdate",function(){
+			var timer = this.currentTime;
+			console.log(timer)
+			var s = parseInt(timer);
+			for(var i=0;i<s;i++){
+				$("#"+s).addClass("curr").siblings().removeClass("curr");
+			}
+		})
+	</script>
+ </body>
+</html>

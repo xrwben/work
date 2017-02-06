@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>省市区三级联动</title>
+  <style type="text/css">
+	select{width:100px;}
+  </style>
+ </head>
+ <body>
+	<h2>省市区三级联动</h2>
+	省份：<select id="province" onchange="showCity()"><option value="">--请选择--</option></select>
+	城市：<select id="city" onchange="showArea()"><option value="">--请选择--</option></select>
+	地区：<select id="area"><option value="">--请选择--</option></select>
+
+	<script type="text/javascript" src="./jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		var xmlDom = null; //用来保存从服务器获取的数据
+		function showProvince(){
+			$.ajax({
+				url:"./ChinaArea.xml",
+				type:"get",
+				dataType:"xml",
+				success : function(msg){
+					xmlDom = msg;
+					//alert(msg); //[object XMLDocument]
+					var provinces = $(msg).find("province"); //注意不要用引号包起来
+					var str = "";
+					provinces.each(function(){
+						var p_name = $(this).attr("province");
+						var p_id = $(this).attr("provinceID");
+						//console.log(p_name);
+						str += "<option value='"+p_id+"'>"+p_name+"</option>";
+					});
+					$("#province").append(str);
+				}
+			});
+		}
+		$(function(){
+			showProvince();
+		})
+
+		function showCity(){
+			//alert(xmlDom);
+			var p_id = $("#province").find("option:checked").val();
+			var citys = $(xmlDom).find("province[provinceID='"+p_id+"']").find("City");
+			var str = "";
+			citys.each(function(){
+				var c_name = $(this).attr("City");
+				var c_id = $(this).attr("CityID");
+				str += "<option value='"+c_id+"'>"+c_name+"</option>";
+			});
+			$("#city").empty().append("<option>--请选择--</option>").append(str);
+		}
+		function showArea(){
+			var c_id = $("#city").find("option:checked").val();
+			var areas = $(xmlDom).find("City[CityID='"+c_id+"']").find("Piecearea");
+			var str = "";
+			areas.each(function(){
+				var a_name = $(this).attr("Piecearea");
+				var a_id = $(this).attr("PieceareaID");
+				str += "<option value='"+a_id+"'>"+a_name+"</option>";
+			});
+			$("#area").empty().append("<option>--请选择--</option>").append(str);
+		}
+	</script>
+ </body>
+</html>

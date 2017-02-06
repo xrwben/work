@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>淘宝放大镜</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:#abcdef;}
+	.con{width:460px;margin:80px 0 0 100px;position:relative;}
+	.show_pic{width:400px;height:400px;border:1px solid #ccc;
+		margin:0 auto;position:relative;}
+	.show_pic img{width:400px;height:400px;}
+	.big_Glass{width:180px;height:180px;display:none;cursor:move;
+		background:url("images/move.png");
+		position:absolute;top:0px;left:0px;}
+	.small_list{width:100%;text-align:center;margin-top:15px;}
+	.small_list img{width:50px;height:50px;border:1px solid #ccc;
+		margin:0 10px;cursor:pointer;}
+	.small_list img.hover{border-color:#ff0033;}
+	.big_Box{width:400px;height:400px;position:absolute;left:460px;top:0px;
+		overflow:hidden;border:1px solid #ccc;display:none;}
+	.big_Box img{width:800px;height:800px;position:absolute;}
+  </style>
+ </head>
+ <body>
+	<div class="con">
+		<div class="show_pic">
+			<img src="images/bPic1.jpg">
+			<span class="big_Glass"></span>
+		</div>
+		<div class="small_list">
+			<img class="hover"src="images/sPic1.jpg" dataSrc="images/bPic1.jpg">
+			<img src="images/sPic2.jpg" dataSrc="images/bPic2.jpg">
+			<img src="images/sPic3.jpg" dataSrc="images/bPic3.jpg">
+			<img src="images/sPic4.jpg" dataSrc="images/bPic4.jpg">
+			<img src="images/sPic5.jpg" dataSrc="images/bPic5.jpg">
+		</div>
+		<div class="big_Box">
+			<img src="images/bPic1.jpg"/>
+		</div>
+	</div>
+	
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(".small_list img").hover(function(){
+			$(this).addClass("hover").siblings().removeClass("hover");
+			var dataSrc = $(this).attr("dataSrc");
+			$(".show_pic img,.big_Box img").attr("src",dataSrc);
+		})
+
+		$(".show_pic").hover(function(){
+			$(".big_Glass,.big_Box").show();
+		},function(){
+			$(".big_Glass,.big_Box").hide();
+		});
+		$(".show_pic").mousemove(function(e){
+			var x = e.clientX;
+			var y = e.clientY;
+			//document.title = x+" "+y;
+			
+			var _top = $(this).offset().top;
+			var _left = $(this).offset().left;
+			//document.title = _top+"--"+_left
+			var _width = $(".big_Glass").width()/2;
+			var _height = $(".big_Glass").height()/2;
+
+			var _l = x-_left-_width;
+			var _t = y-_top-_height;
+
+			var _distanceX=$(".show_pic").width()-$(".big_Glass").width();
+			var _distanceY=$(".show_pic").height()-$(".big_Glass").height();
+			
+			if(_t<0){
+				_t=0;
+			}else if(_t>_distanceY){
+				_t = _distanceY;
+			}
+			if(_l<0){
+				_l=0;
+			}else if(_l>_distanceX){
+				_l = _distanceX;
+			}
+
+			$(".big_Glass").css({left:_l,top:_t});
+
+			var w_scale =_l/_distanceX*($(".big_Box img").width()-$(".big_Box").width());
+			var h_scale =_t/_distanceY*($(".big_Box img").height()-$(".big_Box").height());
+			
+			//document.title = w_scale+"__"+h_scale;
+			$(".big_Box img").css({left:-w_scale,top:-h_scale});
+		})
+
+	</script>
+ </body>
+</html>

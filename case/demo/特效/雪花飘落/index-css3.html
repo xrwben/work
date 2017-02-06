@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>雪花飘落css3</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:url("images/bg.jpg");background-size:cover;overflow:hidden;}
+	div{display:block;position:absolute;color:#fff;font-size:40px;}
+	#img_0{left:0px;-moz-animation:move 8s linear infinite;}
+	#img_1{left:150px;-moz-animation:move 10s linear infinite;}
+	#img_2{left:300px;-moz-animation:move 5s linear infinite;}
+	#img_3{left:450px;-moz-animation:move 6s linear infinite;}
+	#img_4{left:550px;-moz-animation:move 8s linear infinite;}
+	#img_5{left:650px;-moz-animation:move 12s linear infinite;}
+	#img_6{left:800px;-moz-animation:move 5s linear infinite;}
+	#img_7{left:950px;-moz-animation:move 6s linear infinite;}
+	#img_8{left:1150px;-moz-animation:move 4s linear infinite;}
+	#img_9{left:1300px;-moz-animation:move 15s linear infinite;}
+	#img_10{left:1350px;-moz-animation:move 11s linear infinite;}
+	#img_11{left:950px;-moz-animation:move 7s linear infinite;}
+	@-moz-keyframes move{
+		from{top:-150px;opacity:1;}
+		to{top:750px;opacity:0.3;}
+	}
+  </style>
+ </head>
+ <body>
+	<div id="img_0">&#10052;</div>
+	<div id="img_1">&#10052;</div>
+	<div id="img_2">&#10052;</div>
+	<div id="img_3">&#10052;</div>
+	<div id="img_4">&#10052;</div>
+	<div id="img_5">&#10052;</div>
+	<div id="img_6">&#10052;</div>
+	<div id="img_7">&#10052;</div>
+	<div id="img_8">&#10052;</div>
+	<div id="img_9">&#10052;</div>
+	<div id="img_10">&#10052;</div>
+	<div id="img_11">&#10052;</div>
+	<!-- <script type="text/javascript" src="jquery-1.11.3.min.js"></script> -->
+	<script type="text/javascript">
+		var img = document.getElementById("img");
+		console.log(img.src);
+		img.onmouseover = function(){
+			console.log("鼠标移上来！");
+			img.src = "images/1.png";
+		}
+		img.onmouseout = function(){
+			console.log("鼠标移开！");
+			img.src="images/0.png";
+		}
+	</script>
+ </body>
+</html>

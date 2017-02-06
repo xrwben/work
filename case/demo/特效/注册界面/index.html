@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>注册</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css" />
+  <script src="js/jquery.js"></script>
+  <style type="text/css">
+	
+  </style>
+ </head>
+ <body>
+	<div class="box">
+		<form action="#" method="post">
+			<div class="register">
+				<span class="zc">注册</span>
+				<a>X</a>
+				<div style="clear:both"></div>
+			</div>
+			<hr style="margin-top:5px;"/>
+			<div class="info">
+					<b>用户名：</b>
+					<input type="text" placeholder="请输入用户名/邮箱/ID号"name="user"/><br/>
+					<b>密  &nbsp;&nbsp;码：</b>
+					<input type="password" onkeyup="checkStrong(this.value)"placeholder="请输入密码"name="password"/>
+			</div>
+			<ul>
+				<li id="info0">弱</li>
+				<li id="info1">一般</li>
+				<li id="info2">强</li>
+				<li id="info3">很强</li>
+			</ul>
+			<input class="yzm" type="text" placeholder="请输入验证码"/>
+			<img src="yzm.jpg"/><br/>
+			<input class="reg" type="submit" value="注册"/>
+		</form>
+	</div>
+ </body>
+ <script type="text/javascript">
+	function checkStrong(pass){
+		var level = -1;
+		var colors = ["red","orange","blue","green"];
+		for(var i=0;i<4;i++){
+			document.getElementById("info"+i).style.background="";
+		}
+		if(pass.length<6){
+			return false;
+		}
+		//包含数字
+		if(/[0-9]/.test(pass)){
+			level++;
+		}
+		//包含小写字母
+		if(/[a-z]/.test(pass)){
+			level++;
+		}
+		//包含大写字母
+		if(/[A-Z]/.test(pass)){
+			level++;
+		}
+		//包含特殊字符
+		if(/\W/.test(pass)){
+			level++;
+		}
+		for(var i=0;i<=level;i++){
+			var info = document.getElementById("info"+i);
+			info.style.background=colors[i];
+		}
+	}
+	//移动
+	$(document).ready(function(){
+		var x1;
+		var y1;
+		$(".register").mousedown(function(e){
+			var down_left=e.clientX;//获取鼠标按下到浏览器左边的距离
+			var bor_left=$(".box").offset().left;//获取盒子边框左边到浏览器的距离
+			x1=down_left-bor_left;//获取鼠标按下到盒子左边的距离
+			
+			var down_top=e.clientY;
+			var bor_top=$(".box").offset().top;
+			y1=down_top-bor_top;
+
+			$(document).mousemove(function(e){
+				var now_left=e.clientX;
+				var move_left=now_left-x1;
+				$(".box").css("left",move_left)
+				
+				var now_top=e.clientY;
+				var move_top=now_top-y1;
+				$(".box").css("top",move_top)
+			})
+			$(document).mouseup(function(){
+				$(document).unbind("mousemove");
+			})
+		});
+	});
+ </script>
+</html>

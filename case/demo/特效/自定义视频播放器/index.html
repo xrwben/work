@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>自定义播放器</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:#393434;}
+	#Box{width:950px;
+		height:600px;
+		background:#fff;
+		border:3px solid #ffffcc;
+		box-shadow:0 0 10px green;
+		margin:25px auto 0;
+		}
+	#Box .vadio{width:600px;
+		height:600px;
+		border:1px solid #fff;
+		background:url(images/sp.jpg)no-repeat center;
+		float:left;
+		}
+	.playing{width:524px;
+		height:331px;
+		background:#cc33ff;
+		margin:63px 0 0 38px;
+		border-radius:1px;
+		}
+	.list{width:175px;
+		height:100%;
+		border:2px solid #999;
+		float:right;
+		}
+	.list ul li{list-style:none;
+		width:171px;
+		height:118px;
+		background:url(images/xsp.jpg)no-repeat center;
+		background-size:100% 100%;
+		float:right;
+		cursor:pointer;
+		}
+	.list ul li img{margin:5px 0 0 10px;}
+  </style>
+ </head>
+ <body>
+	<div id="Box">
+		<div class="vadio">
+			<div class="playing">
+				<embed id="player"src="http://www.tudou.com/v/goOKUFhSGuo/&bid=05&resourceId=0_05_05_99/v.swf"type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="524"height="331"></embed>
+			</div>
+		</div>
+		<div class="list">
+			<ul>
+				<li>
+					<img src="images/1.jpg"width="150"height="75"/>
+					<a src="http://www.tudou.com/v/goOKUFhSGuo/&bid=05&resourceId=0_05_05_99/v.swf"></a>
+				</li>
+				<li>
+					<img src="images/2.jpg"width="150"height="75"/>
+					<a src="http://player.youku.com/player.php/sid/XMTc3MzgyMzc2/v.swf"></a>
+				</li>
+				<li>
+					<img src="images/3.jpg"width="150"height="75"/>
+					<a src="http://player.56.com/v_ODE5MzQ2MDk.swf"
+					style="display:none"></a>
+				</li>
+				<li>
+					<img src="images/4.jpg"width="150"height="75"/>
+					<a src="http://v.ifeng.com/include/exterior.swf?guid=5e1fc51c-b99c-4bc0-8d43-6c024fc52ecc&pageurl=http://www.ifeng.com&fromweb=other&AutoPlay=true"
+					></a>
+				</li>
+				<li>
+					<img src="images/5.jpg"width="150"height="75"/>
+					<a src="http://www.tudou.com/o/13fkVoBwfpM/&bid=05&iid=132199634&resourceId=0_05_05_99/v.swf"
+					style="display:none"></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(".list ul li").click(function(){
+			var sp_src=$(this).find("a").attr("src");
+
+		/*  方法一：
+			$(".playing").html("");
+			$(".playing").html("<embed src='"+sp_src+"'type='application/x-shockwave-flash'allowscriptaccess='always' allowfullscreen='true' wmode='opaque'width='524' height='331'></embed>");
+			*/
+
+		//  方法二：
+			$(".playing embed#player").attr("src",sp_src);//字符串不用引号
+			
+		});
+	</script>
+	<!--
+		后会无期
+		<embed src="http://www.tudou.com/v/goOKUFhSGuo/&bid=05&resourceId=0_05_05_99/v.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="524" height="331"></embed>
+
+		成都求婚
+		<embed src="http://player.56.com/v_ODE5MzQ2MDk.swf" type="application/x-shockwave-flash" width="320" height="270" allowfullscreen="true" allownetworking="all" allowscriptaccess="always"></embed>
+		
+		彼岸
+		<embed src="http://player.youku.com/player.php/sid/XMTc3MzgyMzc2/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+
+		俞洪敏--相信奋斗的力量
+		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="400" height="325"><param name="movie" value="http://v.ifeng.com/include/exterior.swf?guid=5e1fc51c-b99c-4bc0-8d43-6c024fc52ecc&pageurl=http://www.ifeng.com&fromweb=other&AutoPlay=false" /><param name="quality" value="high" /><param name="allowScriptAccess" value="always" /><embed src="http://v.ifeng.com/include/exterior.swf?guid=5e1fc51c-b99c-4bc0-8d43-6c024fc52ecc&pageurl=http://www.ifeng.com&fromweb=other&AutoPlay=false" quality="high"  allowScriptAccess="always" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="400" height="325"></embed></object>
+
+		刘媛媛--寒门贵子
+		<embed src="http://www.tudou.com/o/13fkVoBwfpM/&bid=05&iid=132199634&resourceId=0_05_05_99/v.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="480" height="400"></embed>
+	-->
+ </body>
+</html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>发牌程序2版</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	html,body{width:100%;height:100%;}
+	body{background:#000;position:relative;}
+	.shuffle{position:fixed;bottom:30px;left:50%;}
+	.start{position:fixed;bottom:30px;left:55%;}
+  </style>
+ </head>
+ <body id="body">
+ 	<button class="shuffle" onclick="shuffle()">洗牌</button>
+	<button class="start" onclick="start()">发牌</button>
+ 
+	<script type="text/javascript" src="js/jquery.js"></script>
+ 	<script type="text/javascript">
+		
+ 		var arr = ["黑桃3","黑桃4","黑桃5","黑桃6","黑桃7","黑桃8","黑桃9","黑桃10","黑桃J","黑桃Q","黑桃K","黑桃A","黑桃2","红桃3","红桃4","红桃5","红桃6","红桃7","红桃8","红桃9","红桃10","红桃J","红桃Q","红桃K","红桃A","红桃2","梅花3","梅花4","梅花5","梅花6","梅花7","梅花8","梅花9","梅花10","梅花J","梅花Q","梅花K","梅花A","梅花2","方块3","方块4","方块5","方块6","方块7","方块8","方块9","方块10","方块J","方块Q","方块K","方块A","方块2","小王","大王"];
+		
+ 		for(var i=0;i<arr.length;i++){
+			var img = $("<img src='images/"+arr[i]+".jpg' height='120'/>");
+			$("body").append(img);
+			img.css({
+				"position" : "absolute",
+				"left" : "50%",
+				"top" : "50%",
+				"margin-left" : "-42px",
+				"margin-top" : "-60px"
+			})
+			//$("img").eq(last).css({"background" : "#000"})
+
+			/*if((i+1)%13==0){
+				$("body").append($("<br />"));
+			}*/
+		}
+		function shuffle(){
+			var img = $("img");
+			img.animate({
+				"left" : "50%",
+				"top" : "50%",
+				"margin-left" : "-42px",
+				"margin-top" : "-60px"
+			},1000,function(){
+				//var n = Math.floor(arr.length/2)+1;
+				var _len = arr.length;
+				while(_len){
+					var i = Math.floor(Math.random()*arr.length);
+					var j = Math.floor(Math.random()*arr.length);
+					if(i!=j){
+						var tmp = arr[i];
+						arr[i] = arr[j];
+						arr[j] = tmp;
+					}
+					_len--;
+					console.log(i+"--"+j);
+				}
+				//console.log(arr);
+				/*for(var i=0;i<arr.length;i++){
+					$("img").eq(i).attr("src","images/"+arr[i]+".jpg");
+					//console.log(img.src);
+					//img.src = "images/"+arr[i]+".jpg";
+				}*/
+			})
+			for(var i=0;i<arr.length;i++){
+				$("img").eq(i).attr("src","images/"+arr[i]+".jpg");
+			}
+		}
+		function start(){
+			/*$("img").each(function(i){
+				if(i%3==0){
+					$(this).animate({
+						"left" : "40%",
+						"top" : "60px"
+					},1000,function(){
+						$(this).css({
+							"left" : "40%"
+						});
+					});
+				}else if(i%2==0){
+					$(this).animate({
+						"left" : "100px",
+						"top" : "40%"
+					});
+				}
+			})*/
+			var arr1=[],arr2=[],arr3=[];
+			$("img").each(function(i){
+				if(i%3==0){
+					arr1.push(i);
+				}else if(i%2==0){
+					arr2.push(i);
+				}else{
+					arr3.push(i);
+				}
+				
+			});
+			//console.log(arr1);
+			//console.log(arr2);
+			//console.log(arr3);
+			//alert(arr1[1]);
+			for(var i=0;i<arr1.length;i++){
+				$("img").eq(arr1[i]).animate({
+					"left" : 500+i*20+"px",
+					"top" : "80px"
+				},1000);
+			};
+			for(var i=0;i<arr2.length;i++){
+				$("img").eq(arr2[i]).animate({
+					"left" : "100px",
+					"top" : 100+i*25+"px"
+				},1000);
+			};
+			for(var i=0;i<arr3.length;i++){
+				$("img").eq(arr3[i]).animate({
+					"left" : "90%",
+					"top" : 100+i*25+"px"
+				},1000);
+			}
+			
+		}
+ 	</script>
+ </body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+	
+  </style>
+ </head>
+ <body>
+	<p id="p"><input id="btn" type="button" value="按钮"></p>
+	<script type="text/javascript">
+		var btn = document.getElementById("btn");
+		var p = document.getElementById("p");
+		setInterval(function(){
+			ajax("get","data1.php",true,function(cs){
+				//alert(xhr.responseText);
+				//console.log(typeof xhr.responseText); //string  json
+				//var res = eval(xhr.responseText); //变成数组
+				var response = JSON.parse(cs) //json解析成js
+				var html = "";
+				
+				//alert(res.length);
+				for(var i=0;i<response.length;i++){
+					html += "姓名："+response[i].name+" 年龄："+response[i].age+"<br />";
+					p.innerHTML = html;
+				}
+				//console.log(res[0].name);
+			});
+		},5000);
+		btn.onclick = function(){
+			ajax("get","data1.php",true,function(cs){
+				//alert(xhr.responseText);
+				//console.log(typeof xhr.responseText); //string  json
+				//var res = eval(xhr.responseText); //变成数组
+				var response = JSON.parse(cs) //json解析成js
+				var html = "";
+				
+				//alert(res.length);
+				for(var i=0;i<response.length;i++){
+					html += "姓名："+response[i].name+" 年龄："+response[i].age+"<br />";
+					p.innerHTML = html;
+				}
+				//console.log(res[0].name);
+			});
+		}
+		function ajax(method,url,asyn,resFunction){
+			var xhr = new XMLHttpRequest();
+			xhr.open(method,url,asyn);
+			xhr.send(null);
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4){
+					if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+						resFunction && resFunction(xhr.responseText);
+					}else{
+						alert("不好意思，出错啦！");
+					}
+				}
+			}
+		}
+	</script>
+ </body>
+</html>

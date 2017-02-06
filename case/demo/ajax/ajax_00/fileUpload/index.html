@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>附件上传</title>
+  <style type="text/css">
+	#parent_pro{width:170px;height:5px;border:1px solid blue;margin-left:64px;}
+	#son_pro{width:0%;height:5px;background:green;}
+  </style>
+ </head>
+ <body>
+	<h2>AJAX 无刷新附件上传</h2>
+	<form method="post" action="./files.php">
+		<p>用户名：<input type="text" name="user"></p>
+		<p>密&emsp;码：<input type="text" name="password"></p>
+		<p>
+			<div id="parent_pro"><div id="son_pro"></div></div>
+			文&emsp;件：<input type="file" name="files">
+		</p>
+		<p><input type="submit" value="提交"></p>
+	</form>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			var form = document.getElementsByTagName("form")[0];
+			var parent_pro = document.getElementById("parent_pro");
+			var son_pro = document.getElementById("son_pro");
+
+			form.onsubmit = function(ev){
+				var fd = new FormData(form);
+				
+				var xhr = new XMLHttpRequest();
+				xhr.open("post","./files.php");
+				xhr.send(fd);
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState == 4){
+						if(xhr.status == 200 || xhr.status == 304){
+							alert(xhr.responseText);
+						}
+					}
+				}
+				xhr.upload.onprogress = function(ev){
+					//console.log(ev);
+					var _total = ev.total;
+					var _loaded = ev.loaded;
+					var per = (_loaded/_total)*100;
+					//console.log(per);
+					var z_per = Math.floor(per);
+					son_pro.style.width = per + "%";
+					//parent_pro.innerHTML = z_per + "%";
+
+				}
+				//console.log(xhr);
+				ev.preventDefault();
+			}
+		}
+	</script>
+ </body>
+</html>

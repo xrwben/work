@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>时装秀</title>
+  <style>
+	*{margin:0;padding:0;}
+	body{background:url(images/b2.jpg);}
+	heml{position:relative;	}
+	.con{width:600px;
+		height:600px;
+		border:10px solid #fff;
+		margin:50px auto;
+		position:relative;
+		}
+	.con ul li{list-style:none;
+		width:200px;
+		height:300px;
+		float:left;
+		cursor:pointer;
+		}
+	.shadow{width:100%;
+		height:100%;
+		background:rgba(0,0,0,0.5);
+		position:fixed;
+		top:0;
+		left:0;
+		display:none;
+		}
+	.up{width:400px;
+		height:500px;
+		border:10px solid #fff;
+		position:absolute;
+		top:40px;
+		left:90px;
+		display:none;
+		}
+	#up{position:relative;}
+	#prev{width:30px;
+		height:50px;
+		background:rgba(0,0,0,0.6);
+		position:absolute;
+		top:45%;
+		left:-100px;
+		cursor:pointer;
+		}
+	#next{width:30px;
+		height:50px;
+		position:absolute;
+		top:45%;
+		right:-100px;
+		cursor:pointer;
+		background:rgba(0,0,0,0.6);
+		}
+  </style>
+ </head>
+ <body>
+	<div class="con">
+		<div class="content">
+			<ul>
+				<li>
+					<img src="images/p1.jpg"width="200"height="300"/>
+				</li>
+				<li>
+					<img src="images/p2.jpg"width="200"height="300"/>
+				</li>
+				<li>
+					<img src="images/p3.jpg"width="200"height="300"/>
+				</li>
+				<li>
+					<img src="images/p4.jpg"width="200"height="300"/>
+				</li>
+				<li>
+					<img src="images/p5.jpg"width="200"height="300"/>
+				</li>
+				<li>
+					<img src="images/p6.jpg"width="200"height="300"/>
+				</li>
+			</ul>
+		</div>
+		<!--遮罩层-->
+		<div class="shadow"></div>
+		<!--最上面的盒子-->
+		<div class="up">
+			<img id="big_img"src="images/p1.jpg"width="400"height="500"/>
+			<img id="prev"src="images/dirl.png"width="30"height="50"/>
+			<img id="next"src="images/dirr.png"width="30"height="50"/>
+		</div>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script>
+		//显示图片
+		var _index;
+		var src_Img;
+		$(".con .content ul li img").click(function(){
+			_index= $(this).index();
+			alert(_index);		//........点击获取地址未实现？？？？
+			src_Img = $(this).attr("src");//获得当前地址
+			$(".con .up img#big_img").attr("src",src_Img);//更换地址
+			$(".shadow").show();
+			$(".up").show();
+			
+		});
+
+
+		//点击下一张按钮
+		$("#next").click(function(){
+			_index++;
+			if(_index>5){
+				_index=0;
+			}
+			src_Img=$(".con ul li img").eq(_index).attr("src");
+			$(".up img#big_img").attr("src",src_Img);
+			$(".up").show();
+		});
+		//点击上一张按钮
+		$("#prev").click(function(){
+			_index--;
+			if(_index<0){
+				_index=5;
+			}
+			src_Img=$(".con ul li img").eq(_index).attr("src");
+			$(".up img#big_img").attr("src",src_Img);
+			$(".up").show();
+		});
+
+		//隐藏图片
+		$(".shadow").click(function(){
+			$(".shadow").hide();
+			$(".up").hide();
+		});
+	</script>
+ </body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>模特全屏背景展示</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	html,body{width:100%;height:100%;}
+	.con{width:100%;
+		height:100%;
+		overflow:hidden;
+		position:relative;
+		}
+	.pic{width:26240px;
+		height:100%;
+		background:#ccffff;
+		position:absolute;
+		}
+	.pic img{display:block;
+		float:left;
+		}
+	.move{width:100%;
+		height:120px;
+		background:rgba(0,0,0,0.4);
+		position:absolute;
+		left:0;
+		bottom:0;
+		}
+	.bar{width:880px;
+		height:11px;
+		margin:60px auto;
+		background:url(images/scrollbar.png);
+		position:relative;
+		}
+	.button{width:40px;
+		height:11px;
+		background:url("images/banner.png")no-repeat;
+		position:absolute;
+		left:0;
+		top:0;
+		}
+  </style>
+ </head>
+ <body>
+	<div class="con">
+		<div class="pic">
+			<img src="images/3.jpg"/>
+			<img src="images/2.jpg"/>
+			<img src="images/1.jpg"/>
+			<img src="images/4.jpg"/>
+			<img src="images/5.jpg"/>
+			<img src="images/6.jpg"/>
+			<img src="images/7.jpg"/>
+			<img src="images/8.jpg"/>
+			<img src="images/9.jpg"/>
+			<img src="images/10.jpg"/>
+			<img src="images/11.jpg"/>
+			<img src="images/12.jpg"/>
+			<img src="images/13.jpg"/>
+			<img src="images/14.jpg"/>
+			<img src="images/15.jpg"/>
+			<img src="images/16.jpg"/>
+		</div>
+		<div class="move">
+			<div class="bar">
+				<div class="button"></div>
+			</div>
+		</div>
+	</div>
+	<audio src="music/bgm1.mp3" autoplay loop></audio>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			//错误解法
+			/*$(".button").bind("mousedown",function(e){
+				var eLeft = e.clientX - $(this).offset().left;
+				$(".button").mousemove(function(e){
+					var _left = e.clientX -$(".bar").offset().left - eLeft;
+					$(".button").css({left : _left+"px"});
+				});
+				$(document).mouseup(function(){
+					$(document).unbind("mousemove");
+				})
+			});*/
+			//如果移动事件绑定document和button有区别
+			var _width = 0;
+			for(var i=0;i<$("img").length;i++){
+				_width +=$("img").eq(i).width();
+			}
+			$(".button").mousedown(function(e){
+				var eLeft = e.clientX - $(this).offset().left;
+				$(document).mousemove(function(e){
+					var _left = e.clientX - $(".bar").offset().left - eLeft;
+					var maxLeft = $(".bar").width()-$(".button").width();
+					var btnRate = _left/maxLeft;
+					var picRate = (_width-$(window).width()) * btnRate;
+					if(_left<0){
+						_left = 0;
+					}
+					if(_left>maxLeft){
+						_left = maxLeft;
+					}
+					$(".button").css({left:_left+"px"});
+					if(picRate<0){
+						picRate = 0;
+					}
+					if(picRate>_width-$(window).width()){
+						picRate = _width-$(window).width();
+					}
+					$(".pic").css({left:-picRate+'px'});
+				});
+				$(document).mouseup(function(){
+					$(document).unbind("mousemove");
+					$(document).unbind("mouseup");
+				});
+				return false;
+			});
+		})
+	</script>
+ </body>
+</html>

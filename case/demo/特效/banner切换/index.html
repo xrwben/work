@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	.banner{height:360px;text-align:center;position:relative;}
+	.banner ul li{list-style:none;width:100%;height:100%;
+		position:absolute;left:0;top:0;}
+	.banner ul li:nth-child(1){background:#f3B02D;}
+	.banner ul li:nth-child(2){background:#A2d03a;}
+	.banner ul li:nth-child(3){background:#6d57a2;}
+	.banner ul li:nth-child(4){background:#32b1c2;}
+	
+	.nav{position:relative;}
+	.nav ul{position:absolute;top:-100px;left:10%;}
+	.nav ul li{list-style:none;float:left;margin:0 20px;cursor:pointer;}
+	.nav ul li img{-moz-transform:scale(0.7);}
+  </style>
+ </head>
+ <body>
+	<div class="banner">
+		<ul>
+			<li><img src="images/img32.jpg"></li>
+			<li><img src="images/img33.jpg"></li>
+			<li><img src="images/img34.jpg"></li>
+			<li><img src="images/img35.jpg"></li>
+		</ul>
+	</div>
+	<div class="nav">
+		<ul>
+			<li ><img class="hover"src="images/img36.png"></li>
+			<li><img src="images/img37.png"></li>
+			<li><img src="images/img38.png"></li>
+			<li><img src="images/img39.png"></li>
+			<div style="clear:both"></div>
+		</ul>
+	</div>
+
+	<script src="js/jquery.js"></script>
+	<script type="text/javascript">
+		var _index=0;
+		$(".nav ul li").eq(0).find("img").css({"-moz-transform":"scale(1)"});
+		$(".banner ul li").eq(_index).show().siblings().hide();
+		$(".nav ul li").click(function(){
+			_index=$(this).index();
+			$(this).find("img").css({"-moz-transform":"scale(1)"});
+			$(this).siblings().find("img").css({"-moz-transform":"scale(0.7)"});
+			$(".banner ul li").eq(_index).show().siblings().hide();
+		})
+	</script>
+ </body>
+</html>

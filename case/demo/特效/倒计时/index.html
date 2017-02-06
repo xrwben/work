@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>倒计时</title>
+  <style type="text/css">
+	*{margin:0;padding:0;color:#fff;font-family:"微软雅黑";}
+	body{background:url("images/bg.jpg")no-repeat 100%;}
+	#con{width:450px;height:350px;border:1px solid #fff;margin:50px auto;
+		background:rgba(0,0,0,0.5);border-radius:10px;box-shadow:0 0 5px #fff;
+		text-align:center;}
+	#con h1{text-align:center;margin:20px 0;}
+	#con input{width:70px;height:20px;margin:0 5px;font-weight:bold;
+		border-radius:5px;border:0;color:green;text-align:center;}
+	#start{width:80px;height:80px;border:1px solid #fff;margin:30px auto;
+		border-radius:50%;line-height:80px;font-size:30px;font-weight:bold;
+		background:rgba(239,169,16,0.7);cursor:pointer;}
+	#start:hover{box-shadow:0 0 5px #fff;}
+	#con p{font-size:24px;line-height:45px;font-family:"楷体";}
+	#con p span{color:#ffcc00;font-weight:bold;padding:0 10px;}
+  </style>
+ </head>
+ <body>
+	<div id="con">
+		<h1>开始倒计时</h1>
+		<div id="endtime">
+			<form>
+				 请输入：<input id=""type="text"value="2016"/>年
+					<input id=""type="text"value="1"/>月
+					<input id=""type="text"value="1"/>日
+			</form>
+		</div>
+		<div id="start">开始</div>
+		<p class="">现在距离以上时间，还剩：</p>
+		<p>
+			<span>0</span>天<span>0</span>小时<span>0</span>分<span>0</span>秒
+		</p>
+	</div>
+
+	<script src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$("#start").click(function(){
+			updateTime();
+			setInterval(updateTime,1000);//自动更新时间
+		});
+		
+		function updateTime(){
+			var Year=$("#endtime input").eq(0).val();
+			var Month=$("#endtime input").eq(1).val();
+			var Day=$("#endtime input").eq(2).val();
+			//alert(Year+"年"+Month+"月"+Day+"日");
+
+			var endDate = new Date(); //创建结束时间对象
+			var nowDate = new Date(); //创建现在时间对象
+			
+			//设置结束时间
+			endDate.setFullYear(Year);
+			endDate.setMonth(Month-1);
+			endDate.setDate(Day);
+			endDate.setHours(0);
+			endDate.setMinutes(0);
+			endDate.setSeconds(0);
+
+			var s=(endDate.getTime()-nowDate.getTime())/1000;
+			if(s<=0){
+				alert("你输入的时间已过，请重新输入！");
+				return false;
+			}
+
+			//转换时间
+			var days=Math.floor(s/86400);
+			    s=s%86400;
+			var hours=Math.floor(s/3600);
+			    s=s%3600;
+			var minutes=Math.floor(s/60 );
+			    s=s%60;
+			
+			//把时间插入到下面
+			$("#con p span").eq(0).html(fullZero(days,3));
+			$("#con p span").eq(1).html(fullZero(hours,2));
+			$("#con p span").eq(2).html(fullZero(minutes,2));
+			$("#con p span").eq(3).html(fullZero(s,2));
+		}
+
+		//前面补0
+		function fullZero(time,n){
+			var str=""+time;
+			while(str.length<n){
+				str="0"+str;	
+			}
+			return str;
+		}
+	</script>
+ </body>
+</html>

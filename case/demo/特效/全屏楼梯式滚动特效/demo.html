@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>全屏滚动式阶梯 - LB</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:url("images/bg.jpg");}
+	.Box{width:100%;
+		height:100%;
+		position:fixed;
+		left:0;
+		top:0;
+		}
+	.con{width:100%;height:100%;}
+	.SlideNav{width:164px;
+		position:fixed;
+		left:30px;
+		top:150px;
+		}
+	.SlideNav img{display:block;}
+	.SlideNav ul{width:110px;
+		height:190px;
+		background:#943EC9;
+		margin:0 auto;
+		}
+	.SlideNav ul li{list-style:none;
+		width:100%;
+		height:35px;
+		color:#fff;
+		line-height:35px;
+		font-size:14px;
+		font-weight:bold;
+		font-family:"微软雅黑";
+		text-align:center;
+		background:url("images/bg1.png") no-repeat bottom;
+		cursor:pointer;
+		}
+  </style>
+ </head>
+ <body>
+	<div class="Box">
+		<div class="con"style="background:url('images/pic_about.png')no-repeat center;"></div>
+		<div class="con"style="background:url('images/pic_culture.png')no-repeat center;"></div>
+		<div class="con"style="background:url('images/pic_joinus.png')no-repeat center;"></div>
+		<div class="con"style="background:url('images/MAP.png')no-repeat center;"></div>
+		<div class="con"style="background:url('images/guangGao.png')no-repeat center;"></div>
+	</div>
+	<div class="SlideNav">
+		<img src="images/index.png"/>
+		<ul>
+			<li>意时网</li>
+			<li>谋福利</li>
+			<li>免费保险</li>
+			<li>手机应用</li>
+			<li>意时广告</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		var _index=0;
+		$(".SlideNav ul li").click(function(){
+			_index=$(this).index();
+			var _height=$(window).height();
+			$(".Box").animate({top:-_height*_index+"px"},500);
+		});
+	</script>
+ </body>
+</html>

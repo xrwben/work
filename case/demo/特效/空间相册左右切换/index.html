@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>QQ空间相册左右切换</title>
+  <style>
+	*{margin:0;padding:0;}
+	.con{width:900px;
+		height:560px;
+		margin:50px auto 0;
+		}
+	.con img{float:left;}
+	.gray{width:100%;
+		height:100%;
+		background:rgba(0,0,0,0.5);
+		position:fixed;
+		top:0;
+		left:0;
+		display:none;
+		}
+	.showImg{width:650px;
+		height:406px;
+		border:10px solid #fff;
+		background:red;
+		position:absolute;
+		top:140px;
+		left:360px;
+		display:none;
+		}
+	.showImg .prev{position:absolute;
+		top:190px;
+		left:-70px;
+		cursor:pointer;
+		}
+	.showImg .next{position:absolute;
+		top:190px;
+		right:-70px;
+		cursor:pointer;
+		}
+  </style>
+ </head>
+ <body>
+	<div class="con">
+		<img src="images/big1.jpg"width="300"height="187">
+		<img src="images/big2.jpg"width="300"height="187">
+		<img src="images/big3.jpg"width="300"height="187">
+		<img src="images/big4.jpg"width="300"height="187">
+		<img src="images/big5.jpg"width="300"height="187">
+		<img src="images/big6.jpg"width="300"height="187">
+		<img src="images/big7.jpg"width="300"height="187">
+		<img src="images/big8.jpg"width="300"height="187">
+		<img src="images/big9.jpg"width="300"height="187">
+	</div>
+	<!--灰色层罩-->
+	<div class="gray"></div>
+	<!--点击后的大图片-->
+	<div class="showImg">
+		<img src="images/dirl.png"class="prev"/>
+		<img src="images/dirr.png"class="next"/>
+		<img class="big_img"src="images/big1.jpg"/>
+	</div>
+	
+	<!--切换特效 js的引入-->
+	<script type="text/javascript"src="js/jquery.js"></script>
+	<script type="text/javascript">
+		var _index;
+		var img_src;
+		$(".con img").click(function(){
+			img_src=$(this).attr("src");//获取地址
+			$(".gray").show();//显示灰色层
+			$(".showImg .big_img").attr("src",img_src);//更换地址
+			$(".showImg").show();//显示大图片
+			_index=$(this).index(); //获取序列号
+		});
+		//点击右边按钮
+		$(".showImg .next").click(function(){
+			_index++;
+			if(_index>8){
+				_index=0;
+			}
+			img_src=$(".con img").eq(_index).attr("src");
+			$(".showImg .big_img").attr("src",img_src);
+			$(".showImg").show();
+		});
+		//点击左边按钮
+		$(".showImg .prev").click(function(){
+			_index--;
+			if(_index<0){
+				_index=8;
+			}
+			img_src=$(".con img").eq(_index).attr("src");
+			$(".showImg .big_img").attr("src",img_src);
+			$(".showImg").show();
+		});
+		//点击灰色隐藏
+		$(".gray").click(function(){
+			$(".gray").hide();
+			$(".showImg").hide();
+		});
+	</script>
+ </body>
+</html>

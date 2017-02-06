@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>浪漫七夕广播电台</title>
+ 
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:url(images/bg.jpg) no-repeat;
+		background-position:100% 20%;
+		}/*宽 高*/
+	.music{width:200px;
+		height:290px;
+		background:#cc99ff;
+		box-shadow:0 0 10px #000;
+		/**/position:absolute;
+		left:100px;
+		top:50px;
+		}
+	.pic{width:200px;
+		height:250px;
+		background:url(images/2.jpg);
+		background-size:100%;/*控制背景图片的大小*/
+		}
+	.music ul{width:200px;
+		height:40px;
+		background-size:100% 100%;
+		}
+	.music ul li{list-style:none;
+		width:64px;
+		height:40px;
+		border:1px solid red;
+		float:left;
+		}
+  </style>
+ </head>
+ <body>
+	<!--OBJECT ID="tvplay" WIDTH=282 HEIGHT=68 CLASSID="CLSID:22D6f312-B0F6-11D0-94AB-0080C74C7E95"
+		CODEBASE="http://activex.microsoft.com/activex/controls/mplayer/en/
+		nsmp2inf.cab#Version=6,4,5,715"
+		STANDBY="Loading Microsoft? Windows Media? Player components..."
+		TYPE="application/x-oleobject">
+		<PARAM NAME="FileName" VALUE="mms://61.136.19.228/live1">
+		<param name="_cx" value="8070">
+		<param name="_cy" value="1693">
+		<param name="autoStart" value="1">
+		<param name="volume" value="80">
+		<param name="showcontrols" value="1">
+		<param name="showdisplay" value="0">
+		<param name="showstatusbar" value="1">
+	</OBJECT-->
+	<div class="music">
+		<div class="pic"></div>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	<!--实现拖拽-->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+		$(document).ready(function(){
+			var x1;
+			var y1;
+			$(".music").mousedown(function(e){
+				var down_left=e.clientX;
+				var bor_left=$(this).offset().left;
+				x1 = down_left-bor_left;
+				var down_top=e.clientY;
+				var bor_top=$(this).offset().top;
+				y1 = down_top-bor_top;
+				$(".music").mousemove(function(e){
+					var now_left= e.clientX;
+					var move_left=now_left-x1;
+					var now_top= e.clientY;
+					var move_top=now_top-y1;
+					$(".music").css("left",move_left);
+					$(".music").css("top",move_top);
+				});
+				$(document).mouseup(function(e){
+					$(".music").unbind("mousemove");
+				});
+			});
+		});
+
+		/*$(document).ready(function(){
+			$(".music").draggable();
+		});*/
+    </script>
+
+	<!--加入电台mms://enmms.chinabroadcast.cn/fm91.5-->
+	<object classid="clsid:F08DF954-8592-11D1-B16A-00C0F0283628" id="" 
+	width="100" height="50">
+	  <param name="BorderStyle" value="1" />
+	  <param name="MousePointer" value="0" />
+	  <param name="Enabled" value="1" />
+	  <param name="Min" value="0" />
+	  <param name="Max" value="10" />
+	</object>
+
+	<!--object style="visibility: visible;" data="/swf/53096/fmplayer.swf?0.030548166488029826" name="radioplayer" id="radioplayer" type="application/x-shockwave-flash" height="245" width="510">
+	<param value="transparent" name="wmode"></param>
+	<param value="uid=0&amp;userType=&amp;autoplay=1&amp;host=http://douban.fm&amp;context=&amp;channel=&amp;defaultChannel=0&amp;pid=&amp;fromname=mainsite&amp;channels=" name="flashvars"></param>
+	</object>
+   
+	<!--
+	<object width="0" height="0" id="MediaPlayer" classid="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6" viewastext=""><PARAM NAME="URL" VALUE="mms://live.cri.cn/oldies"><PARAM NAME="rate" VALUE="1"><PARAM NAME="balance" VALUE="0"><PARAM NAME="currentPosition" VALUE="0"><PARAM NAME="defaultFrame" VALUE=""><PARAM NAME="playCount" VALUE="1"><PARAM NAME="autoStart" VALUE="-1"><PARAM NAME="currentMarker" VALUE="0"><PARAM NAME="invokeURLs" VALUE="-1"><PARAM NAME="baseURL" VALUE=""><PARAM NAME="volume" VALUE="50"><PARAM NAME="mute" VALUE="0"><PARAM NAME="uiMode" VALUE="full"><PARAM NAME="stretchToFit" VALUE="0"><PARAM NAME="windowlessVideo" VALUE="0"><PARAM NAME="enabled" VALUE="-1"><PARAM NAME="enableContextMenu" VALUE="-1"><PARAM NAME="fullScreen" VALUE="0"><PARAM NAME="SAMIStyle" VALUE=""><PARAM NAME="SAMILang" VALUE=""><PARAM NAME="SAMIFilename" VALUE=""><PARAM NAME="captioningID" VALUE=""><PARAM NAME="enableErrorDialogs" VALUE="0"><PARAM NAME="_cx" VALUE="0"><PARAM NAME="_cy" VALUE="0">
+			<param id="URL" name="URL" value="">
+			<param name="rate" value="1">
+			<param name="balance" value="0">
+			<param name="currentPosition" value="0">
+			<param name="playCount" value="1">
+			<param name="autoStart" value="-1">
+			<param name="ShowStatusBar" value="-1">
+		</object>
+	
+
+	 
+	<object tabindex="0" name="containerplay" id="containerplay" bgcolor="#000000" data="http://www.911pop.com/js/player.swf" type="application/x-shockwave-flash" height="100%" width="100%">
+	<param value="true" name="allowfullscreen">
+	<param value="always" name="allowscriptaccess">
+	<param value="true" name="seamlesstabbing">
+	<param value="opaque" name="wmode">
+	<param value="netstreambasepath=http%3A%2F%2Fwww.911pop.com%2F&amp;id=containerplay&amp;image=http%3A%2F%2Fwww.911pop.com%2Fimages%2Fbg.gif&amp;file=911pop&amp;streamer=rtmp%3A%2F%2Fmedia.qmoon.cn.lxdns.com%2Fqmoon%2F&amp;skin=http%3A%2F%2Fwww.911pop.com%2Fskins%2Fmyself%2Fmyself.zip&amp;controlbar.position=bottom" name="flashvars">
+	</object>
+	-->
+ </body>
+</html>

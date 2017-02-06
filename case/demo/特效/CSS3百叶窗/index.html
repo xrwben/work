@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>css3百叶窗</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	.con{width:800px;height:500px;border:2px solid #abcdef;
+		margin:50px auto;position:relative;}
+	.con ul li{width:200px;height:500px;float:left;list-style:none;
+		position:relative;overflow:hidden;}
+	.con ul li div{width:200px;height:500px;position:absolute;
+		left:-200px;top:0px;}
+	.con ul li div:nth-child(1){background:url("images/1.jpg")no-repeat;left:0px;}
+	.con ul li div:nth-child(2){background:url("images/2.jpg")no-repeat;}
+	.con ul li div:nth-child(3){background:url("images/3.jpg")no-repeat;}
+	.con ul li div:nth-child(4){background:url("images/4.jpg")no-repeat;}
+	.con ul li:nth-child(1) div{background-position:0px 0px;}
+	.con ul li:nth-child(2) div{background-position:-200px 0px;}
+	.con ul li:nth-child(3) div{background-position:-400px 0px;}
+	.con ul li:nth-child(4) div{background-position:-600px 0px;}
+	.con ol{position:absolute;bottom:20px;right:20px;}
+	.con ol li{width:20px;height:20px;border:1px solid #ddd;border-radius:50%;
+		background:#999;float:left;line-height:20px;text-align:center;
+		margin:0 5px;list-style:none;color:#fff;cursor:pointer;}
+	.con ol li.hover{background:#abcdef;}
+  </style>
+ </head>
+ <body>
+	<div class="con">
+		<ul>
+			<li><div></div><div></div><div></div><div></div></li>
+			<li><div></div><div></div><div></div><div></div></li>
+			<li><div></div><div></div><div></div><div></div></li>
+			<li><div></div><div></div><div></div><div></div></li>
+		</ul>
+		<ol>
+			<li class="hover">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ol>
+	</div>
+
+	<script src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var _index = 0;
+			$(".con ol li").click(function(){
+				_index = $(this).index();
+				$(this).addClass("hover").siblings().removeClass("hover");
+				$(".con ul li:nth-child(1)").find("div").eq(_index).animate({left:"0px"},800).siblings().css("left","-200px");
+				$(".con ul li:nth-child(2)").find("div").eq(_index).animate({left:"0px"},800).siblings().css("left","-200px");
+				$(".con ul li:nth-child(3)").find("div").eq(_index).animate({left:"0px"},800).siblings().css("left","-200px");
+				$(".con ul li:nth-child(4)").find("div").eq(_index).animate({left:"0px"},800).siblings().css("left","-200px");
+			})
+		})
+	</script>
+ </body>
+</html>

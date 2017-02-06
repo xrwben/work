@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>可以移动的div</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	#box{width:100px;height:100px;background:#cc99ff;
+		text-align:center;color:#fff;line-height:100px;
+		position:absolute;}
+  </style>
+  
+ </head>
+ <body>
+	<div id="box">我可以移动</div>
+
+	<script type="text/javascript"src="jquery.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var x1;
+		var y1;
+		$("#box").mousedown(function(e){
+			
+			var down_left = e.clientX;
+			//alert(down_left);
+			var _left = $("#box").offset().left;
+			//alert(_left);
+			x1 =down_left-_left;
+			//alert(x1);
+
+			var down_top = e.clientY;
+			var _top = $("#box").offset().top;
+			y1 =down_top-_top;
+			$(document).mousemove(function(e){
+				var now_left=e.clientX;
+				//alert(now_left)
+				var move_left=now_left-x1;
+				//alert(move_left)
+				var now_top=e.clientY;
+				//alert(now_top)
+				var move_top=now_top-y1;
+				//alert(move_top)
+				//$("#box").css({"left":"move_left","top":"move_top"});
+				$("#box").css("left",move_left);
+				$("#box").css("top",move_top);
+			});
+			$(document).mouseup(function(){
+				$(document).unbind("mousemove");
+				$(document).unbind("mouseup");
+			});
+		});
+	})
+  </script>
+ </body>
+</html>

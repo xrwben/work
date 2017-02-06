@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>左侧二级导航栏</title>
+  <style>
+	*{margin:0;padding:0;}
+	body{background:url(images/logo.jpg);}
+	.con{width:185px;
+		background:#252525;
+		}
+	.logo{width:100%;
+		height:65px;
+		text-align:center;
+		padding:auto 0;
+		}
+	.text ul li{list-style:none;
+		border:2px solid #000;
+		color:#fff;
+		line-height:45px;
+		border:1px solid #000;
+		}
+	.text ul li img{margin:auto 15px;}
+	.list{display:none;}
+	.list p{height:35px;
+		border-top:1px solid #000;
+		font-size:12px;
+		line-height:35px;
+		padding-left:45px;
+		background:#2f3437;
+		}
+	.one{background:#5580fb;}
+  </style>
+ </head>
+ <body>
+	<div class="con">
+		<div class="logo">
+			<img src="images/logo.png"/>
+		</div>
+		<div class="text">
+			<ul>
+				<li class="one"> 
+					<span><img src="images/img1.png"/>IT培训</span>
+					<div class="list" style="display:block">
+						<p>网页制作</p>
+						<p>java</p>
+						<p>室内设计</p>
+						<p>模具设计</p>
+					</div>
+				</li>
+				<li>
+					<span><img src="images/img2.png"/>技能学习</span>
+					<div class="list">
+						<p>SEO</p>
+						<p>网络营销</p>
+						<p>平面设计</p>
+						<p>淘宝美工</p>
+						<p>office办公</p>
+					</div>
+				</li>
+				<li>
+					<span><img src="images/img3.png"/>语言学习</span>
+					<div class="list">
+						<p>美式口语</p>
+						<p>韩语</p>
+						<p>日语</p>
+						<p>葡萄牙语</p>
+						<p>西班牙语</p>
+						<p>泰语</p>
+					</div>			
+				</li>
+				<li>
+					<span><img src="images/img4.png"/>兴趣爱好</span>
+					<div class="list">
+						<p>人际关系</p>
+						<p>电脑维护</p>
+						<p>亲子课堂</p>
+						<p>游戏课程</p>
+						<p>DIY</p>
+						<p>畜牧业</p>
+					</div>				
+				</li>
+			</ul>
+		</div>
+	</div>
+ </body>
+ <script type="text/javascript"src="js/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript">
+	$(".con .text ul li").click(function(){
+		if($(this).hasClass("one")){
+			$(this).removeClass("one");
+		}
+		else{
+			$(this).addClass("one").siblings().removeClass("one");
+		}
+		$(this).find(".list").slideToggle();
+		$(this).siblings().removeClass("one").find(".list").slideup("slow");
+	});
+	$(".list").click(function(e){
+		e.stopPropagation();//阻止冒泡事件 只执行一次
+	});
+  </script>
+</html>

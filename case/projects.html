@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Projects————LiBen</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	html,body{height:100%;}
+	body{background:#023b3b url("images/project_bg.png")no-repeat center;
+		perspective:1000px;overflow:hidden;position:relative;}
+	a {color:#fff;text-decoration:none;}
+	#container{width:100%;height:100%;}
+	.element{width:120px;height:160px;box-shadow:0px 0px 12px rgba(0,255,255,0.5);
+		border:1px solid rgba(127,255,255,0.25);
+		background:rgba(0,127,127,0.5);text-align:center;cursor:pointer;}
+	.element:hover{box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+		border:1px solid rgba(127,255,255,0.75);
+		background:rgba(127,255,255,0.9)}
+	.element .number{position: absolute;top: 20px;right: 20px;font-size: 12px;
+		color: rgba(127,255,255,0.75);}
+	.element .symbol{position: absolute;top: 40px;left: 0px;right: 0px;
+		font-size: 60px;font-weight: bold;color: rgba(255,255,255,0.75);
+		text-shadow: 0 0 10px rgba(0,255,255,0.95);}
+	.element .details{position:absolute;bottom:15px;left:0px;right:0px;
+		font-size:12px;color:rgba(127,255,255,0.75);}
+
+	/* 导航按钮 */
+	#menu{position:absolute;bottom:20px;width:auto;left:20px;}
+	button{color:rgba(127,255,255,0.75);background:transparent;
+		border:1px solid rgba(127,255,255,0.75);border-radius:3px;
+		padding:10px 15px;font-weight:bold;cursor: pointer;}
+	button:hover{background-color: rgba(0,255,255,0.5);color:#fff;}
+	button:active{color:#000;background-color:rgba(0,255,255,0.75);}
+	
+	/* 弹出遮罩层 */
+	#mask{position:absolute;top:0px;left:0px;right:0px;bottom:0px;
+		background:rgba(0,0,0,0.8);display:none;}
+	#detail{position:absolute;top:10%;left:10%;right:10%;bottom:10%;
+		box-shadow: 0px 0px 12px rgba(0,255,255,0.5);
+		border: 1px solid rgba(127,255,255,0.25);
+		border-radius:3px;color: rgba(127,255,255,0.75);
+		background-color: rgba(0,255,255,0.1);text-align:center;
+		display:none;}
+	#detail h1,h2,p,.img{display:block;box-shadow: 0px 0px 12px rgba(0,255,255,0.5);
+		border: 1px solid rgba(127,255,255,0.7);background-color: rgba(0,0,0,.5);
+		border-radius:3px;color:white;text-align:left;}
+	#detail .header{height:20%;width:50%;margin:auto;display:block;margin-top:25px;}
+	#detail .header h1{height:50px;line-height:50px;width:100%;text-indent:20px;}
+	#detail .header h1:before{content:'案例：';}
+
+	#detail .main{width:90%;height:70%;margin:auto;display:block;text-align:center;}
+	#detail .main .img{height:100%;width:55%;background-position:center;
+		background-repeat:no-repeat;background-size:100% 100%;
+		text-align:center;float:left;}
+	#detail .main .content{width:40%;height:100%;float:right;}
+	#detail .main .content h2{width:100%;height:50px;line-height:50px;
+		text-indent:20px;font-size:20px;font-weight:bold;margin-bottom:20px;} 
+	#detail .main .content h2:before{content:'技术：';}
+	#detail .main .content p{width:90%;height:68%;font-size:20px;
+		line-height:30px;padding:5%;}
+	#detail .main .content p:before{content:'实现：';}
+  </style>
+ </head>
+ <body>
+	<div id="container"></div>
+	<div id="mask">
+	</div>
+	<div id="detail">
+		<div class="header">
+			<h1><a href="" target=_blank></a></h1>
+		</div>
+		<div class="main">
+			<div class="img"></div>
+			<div class="content">
+				<h2></h2>
+				<p></p>
+			</div>
+		</div>
+	</div>
+	<div id="menu">
+		<button id="table">TABLE</button>
+		<button id="sphere">SPHERE</button>
+		<button id="helix">HELIX</button>
+		<button id="grid">GRID</button>
+	</div>
+		<script type="text/javascript">
+		var table = [
+"H", "Hydrogen", "2015.12.19", 1, 1,{root:'demo/VOGUE时尚网/',title:'VOGUE时尚网',skill:'HTML+CSS+JS',desc:'html+css布局，js实现动画特效，dedecms后台管理系统实现数据交互和内容管理.'},
+"He", "Helium", "2015.03.19", 18, 1,{root:'demo/1号店/',title:'1号店首页',skill:'HTML+CSS+JS',desc:'html+css布局，js实现动画特效.'},
+"Li", "Lithium", "2015.03.19", 1, 2,{root:'demo/湖南海外旅游/',title:'湖南海外旅游网',skill:'HTML+CSS+JS',desc:'html+css布局，js实现动画特效.'},
+"Be", "Beryllium", "2015.03.19", 2, 2,{root:'demo/当当网/',title:'当当网首页',skill:'HTML+CSS+JS',desc:'html+css布局，js实现动画特效.'},
+"B", "Boron", "2015.03.19", 13, 2,{root:'demo/潭州官网/',title:'潭州官网首页',skill:'HTML+CSS+JS',desc:'html+css布局，js实现动画特效.'},
+"C", "Carbon", "2015.03.19", 14, 2,{root:'demo/Ecshop商城开发/',title:'Ecshop商城开发',skill:'HTML+CSS+JS',desc:'html+css布局，js实现动画特效.'},
+"N", "Nitrogen", "2015.03.19", 15, 2,{root:'demo/播放器/',title:'FM音乐播放器',skill:'JS+AJAX+JSON+跨域',desc:'html+css布局，js操作事件，利用PHP代理跨域获取JSON数据.'},
+"O", "Oxygen", "2015.03.19", 16, 2,{root:'demo/特效/简易时钟/',title:'简易时钟',skill:'CSS3+JS',desc:'利用CSS3布局，利用JS操作DOM.'},
+"F", "Fluorine", "2015.03.19", 17, 2,{root:'demo/特效/懒加载/',title:'懒加载',skill:'jQuery',desc:'jQuery懒加载插件.'},
+"Ne", "Neon", "2015.03.19", 18, 2,{root:'demo/特效/虎牙轮播图/',title:'虎牙轮播图',skill:'jQuery',desc:'利用Array数组.'},
+"Na", "Sodium", "2015.03.19", 1, 3,{root:'demo/特效/发牌程序/',title:'发牌程序',skill:'jQuery',desc:'利用Array数组.'},
+"Mg", "Magnesium", "2015.03.19", 2, 3,{root:'demo/特效/雪花飘落/',title:'雪花飘落',skill:'js',desc:'利用setInterval()间隔函数和animate()动画函数.'},
+"Al", "Aluminium", "2015.03.19", 13, 3,{root:'demo/特效/多行文本溢出（仅谷歌可用）/',title:'多行文本溢出（仅谷歌可用）',skill:'CSS3',desc:'仅谷歌浏览器可用.'},
+"Si", "Silicon", "2015.03.19", 14, 3,{root:'demo/360安全换机首页/',title:'360安全换机首页',skill:'HTML+CSS+jQuery',desc:'利用jQuery和滚轮插件.'},
+"P", "Phosphorus", "2015.03.19", 15, 3,{root:'demo/特效/太平洋时尚官网图片随机切换/',title:'太平洋时尚图片随机切换',skill:'jQuery',desc:'利用random()函数取得方向的随机数.'},
+"S", "Sulfur", "2015.03.19", 16, 3,{root:'demo/特效/网格特效/',title:'网格特效',skill:'CSS3+JS+jQuery',desc:'用CSS3的3D和js数组等'},
+"Cl", "Chlorine", "2015.03.19", 17, 3,{root:'demo/特效/3D拖拽相册/',title:'3D拖拽相册',skill:'CSS3+JS+jQuery',desc:'用CSS3的3D、transform和js中的鼠标事件等'},
+"Ar", "Argon", "2015.03.19", 18, 3,{root:'demo/特效/抽奖活动/',title:'抽奖游戏',skill:'jQuery',desc:'主要利用绝对定位和随机函数'},
+"K", "Potassium", "2015.03.19", 1, 4,{root:'demo/特效/进度条加载轮播图/',title:'进度条加载轮播图',skill:'HTML+jQuery',desc:'利用index()函数获取图片索引'},
+"Ca", "Calcium", "2015.03.19", 2, 4,{root:'demo/特效/彩虹圈/',title:'彩虹圈',skill:'jQuery',desc:'鼠标事件和简单算法.'},
+"Sc", "Scandium", "2015.03.19", 3, 4,{root:'demo/特效/烟花特效/',title:'烟花特效',skill:'jQuery',desc:'鼠标事件、随机事件和动画函数.'},
+"Ti", "Titanium", "2015.03.19", 4, 4,{root:'demo/特效/高德地图API_LBS/',title:'高德地图API_LBS',skill:'js',desc:'利用高德地图提供的API接口.'},
+"V", "Vanadium", "2015.03.19", 5, 4,{root:'demo/特效/飞机大战/',title:'飞机大战',skill:'js',desc:'利用高德地图提供的API接口.'},
+"Cr", "Chromium", "2015.03.19", 6, 4,{root:'demo/特效/CSS3百叶窗/',title:'CSS3百叶窗',skill:'CSS3+jQuery',desc:'主要是利用nth-child()选择器进行布局定位.'},
+"Mn", "Manganese", "2015.03.19", 7, 4,{root:'demo/特效/放大镜/',title:'淘宝放大镜',skill:'jQuery',desc:'原理是一张小图一张大图片，然后利用鼠标事件按照比例显示出来'},
+"Fe", "Iron", "55.845", 8, 4,{root:'demo/特效/京东楼梯导航/',title:'京东楼梯导航',skill:'jQuery',desc:'原理是获取scrollTop的高度，然后遍历每个floor距离底部的高度，如果floor的高度大于srollTop就取得第一个floor.'},
+"Co", "Cobalt", "2015.03.19", 9, 4,{root:'demo/特效/自制特色滚动条/',title:'自定义滚动条',skill:'jQuery',desc:'原理是内容超出部分隐藏，然后按内容和滚动条距离比例显示内容.'},
+"Ni", "Nickel", "2015.03.19", 10, 4,{root:'demo/特效/吸顶盒/',title:'吸顶盒',skill:'jQuery',desc:'原理是内容超出部分隐藏，然后按内容和滚动条距离比例显示内容.'},
+"Cu", "Copper", "63.546", 11, 4,{root:'demo/响应式布局/',title:'响应式布局',skill:'HTML+CSS',desc:'利用@media screen and (max-width:600px)标签，根据不同的尺寸显示不同的样式.'},
+"Zn", "Zinc", "65.38", 12, 4,{root:'demo/特效/视频音频/',title:'音频视频',skill:'HTML5+JS',desc:'HTML5提供了操作视频音频的API方法.'},
+"Ga", "Gallium", "69.723", 13, 4,{root:'demo/特效/桌面换肤系统/',title:'桌面换肤系统',skill:'HTML+CSS+jQuery',desc:'原理是根据选择的图像src路径替换背景的src.'},
+"Ge", "Germanium", "72.63", 14, 4,{root:'demo/特效/图片动态渐变放大缩小/',title:'图片动态渐变放大缩小',skill:'CSS3',desc:'利用CSS3提供的transform属性和hover伪类实现.'},
+"As", "Arsenic", "74.9216", 15, 4,{root:'demo/特效/百度首页图片布局/',title:'百度首页图片布局',skill:'CSS+HTML',desc:'简单的布局.'},
+"Se", "Selenium", "78.96", 16, 4,{root:'demo/特效/制作导航栏/',title:'制作导航栏',skill:'CSS+HTML',desc:'简单的布局.'},
+"Br", "Bromine", "79.904", 17, 4,{root:'demo/特效/节日礼物/',title:'节日礼物',skill:'CSS+HTML',desc:'简单的布局.'},
+"Kr", "Krypton", "83.798", 18, 4,{root:'demo/特效/网站简单登录/',title:'网站简单登录',skill:'CSS+HTML',desc:'简单的表单布局.'},
+"Rb", "Rubidium", "85.4678", 1, 5,{root:'demo/特效/空间相册左右切换/',title:'空间相册左右切换',skill:'CSS+HTML+jQuery',desc:'利用index()函数获取索引，然后利用attr()函数替换src地址.'},
+"Sr", "Strontium", "87.62", 2, 5,{root:'demo/特效/影视剧照网页/',title:'影视剧照网页',skill:'CSS+HTML',desc:'hover伪类实现.'},
+"Y", "Yttrium", "88.90585", 3, 5,{root:'demo/特效/时装秀展示/',title:'时装秀展示',skill:'CSS+HTML+jQuery',desc:'利用index()函数获取索引，然后利用attr()函数替换src地址.'},
+"Zr", "Zirconium", "91.224", 4, 5,{root:'demo/特效/八音盒/',title:'八音盒',skill:'CSS3',desc:'利用CSS3的3D和transform属性以及动画属性animation实现.'},
+"Nb", "Niobium", "92.90628", 5, 5,{root:'demo/特效/导航栏/',title:'导航栏',skill:'jQuery',desc:'利用index()函数获取索引.'},
+"Mo", "Molybdenum", "95.96", 6, 5,{root:'demo/特效/移上渐变显示文字/',title:'移上渐变显示文字',skill:'jQuery',desc:'利用jQuery中的toggle()方法实现.'},
+"Tc", "Technetium", "(98)", 7, 5,{root:'demo/特效/导航切换效果/',title:'导航切换效果',skill:'jQuery',desc:'利用jQuery中的addClass()和removeClass()方法实现.'},
+"Ru", "Ruthenium", "101.07", 8, 5,{root:'demo/音乐播放器/',title:'音乐播放器',skill:'HTML5+jQuery',desc:'HTML5中提供了相应的操作音频视频的API.'},
+"Rh", "Rhodium", "102.9055", 9, 5,{root:'demo/特效/左侧二级导航/',title:'左侧二级导航',skill:'ul+jQuery',desc:'hasClass()、addClass()、removeClass().'},
+"Pd", "Palladium", "106.42", 10, 5,{root:'demo/特效/模特全屏拖动展示/',title:'模特全屏拖动展示',skill:'jQuery',desc:'鼠标移动事件、获取图片距离左边的距离，然后和导航栏的距离按比例显示'},
+"Ag", "Silver", "107.8682", 11, 5,{root:'demo/特效/浪漫七夕广播电台/',title:'浪漫七夕广播电台',skill:'jQuery',desc:'鼠标移动事件，在线广播电台接口.'},
+"Cd", "Cadmium", "112.411", 12, 5,{root:'demo/特效/百度播放器/',title:'百度播放器',skill:'HTML5+jQuery',desc:'HTML5中提供了相应的操作音频视频的API.'},
+"In", "Indium", "114.818", 13, 5,{root:'demo/特效/优酷TV轮播图/',title:'优酷TV轮播图',skill:'jQuery',desc:'Array数组存放信息.'},
+"Sn", "Tin", "118.71", 14, 5,{root:'demo/特效/顶部二级下拉菜单/',title:'顶部二级下拉菜单',skill:'jQuery',desc:'利用hover()、animate()等函数实现.'},
+"Sb", "Antimony", "121.76", 15, 5,{root:'demo/特效/精美相册/',title:'精美相册',skill:'jQuery',desc:'利用append()函数实现.'},
+"Te", "Tellurium", "127.6", 16, 5,{root:'demo/特效/自定义视频播放器/',title:'自定义视频播放器',skill:'CSS+HTML+JS',desc:'<embed id=""src=""type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width=""height=""></embed>.'},
+"I", "Iodine", "126.90447", 17, 5,{root:'demo/特效/百度音乐随心听/',title:'百度音乐随心听',skill:'HTML5+jQuery',desc:'HTML5中提供了相应的操作音频视频的API.'},
+"Xe", "Xenon", "131.293", 18, 5,{root:'demo/特效/爱奇艺首页导航轮播特效/',title:'爱奇艺首页导航轮播特效',skill:'CSS+HTML+jQuery',desc:'利用index()函数获取索引.'},
+"Cs", "Caesium", "132.9054", 1, 6,{root:'demo/特效/弹幕/',title:'弹幕',skill:'CSS+HTML+jQuery',desc:'利用append()函数实现.'},
+"Ba", "Barium", "132.9054", 2, 6,{root:'demo/特效/桌面换肤/',title:'桌面换肤',skill:'CSS+HTML+jQuery',desc:'利用index()函数获取索引，然后利用attr()函数替换src地址.'},
+"La", "Lanthanum", "138.90547", 4, 9,{root:'demo/特效/百度换肤/',title:'百度换肤',skill:'CSS+HTML+jQuery',desc:'利用index()函数获取索引，然后利用attr()函数替换src地址.'},
+"Ce", "Cerium", "140.116", 5, 9,{root:'demo/特效/图片旋转360°显示/',title:'图片旋转360°显示',skill:'CSS+HTML+jQuery',desc:'利用index()函数获取索引，然后利用attr()函数替换src地址.'},
+"Pr", "Praseodymium", "140.90765", 6, 9,{root:'demo/特效/芒果TV视频点播器/',title:'芒果TV视频点播器',skill:'CSS+HTML+jQuery',desc:'利用index()函数获取索引，然后利用attr()函数替换src地址.'},
+"Nd", "Neodymium", "144.242", 7, 9,{root:'demo/特效/全屏楼梯式滚动特效/',title:'全屏楼梯式滚动特效',skill:'CSS+HTML+jQuery',desc:'利用index()函数获取索引，然后利用attr()函数替换src地址.'},
+"Pm", "Promethium", "(145)", 8, 9,{root:'demo/特效/图片无缝滚动小案例/',title:'图片无缝滚动小案例',skill:'CSS3',desc:'css3中的动画animation属性实现.'},
+"Sm", "Samarium", "150.36", 9, 9,{root:'demo/特效/瑞丽女性网抽屉式效果/',title:'瑞丽女性网抽屉式效果',skill:'CSS+HTML+jQuery',desc:'原理是鼠标划上用animate()函数去控制宽度.'},
+"Eu", "Europium", "151.964", 10, 9,{root:'demo/特效/手风琴/',title:'手风琴',skill:'CSS+HTML+jQuery',desc:'原理是鼠标划上用animate()函数去控制宽度.'},
+"Gd", "Gadolinium", "157.25", 11, 9,{root:'demo/特效/途牛旅游网手风琴/',title:'途牛旅游网手风琴',skill:'CSS+HTML+jQuery',desc:'原理是鼠标划上用animate()函数去控制宽度.'},
+"Tb", "Terbium", "158.92535", 12, 9,{root:'demo/特效/水平翻转/',title:'水平翻转',skill:'CSS3',desc:'利用css3中的transform属性实现.'},
+"Dy", "Dysprosium", "162.5", 13, 9,{root:'demo/特效/倒影/',title:'倒影',skill:'CSS3',desc:'仅谷歌浏览器可以兼容.'},
+"Ho", "Holmium", "164.93032", 14, 9,{root:'demo/特效/阿里图标的应用/',title:'阿里图标的应用',skill:'阿里图标',desc:'阿里图标.'},
+"Er", "Erbium", "167.259", 15, 9,{root:'demo/特效/仿电子显示屏滚动效果/',title:'仿电子显示屏滚动效果',skill:'CSS3',desc:'animation动画属性.'},
+"Tm", "Thulium", "168.93421", 16, 9,{root:'demo/特效/潭州官网左侧课程导航/',title:'潭州官网左侧课程导航',skill:'CSS+HTML+jQuery',desc:'利用index()函数获取索引.'},
+"Yb", "Ytterbium", "173.054", 17, 9,{root:'demo/特效/移动事件/',title:'移动事件',skill:'JS',desc:'利用鼠标事件mousedown、mousemove、mouseup等.'},
+"Lu", "Lutetium", "174.9668", 18, 9,{root:'demo/特效/注册界面/',title:'注册界面',skill:'HTML+JS',desc:'利用鼠标事件mousedown、mousemove、mouseup等.'},
+"Hf", "Hafnium", "178.49", 4, 6,{root:'demo/特效/潭州课程展示切换效果/',title:'潭州课程展示切换效果',skill:'CSS+HTML+jQuery',desc:'利用index()函数获取索引.'},
+"Ta", "Tantalum", "180.94788", 5, 6,{root:'demo/特效/立体水晶3D相册/',title:'立体水晶3D相册',skill:'CSS3',desc:'animation动画属性.'},
+"W", "Tungsten", "183.84", 6, 6,{root:'demo/特效/手风琴css3/',title:'手风琴css3',skill:'CSS',desc:'直接利用css控制width属性.'},
+"Re", "Rhenium", "186.207", 7, 6,{root:'demo/特效/轻量级计算器/',title:'轻量级计算器',skill:'jQuery',desc:'利用eval()方法计算.'},
+"Os", "Osmium", "190.23", 8, 6,{root:'demo/特效/css3实现QQ空间相册旋转功能/',title:'css3实现QQ空间相册旋转功能',skill:'CSS3',desc:'利用transform属性的rotate()属性值实现.'},
+"Ir", "Iridium", "192.217", 9, 6,{root:'demo/特效/右侧悬浮QQ在线客服/',title:'右侧悬浮QQ在线客服',skill:'jQuery',desc:'固定定位和动画函数实现.'},
+"Pt", "Platinum", "195.084", 10, 6,{root:'demo/特效/瀑布流jQuery/',title:'瀑布流jQuery',skill:'jQuery',desc:'原理是遍历每列高度，然后把图片加载到高度最小的一列中.'},
+"Au", "Gold", "196.966569", 11, 6,{root:'demo/特效/后台登录界面/',title:'后台登录界面',skill:'HTML',desc:'简单的表单标签，比如input等标签.'},
+"Hg", "Mercury", "200.59", 12, 6,{root:'demo/特效/倒计时/',title:'倒计时',skill:'JS',desc:'Date()日期函数计算.'},
+"Tl", "Thallium", "204.3833", 13, 6,{root:'demo/特效/banner切换/',title:'banner切换',skill:'JS',desc:'利用index()函数获取索引.'},
+"Pb", "Lead", "207.2", 14, 6,{root:'demo/特效/瀑布流/',title:'瀑布流',skill:'CSS3',desc:'利用-moz-column-width:240px和-moz-column-count:5;属性.'},
+"Bi", "Bismuth", "208.9804", 15, 6,{root:'demo/特效/太极八卦阵/',title:'太极八卦阵',skill:'CSS3',desc:'利用border属性来控制边宽，然后利用动画属性animation实现.'},
+"Po", "Polonium", "(209)", 16, 6,{root:'demo/特效/两端对齐/',title:'两端对齐',skill:'CSS3',desc:'text-align:justify和display:inline-block样式实现.'},
+"At", "Astatine", "(210)", 17, 6,{root:'demo/特效/三角形制作/',title:'三角形制作',skill:'CSS3',desc:'利用border属性来控制边宽来实现.'},
+"Rn", "Radon", "(222)", 18, 6,{root:'demo/特效/贪吃蛇/',title:'贪吃蛇',skill:'JS',desc:'面向对象.'},
+"Fr", "Francium", "(223)", 1, 7,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Ra", "Radium", "(226)", 2, 7,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Ac", "Actinium", "(227)", 4, 10,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Th", "Thorium", "232.03806", 5, 10,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Pa", "Protactinium", "231.0588", 6, 10,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"U", "Uranium", "238.02891", 7, 10,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Np", "Neptunium", "(237)", 8, 10,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Pu", "Plutonium", "(244)", 9, 10,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Am", "Americium", "(243)", 10, 10,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Cm", "Curium", "(247)", 11, 10,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Bk", "Berkelium", "(247)", 12, 10,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Cf", "Californium", "(251)", 13, 10,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Es", "Einstenium", "(252)", 14, 10,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Fm", "Fermium", "(257)", 15, 10,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Md", "Mendelevium", "(258)", 16, 10,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"No", "Nobelium", "(259)", 17, 10,{root:'demo/tencent_ke/',title:'腾讯课堂',skill:'HTML+CSS+JS',desc:'html+css布局，js实现动画特效.'},
+"Lr", "Lawrencium", "(262)", 18, 10,{root:'demo/Designmodo/',title:'Designmodo',skill:'HTML+CSS+JS',desc:'响应式html+css布局，js实现动画特效.'},
+"Rf", "Rutherfordium", "(267)", 4, 7,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Db", "Dubnium", "(268)", 5, 7,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Sg", "Seaborgium", "(271)", 6, 7,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Bh", "Bohrium", "(272)", 7, 7,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Hs", "Hassium", "(270)", 8, 7,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Mt", "Meitnerium", "(276)", 9, 7,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Ds", "Darmstadium", "(281)", 10, 7,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Rg", "Roentgenium", "(280)", 11, 7,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Cn", "Copernicium", "(285)", 12, 7,{root:'',title:'项目正在赶来...',skill:'',desc:''},
+"Uut", "Unutrium", "(284)", 13, 7,{root:'demo/ajax/ajax_01/jsonp/',title:'搜索',skill:'jsonp',desc:'调用百度的搜索接口.'},
+"Fl", "Flerovium", "(289)", 14, 7,{root:'demo/ajax/ajax_01/pbl/',title:'瀑布流加载更多',skill:'ajax',desc:'瀑布流加载.'},
+"Uup", "Ununpentium", "(288)", 15, 7,{root:'demo/ajax/ajax_00/pbl/',title:'瀑布流加载更多',skill:'ajax',desc:'瀑布流加载.'},
+"Lv", "Livermorium", "(293)", 16, 7,{root:'demo/ajax/ajax_00/fileUpload/',title:'文件上传',skill:'AJAX',desc:'AJAX无刷新附件上传.'},
+"Uus", "Ununseptium", "(294)", 17, 7,{root:'demo/ajax/ajax_00/weather/',title:'天气预报',skill:'接口',desc:'直接调用现成的接口.'},
+"Uuo", "Ununoctium", "(294)", 18, 7,{root:'demo/ajax/ajax_00/省市区三级联动/',title:'省市区三级联动',skill:'ajax+xml',desc:'利用ajax从服务器端获取数据.'}
+];
+	</script>
+
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/three.min.js"></script>
+	<script src="js/tween.min.js"></script>
+	<script src="js/TrackballControls.js"></script>
+	<script src="js/CSS3DRenderer.js"></script>
+	<script type="text/javascript" src="js/project.js"></script>
+
+ </body>
+</html>

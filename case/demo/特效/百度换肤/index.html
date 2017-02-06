@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>百度换肤 - 清心</title>
+  <style type="text/css">
+	*{margin:0;padding:0;font-family:"微软雅黑";}
+	body{background:url("images/1.jpg");background-size:100%;}
+	span{color:#6633ff;text-shadow:0 0 15px #000;cursor:pointer;}
+	.Top{width:100%;height:210px;background:#fff;position:fixed;
+			left:0;top:0;display:;}
+	.button_close{position:absolute;left:0;top:0;}
+	.Top .Pic{width:950px;height:200px;margin:0 auto;
+			box-shadow:0 0 5px #cc00ff;}
+	.Pic .box_1{width:250px;height:200px;float:left;}
+	.Pic .box_2{width:150px;height:200px;float:left;}
+	.Pic img{float:left;}
+  </style>
+ </head>
+ <body>
+	<span class="button_open">换肤↓</span>
+	<div class="Top">
+		<span class="button_close">换肤↑</span>
+		<div class="Pic">
+			<div class="box_1">
+				<img src="images/1-1.jpg"width="250"height="100"dateSrc="images/1.jpg"/>
+				<img src="images/2-2.jpg"width="125"height="100"dateSrc="images/2.jpg"/>
+				<img src="images/3-3.jpg"width="125"height="100"dateSrc="images/3.jpg"/>
+			</div>
+			<div class="box_2">
+				<img src="images/4-4.jpg"width="150"height="66"dateSrc="images/4.jpg"/>
+				<img src="images/5-5.jpg"width="150"height="68"dateSrc="images/5.jpg"/>
+				<img src="images/6-6.jpg"width="150"height="66"dateSrc="images/6.jpg"/>
+			</div>
+			<div class="box_1">
+				<img src="images/8-8.jpg"width="125"height="100"dateSrc="images/8.jpg"/>
+				<img src="images/9-9.jpg"width="125"height="100"dateSrc="images/9.jpg"/>
+				<img src="images/7-7.jpg"width="250"height="100"dateSrc="images/7.jpg"/>
+			</div>
+			<div class="box_2">
+				<img src="images/10-10.jpg"width="150"height="66"dateSrc="images/10.jpg"/>
+				<img src="images/11-11.jpg"width="150"height="68"dateSrc="images/11.jpg"/>
+				<img src="images/12-12.jpg"width="150"height="66"dateSrc="images/12.jpg"/>
+			</div>
+			<div class="box_2">
+				<img src="images/14-14.jpg"width="150"height="100"dateSrc="images/14.jpg"/>
+				<img src="images/16-16.jpg"width="150"height="100"dateSrc="images/16.jpg"/>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript"src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		$(".button_open").click(function(e){
+			$(".Top").slideToggle("slow");
+			e.stopPropagation();//阻止冒泡事件
+		});
+		$(".button_close").click(function(){
+			$(".Top").slideUp("slow");
+		});
+		//点击换肤
+		$(".Pic img").click(function(){
+			var _src=$(this).attr("dateSrc");
+			$("body").css({"background":"url("+_src+")","background-size":"100%"});
+		});
+	</script>
+ </body>
+</html>

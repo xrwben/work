@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>瀑布流</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	#pbl{width:100%;min-height:100px;-moz-column-width:240px;-moz-column-count:5;/*分五列*/}
+	.grid{width:220px;box-shadow:2px 2px 5px #666;
+		margin:20px 10px;padding:10px;}
+	.pic_con{position:relative;}
+	.pic_con img{display:block;}
+	.pic_con em{display:block;width:60px;line-height:30px;padding:2px 5px;
+		color:#fff;text-align:center;border-radius:10px 0;
+		position:absolute;left:130px;bottom:50px;background:rgba(0,0,0,0.7);}
+	.pic_con em span{font-size:20px;padding-right:5px;font-weight:bold;
+		font-family:georgia,serif;}
+	.pic_con p{line-height:30px;font-size:14px;text-align:center;font-family:"微软雅黑";}
+  </style>
+ </head>
+ <body>
+	<div id="pbl">
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/1.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/2.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/3.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/4.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/5.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/6.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/7.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/8.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/9.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/10.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/11.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/12.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/13.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/14.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/15.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/16.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/1.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/2.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/3.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/4.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/5.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/6.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/7.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/8.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/9.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/10.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/11.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/12.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/13.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/14.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/15.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+		<div class="grid">
+			<div class="pic_con">
+				<img src="images/16.jpg"width="220"/>
+				<em><span>23</span>张</em>
+				<p>标签：莞尔一笑，只伊人</p>
+			</div>
+		</div>
+
+	</div>
+ </body>
+</html>

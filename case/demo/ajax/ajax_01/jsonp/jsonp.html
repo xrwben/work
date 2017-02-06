@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>jsonp</title>
+  <style type="text/css">
+	
+  </style>
+ </head>
+ <body>
+	<input type="button" value="按钮" id="btn">
+	<!-- <script src="jsonp.lb"></script> -->
+	<script type="text/javascript">
+		window.onload = function(){
+			var oBtn = document.getElementById("btn");
+			oBtn.onclick = function(){
+				var oScript=document.createElement("script");
+				oScript.src = "jsonp.lb";
+				document.body.appendChild(oScript);
+			}
+		}
+		function lb(data){
+			alert(data[1]);
+		}
+	</script>
+ </body>
+</html>

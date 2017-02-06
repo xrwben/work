@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>瀑布流加载</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	#con{width:830px;margin:10px auto;}
+	#con ul li{list-style:none;width:260px;float:left;}
+	#con ul li:nth-child(2){margin:0px 25px;}
+	#img{width:260px;border:1px solid #ccc;margin-bottom:10px;}
+	#img img{display:block;width:260px;}
+	#img p{text-align:center;font-size:14px;line-height:35px;font-family:"微软雅黑";
+		border-top:1px solid #ccc;margin-top:2px;}
+	.clearfix:after {
+		display: block;
+		content: ".";
+		clear: both;
+		line-height: 0;
+	}
+	#btn{padding:5px;margin:10px auto 0;display:block;}
+  </style>
+ </head>
+ <body>
+	<div id="con">
+		<ul class="clearfix">
+			<li>
+				<!-- <div id="img">
+					<img src="images/1.jpg" />
+					<p>海底月是天上月 眼前人是心上人</p>
+				</div> -->
+			</li>
+			<li></li>
+			<li></li>
+		</ul>
+		<input id="btn" type="button" value="加载更多+" onclick="more()">
+	</div>
+
+	<script type="text/javascript" src="js/ajax.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var obtn = document.getElementById("btn");
+			//console.log(obtn);
+			obtn.onclick = function(){
+				num += 10; 
+				pbl(num);
+			}
+			var num =0;
+			pbl(num);
+			function pbl(num){
+				ajax({
+					url : "data.php",
+					success : function(callback){
+						var response = JSON.parse(callback);
+						var html="";
+						if(num<response.length){
+							for(var i=num;i<num+10;i++){
+								html = "<div id='img'><img src='"+response[i].src+"' /><p>"+response[i].title+"</p></div>";
+								oli[getHeight()].innerHTML += html;
+							}
+						}else{
+							obtn.value = "加载完毕";
+						}
+					}	
+				});
+			}
+			var oli = document.getElementsByTagName("li");
+			function getHeight(){
+				var index = 0;
+				for(var i=1;i<oli.length;i++){
+					if(oli[i].offsetHeight<oli[0].offsetHeight){
+						index = i;
+					}	
+				}
+				return index;
+			}
+			/*
+			function more(){
+				pbl();
+			}
+			*/
+			//ReferenceError: more is not defined       
+		}
+	</script>
+ </body>
+</html>

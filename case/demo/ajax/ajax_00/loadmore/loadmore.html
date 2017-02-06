@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>加载更多</title>
+  <style type="text/css">
+	#wrap p{border:1px solid #ccc;padding:10px;border-radius:5px;
+		box-shadow:1px 1px 5px green;}
+	#wrap p:hover{background:#ccffcc;}
+	#btn{display:block;padding:10px;margin:0 auto;cursor:pointer;}
+  </style>
+ </head>
+ <body>
+	<div id="wrap">
+	</div>
+	<input id="btn" type="button" value="+加载更多" onclick="load()">
+	<script type="text/javascript" src="ajax.js"></script>
+	<script type="text/javascript">
+		var oWrap = document.getElementById("wrap");
+		var oBtn = document.getElementById("btn");
+		oBtn.onclick = function(){
+			num += 3;
+			load(num);
+		}
+		var num = 0;
+		load(num);
+		function load(num){
+			ajax({
+				url : "data.php",
+				success : function(callback){
+					var response = JSON.parse(callback);
+					var html = "";
+					for(var i=num;i<num+3;i++){
+						html = "<p>"+response[i]+"</p>";
+						oWrap.innerHTML += html;
+					}
+				}
+			});
+		}
+	</script>
+ </body>
+</html>

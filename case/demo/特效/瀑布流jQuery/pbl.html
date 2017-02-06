@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <!--网站编码格式，UTF-8 国际编码，GBK或 gb2312 中文编码-->
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="关键词一，关键词二">
+  <meta name="Description" content="网站描述内容">
+  <title>Document</title>
+  <!--css js 文件的引入-->
+  <style type="text/css">
+  *{margin:0px; padding:0px;}
+  #pbl{width:1200px; height:10px; border:2px solid red;  margin:50px auto; position:relative;}
+  #pbl ul li{list-style-type:none; position:absolute;}
+  #pbl ul li img{display:block;}
+  </style>
+ </head>
+ <body>
+
+  <div id="pbl">
+	<ul>
+		<li><img src="images/1.jpg" /></li>
+		<li><img src="images/2.jpg" /></li>
+		<li><img src="images/3.jpg" /></li>
+		<li><img src="images/4.jpg" /></li>
+		<li><img src="images/5.jpg" /></li>
+		<li><img src="images/6.jpg" /></li>
+		<li><img src="images/7.jpg" /></li>
+		<li><img src="images/8.jpg" /></li>
+		<li><img src="images/9.jpg" /></li>
+		<li><img src="images/10.jpg" /></li>
+		<li><img src="images/11.jpg" /></li>
+		<li><img src="images/12.jpg" /></li>
+		<li><img src="images/13.jpg" /></li>
+		<li><img src="images/14.jpg" /></li>
+		<li><img src="images/15.jpg" /></li>
+		<li><img src="images/16.jpg" /></li>
+	</ul>
+  </div>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+	$(window).load(function(){
+		var len=$("#pbl ul li").length;
+		var obj=$("#pbl ul li");
+		var i=0;
+		var ImgHeight={line1:[],line2:[],line3:[],line4:[]};
+
+
+		for(i=0;i<len;i++){
+			var inew=i%4; //余数是0-第一排  余数1- 第二排  余数2-第三排 余数3- 第四排
+			switch(inew){
+				case 0 :  //0-第一排 
+					obj.eq(i).css({left:"0px"});
+					ImgHeight.line1.push(obj.eq(i).height()); //把高度保存到数级里
+					var step=Math.floor(i/4);
+						if(step==0){
+							obj.eq(i).css({top:"0px"});
+						}else{
+							var j=0;
+							var num=0;
+							for(j=0;j<step;j++){
+								num=num+ImgHeight.line1[j]+10;
+							}
+							obj.eq(i).css({top:num});
+						}
+					break;
+				case 1 : //1-第二排 
+					$("#pbl ul li").eq(i).css({left:"298px"});
+					ImgHeight.line2.push(obj.eq(i).height());
+					var step=Math.floor(i/4);
+						if(step==0){
+							obj.eq(i).css({top:"0px"});
+						}else{
+							var j=0;
+							var num=0;
+							for(j=0;j<step;j++){
+								num=num+ImgHeight.line2[j]+10;
+							}
+							obj.eq(i).css({top:num});
+						}
+					break;
+				case 2 : //2-第三排 
+					$("#pbl ul li").eq(i).css({left:"596px"});
+					ImgHeight.line3.push(obj.eq(i).height());
+					var step=Math.floor(i/4);
+						if(step==0){
+							obj.eq(i).css({top:"0px"});
+						}else{
+							var j=0;
+							var num=0;
+							for(j=0;j<step;j++){
+								num=num+ImgHeight.line3[j]+10;
+							}
+							obj.eq(i).css({top:num});
+						}
+					break;
+				case 3 :  //3-第四排
+					$("#pbl ul li").eq(i).css({left:"894px"});
+					ImgHeight.line4.push(obj.eq(i).height());
+					var step=Math.floor(i/4);
+						if(step==0){
+							obj.eq(i).css({top:"0px"});
+						}else{
+							var j=0;
+							var num=0;
+							for(j=0;j<step;j++){
+								num=num+ImgHeight.line4[j]+10;
+							}
+							obj.eq(i).css({top:num});
+						}
+					break;
+			}
+		}
+	});
+</script>
+
+ </body>
+</html>

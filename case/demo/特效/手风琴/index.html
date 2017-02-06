@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>手风琴</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:url("images/bg.jpg");background-size:100%;}
+	.box{width:1188px;height:405px;border:1px solid #fff;margin:50px auto;
+			background:#000;overflow:hidden;}
+	.box ul{width:2000px;height:405px;}
+	.box ul li{list-style:none;width:107px;height:405px;float:left;
+			border-left:1px solid #fff;overflow:hidden;}
+	.box ul li img{opacity:0.6;}
+	.box ul li img.gray{opacity:1;}
+	.box ul li.one{width:538px;}
+  </style>
+ </head>
+ <body>
+	<div class="box">
+		<ul>
+			<li class="one"><img src="images/7.jpg" class="gray"/></li>
+			<li><img src="images/6.jpg"/></li>
+			<li><img src="images/5.jpg"/></li>
+			<li><img src="images/4.jpg"/></li>
+			<li><img src="images/3.jpg"/></li>
+			<li><img src="images/2.jpg"/></li>
+			<li><img src="images/1.jpg"/></li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(".box ul li").hover(function(){
+			$(this).stop(true).animate({width:"538px"}).siblings().stop(true).animate({width:"107px"});
+			$(this).find("img").addClass("gray").parent().siblings().find("img").removeClass("gray");
+			//$(this).siblings().find("img").removeClass("gray");
+		});
+	</script>
+ </body>
+</html>

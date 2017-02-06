@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <!--网站编码格式，UTF-8 国际编码，GBK或 gb2312 中文编码-->
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="关键词一，关键词二">
+  <meta name="Description" content="网站描述内容">
+  <title>Document</title>
+  <!--css js 文件的引入-->
+  <style type="text/css">
+  *{margin:0px; padding:0px;}
+  #jsq{width:400px; height:400px; background:#000; margin:100px auto 0px; border:2px solid #fff;
+		box-shadow:0px 0px 10px #000;}
+#jsq h3{font-size:26px; color:#fff; font-family:"微软雅黑"; text-shadow:0px 0px 20px #fff;
+		text-align:center; line-height:65px;}
+#jsq .endTime{color:#fff; font-size:14px; padding-left:25px; }
+#jsq .endTime input{width:70px; height:30px; border-radius:10px; margin:0px 5px; color:#6600cc;
+					text-align:center;}
+#jsq .begin{width:100px; height:100px; background:#fff; box-shadow:2px 2px 10px #ddd; border-radius:50px; text-align:center; line-height:100px; font-size:35px; font-weight:bold; 
+			margin:30px auto;}
+#jsq p{color:#fff; font-size:24px; text-align:center; line-height:45px;}
+#jsq p span{color:#ffff33; font-weight:bold; font-size:35px; padding:0px 10px;}
+  </style>
+ </head>
+ <body>
+  <div id="jsq">
+	<h3>开始倒计时</h3>
+
+	<!--结束时间开始-->
+	<div class="endTime">
+		<form>
+			请输入：<input type="text" value='2015' />年
+					<input type="text" value='2'/>月
+					<input type="text" value='22' />日
+		</form>
+	</div>
+	<!--结束时间结束-->
+
+	<!--开始按扭-->
+	<div class="begin">开始</div>
+	<p>现在距离以上时间，还剩：</p>
+	<p class="c_Date"><span>0</span>天<span>0</span>小时<span>0</span>分<span>0</span>秒</p>
+  </div>
+
+
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" >
+	$(".begin").click(function(){
+		UpdateTime();
+		setInterval(UpdateTime,1000);
+	});
+
+
+	function UpdateTime(){
+
+		var Year=$(".endTime input").eq(0).val(); //获取输入的年
+		var Month=$(".endTime input").eq(1).val(); //获取输入的月
+		var Day=$(".endTime input").eq(2).val(); //获取输入的天
+		//alert(Year+"年"+Month+"月"+Day+"天");
+
+		var endDate=new Date(); //创建时间对象
+		var newDate=new Date(); //获取现在的时间
+
+		//设置结束时间
+			endDate.setFullYear(Year);
+			endDate.setMonth(Month-1);
+			endDate.setDate(Day);
+			endDate.setHours(0);
+			endDate.setMinutes(0);
+			endDate.setSeconds(0);
+
+			//获取时间差毫秒数，用结束时间毫秒数-现在时间毫秒数
+		var s=(endDate.getTime()-newDate.getTime())/1000;  //时间差的秒数
+		if(s<=0){alert("你输入的时间有误");return;}
+		var day=Math.floor(s/86400); //获取天数
+		//var s2=s-day*86400;  //获取剩余的秒数
+		//var hours=Math.floor(s2/3600); //获取小时
+		//var	s3=s-day*86400-hours*3600;
+		//var minutes=Math.floor(s3/60);//获取分钟数
+		//var s4=s-day*86400-hours*3600-minutes*60; //获取秒数
+			s=s%86400;
+		var hours=Math.floor(s/3600);
+			s=s%3600;
+		var minutes=Math.floor(s/60);
+			s=s%60;
+		var s4=s;
+
+		$("p.c_Date span").eq(0).html(fullZero(day,3));	//赋值 天数
+		$("p.c_Date span").eq(1).html(fullZero(hours,2)); //小时
+		$("p.c_Date span").eq(2).html(fullZero(minutes,2)); //分钟
+		$("p.c_Date span").eq(3).html(fullZero(s4,2));//秒
+		
+	};
+
+
+	//给时间前面补0
+	function fullZero(_time,n){
+		var str=""+_time;
+		while(str.length<n){
+			str="0"+str;
+		}
+		return str;
+	};
+  </script>
+ </body>
+</html>

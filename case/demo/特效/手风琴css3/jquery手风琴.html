@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>jQuery手风琴</title>
+  <style type="text/css">
+	*{margin:0px;padding:0px;}
+	body{background:url("images/bg.jpg")no-repeat;background-size:100% 150%;}
+	.main{
+		width:1200px;
+		height:360px;
+		border:3px solid #fff;
+		box-shadow:0 0 5px #fff;
+		margin:50px auto;
+		}
+	.main ul{width:1250px;}
+	.main ul li{
+		list-style:none;
+		width:199px;
+		height:360px;
+		border-left:1px solid #fff;
+		position:relative;
+		overflow:hidden;
+		float:left;
+		}
+	.main ul li .shadow{
+		width:100%;
+		height:100%;
+		background:rgba(0,0,0,0.4);
+		color:#fff;
+		text-align:center;
+		line-height:360px;
+		font-size:14px;
+		font-weight:bold;
+		font-family:"微软雅黑";
+		position:absolute;
+		left:0;
+		top:0;
+		}
+  </style>
+ </head>
+ <body>
+	<div class="main">
+		<ul>
+			<li>
+				<img src="images/1.jpg"/>
+				<div class="shadow shadow_top">付出不亚于任何人的努力</div>
+				<div class=" shadow shadow_bottom">付出不亚于任何人的努力</div>
+			</li>
+			<li>
+				<img src="images/2.jpg"/>
+				<div class="shadow shadow_top">谦虚戒骄</div>
+				<div class=" shadow shadow_bottom">谦虚戒骄</div>
+			</li>
+			<li>
+				<img src="images/3.jpg"/>
+				<div class="shadow shadow_top">天天反省</div>
+				<div class=" shadow shadow_bottom">天天反省</div>
+			</li>
+			<li>
+				<img src="images/4.jpg"/>
+				<div class="shadow shadow_top">活着就要感谢</div>
+				<div class=" shadow shadow_bottom">活着就要感谢</div>
+			</li>
+			<li>
+				<img src="images/5.jpg"/>
+				<div class="shadow shadow_top">积善行、私利他</div>
+				<div class=" shadow shadow_bottom">积善行、私利他</div>
+			</li>
+			<li>
+				<img src="images/6.jpg"/>
+				<div class="shadow shadow_top">不要有感性的烦恼</div>
+				<div class=" shadow shadow_bottom">不要有感性的烦恼</div>
+			</li>
+		</ul>
+	</div>
+
+	<script src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(".main ul li").hover(function(){//鼠标移上去
+			$(this).stop(true).animate({width:"980px"}).siblings().stop(true).animate({width:"43px"});
+			$(this).find(".shadow_top").stop(true).animate({"height":"40px","line-height":"40px"});
+			$(this).find(".shadow_bottom").stop(true).animate({"height":"40px","line-height":"40px","top":"320px"});
+		},function(){  //鼠标移开
+			$(this).stop(true).animate({width:"199px"}).siblings().stop(true).animate({width:"199px"});
+			$(this).find(".shadow_top").stop(true).animate({"height":"360px","line-height":"360px"});
+			$(this).find(".shadow_bottom").stop(true).animate({"height":"360px","line-height":"360px","top":"0"});
+		},2000)
+	</script>
+ </body>
+</html>

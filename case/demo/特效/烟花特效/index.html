@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>烟花</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:#000;overflow:hidden;}
+	.fireworks{width:5px;height:30px;background:red;position:absolute;}
+  </style>
+ </head>
+ <body>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		
+		$(document).click(function(e){
+			var _fireworks = $("<div>");
+			$("body").append(_fireworks);
+			_fireworks.addClass("fireworks");
+			var _left = e.clientX;
+			var _top = $(window).height();
+			var _t = e.clientY;
+			$(".fireworks").css({"left":_left,"top":_top}).animate({
+				"top":_t
+			},500,function(){
+				$(this).remove();
+				//创建小碎片
+				var arr = [];
+				for(var i=0;i<80;i++){
+					arr[i] = $("<div>");
+					arr[i].css({width:"3px",height:"3px",
+					"background":"#"+random_color(),
+					position:"absolute",top:_t,left:_left});
+					$("body").append(arr[i]);
+					arr[i].speedX = Math.random()*20 - 10;
+					arr[i].speedY = Math.random()*20 - 10;
+				}
+				setInterval(function(){
+					for(var j=0;j<80;j++){
+						arr[j].css({
+							left:arr[j].position().left+arr[j].speedX,
+							top:arr[j].position().top+arr[j].speedY
+						});
+						arr[j].speedY++;
+						if(arr[j].position().top>_top){
+							arr[j].remove();
+						}
+					}
+				},30)
+			});
+		})
+		function random_color(){
+			var _color = parseInt(Math.random()*16777215).toString(16);
+			while(_color.length<6){
+				_color="0"+_color;
+			}
+			return _color;
+		}
+	</script>
+ </body>
+</html>

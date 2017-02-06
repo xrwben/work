@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>爱奇艺首页轮播导航</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	#Box{width:100%;
+		height:410px;
+		position:relative;
+		}
+	.pic{width:100%;
+		height:410px;
+		overflow:hidden;
+		}
+	.pic ul li{list-style:none;
+		height:410px;
+		}
+	.roll{width:247px;
+		height:371px;
+		background:url(images/bg.png);
+		position:absolute;
+		top:20px;
+		right:30px;
+		}
+	.roll ul{width:212px;
+		height:340px;
+		margin:18px 15px;
+		}
+	.roll ul li{width:204px;
+		height:34px;
+		list-style:none;
+		color:#fff;
+		line-height:34px;
+		font-size:14px;
+		font-family:"微软雅黑";
+		padding-left:8px;
+		}
+	.roll ul li.one{border-top-left-radius:8px;
+		border-top-right-radius:8px;
+		}
+	.roll ul li.ten{border-bottom-left-radius:8px;
+		border-bottom-right-radius:8px;
+		}
+	.roll ul li.bg{background:#699F00;}
+	
+  </style>
+ </head>
+ <body>
+	<div id="Box">
+		<!--轮播图片-->
+		<div class="pic">
+			<ul>
+				<li style="background:url(images/1.jpg);"></li>
+				<li style="background:url(images/2.jpg);"></li>
+				<li style="background:url(images/3.jpg);"></li>
+				<li style="background:url(images/4.jpg);"></li>
+				<li style="background:url(images/5.jpg);"></li>
+				<li style="background:url(images/6.jpg);"></li>
+				<li style="background:url(images/7.jpg);"></li>
+				<li style="background:url(images/8.jpg);"></li>
+				<li style="background:url(images/9.jpg);"></li>
+				<li style="background:url(images/10.jpg);"></li>
+			</ul>
+		</div>
+		<!--滚动条-->
+		<div class="roll">
+			<ul>
+				<li class="one">歌神啊：炎亚纶现身歌神舞台</li>
+				<li>花千骨2015:不说再见再续前缘</li>
+				<li>云中歌：AB变俏厨娘寻味爱情</li>
+				<li>奇葩说：吴莫愁庾澄庆绯闻被挖</li>
+				<li>伪装者：胡歌化身双面间谍</li>
+				<li>明若晓溪：奇女子征服呆萌总裁</li>
+				<li>爱大片：肌肉男神修炼术</li>
+				<li>神剧亮了：玩嗨云中歌特辑</li>
+				<li>福睿斯超级微电影《小睿必达》</li>
+				<li class="ten">欧美潮饮 原装进口</li>
+			</ul>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(".roll ul li").hover(function(){
+			var _index=$(this).index();
+			$(this).addClass("bg").siblings().removeClass("bg");
+			//$(".pic ul li").eq(_index).show().siblings().hide();
+			$(".pic ul li").eq(_index).css({"display":"block","opacity":"0"}).
+				animate({"opacity":1},500).siblings().css({"opacity":1,"display":"none"});
+		});
+	</script>
+ </body>
+</html>

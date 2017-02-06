@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>雪花飘落jquery</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:url("images/bg.jpg");background-size:cover;overflow:hidden;}
+	.snowFlowers{position:absolute;}
+  </style>
+ </head>
+ <body>
+	<audio autoplay loop>
+		<source src="music/king.mp3"></source>
+		你的浏览器不支持audio属性，请更换浏览器！！
+	</audio>
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			setInterval(function(){
+				var xh = $("<div>&#10052;</div>");//雪花的编码
+				xh.addClass("snowFlowers");
+				var w_Height=$(window).height();
+				var w_width=$(window).width();
+				var _left = Math.random()*w_width;
+				//console.log(_left);
+				var size = Math.random()*50; 
+				xh.css({
+					"left" : _left,
+					"top" : "-50px",
+					"font-size" : size + 'px',
+					"color" : "#fff"
+				}).animate({
+					"top" : w_Height ,
+					"opacity" : 0.2
+				},8000,function(){
+					$(this).remove();
+				});
+				$("body").append(xh);
+			},200)
+		})
+	</script>
+ </body>
+</html>

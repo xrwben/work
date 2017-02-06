@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>音乐播放器</title>
+  <style>
+	*{margin:0;padding:0;}
+	body{background:url(images/bg.jpg)no-repeat;
+		background-size:100%;
+		font-family:"微软雅黑";
+		}
+	.music{width:570px;
+		height:370px;
+		border:1px solid green;
+		margin:100px auto 0;
+		box-shadow:0 0 10px #aaa;
+		}
+	/*左边图片*/
+	.music_left{width:280px;height:370px;float:left;}
+	.music_left h2{height:50px;background:url("images/bg1.jpg");
+		line-height:50px;text-align:center;}
+	.music_left img{display:block;}
+	.bottom{width:278px;height:93px;border:1px solid #ddd;
+		background:url(images/bg2.jpg);}
+	.button{width:150px;height:30px;margin:20px auto 0;}
+	.bottom ul li{list-style:none;width:27px;height:29px;float:left;
+		cursor:pointer;}
+	.bt_lt{background:url("images/sm_icon.png");
+		background-position:-48px 4px;}
+	.bt_play{margin:0 30px;background:url(images/sm_icon.png);
+		background-position:-74px;}
+	.bt_rt{background:url(images/sm_icon.png);
+		background-position:-123px 4px;}
+	.progress{width:220px;height:10px;background:#ccc;margin:10px auto 0;
+		border-radius:2px;}
+	.bar{width:0;height:100%;background:#f66;}
+	/*右边歌单*/
+	.music_right{width:285px;height:370px;float:right;}
+	.music_right h2{height:50px;background:#ff6666;line-height:50px;
+		text-align:center;}
+	.music_right ul{height:320px;background:url("images/bg4.png");
+		overflow:auto;}
+	.music_right ul li{list-style:none;height:35px;line-height:35px;
+		color:#fff;font-size:13px;text-indent:30px;
+		background:url(images/play.png) no-repeat 10px 10px;
+		border-top:1px solid #000;}
+	.music_right ul li.on{background:url(images/pause.png) no-repeat 8px 8px;}
+	.music_right ul li.on a{color:#f66;}
+	.music_right ul li a{text-decoration:none;color:#aaa;display:block;}
+  </style>
+ </head>
+ <body>
+	<div class="music">
+		<div class="music_left">
+			<h2>音乐播放器</h2>
+			<img src="images/music.gif"width="280px"height="225px"/>
+			<div class="bottom">
+				<div class="button">
+					<ul> 
+						<li class="bt_lt"></li> 
+						<li class="bt_play"></li> 
+						<li class="bt_rt"></li> 
+					</ul>
+				</div>
+				<div class="progress">
+					<div class="bar"></div>
+				</div>
+			</div>
+		</div>
+		<div class="music_right">
+			<h2>歌单</h2>
+			<ul>
+				<li><a href="javascript:void(0)" dataSrc="music/1.mp3">烛光里的妈妈</a></li>
+				<li><a href="javascript:void(0)" dataSrc="music/2.mp3">当你老了</a></li>
+				<li><a href="javascript:void(0)" dataSrc="music/3.mp3">母亲</a></li>
+				<li><a href="javascript:void(0)" dataSrc="music/4.mp3">相亲相爱的一家人</a></li>
+				<li><a href="javascript:void(0)" dataSrc="music/5.mp3">父亲</a></li>
+				<li><a href="javascript:void(0)" dataSrc="music/1.mp3">烛光里的妈妈</a></li>
+				<li><a href="javascript:void(0)" dataSrc="music/2.mp3">当你老了</a></li>
+				<li><a href="javascript:void(0)" dataSrc="music/3.mp3">母亲</a></li>
+				<li><a href="javascript:void(0)" dataSrc="music/4.mp3">相亲相爱的一家人</a></li>
+				<li><a href="javascript:void(0)" dataSrc="music/5.mp3">父亲</a></li>
+			</ul>
+		</div>
+	</div>
+	<audio id="audio" class="audio" controls>
+		<source src="music/1.mp3">
+	</audio>
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		var audio = $("audio").get(0); //audio为原生对象
+		var music = document.getElementById("audio");
+		var mark = 1;
+		var _index = 0;
+		$(".bt_play").click(function(){
+			if(mark==1){
+				M_play();
+				$(this).css({"background-position":"-96px"});
+				mark = 0;
+			}else{
+				audio.pause();
+				$(this).css({"background-position":"-74px"});
+				mark = 1;
+			}
+		});
+		$(".bt_rt").click(function(){
+			_index = _index++ >= $(".music_right ul li").length ? $(".music_right ul li").length-1 : _index++;
+			M_play();
+		});
+		$(".bt_lt").click(function(){
+			_index = _index-- <= 0 ? 0 : _index--;
+			M_play();
+		})
+		$(".music_right ul li").click(function(){
+			_index = $(this).index();
+			M_play();
+		})
+		function M_play(){
+			$(".music_right ul li").eq(_index).addClass("on").siblings().removeClass("on");
+			var d_src = $(".music_right ul li").eq(_index).find("a").attr("dataSrc");
+			$(".audio").attr("src",d_src);
+			audio.play();
+			setInterval(changeBar,1000);
+		}
+		function changeBar(){
+			var allTime = music.duration;
+			var currTime = music.currentTime;
+			//console.log(allTime);
+			//console.log(currTime);
+			var _width=currTime/allTime*$(".progress").width();
+			$(".bar").css({width:_width});
+			if(currTime/allTime==1){
+				_index++;
+				M_play();
+			}
+		}
+		$(".progress").click(function(e){
+			progress(e);
+			//audio.play();
+
+		})
+		function progress(e){
+			var _left = e.clientX - $(".progress").offset().left;
+			$(".bar").css("width",_left);
+			var alltime=music.duration;
+			var curtime=_left/$(this).width()*alltime;
+			console.log(curtime);
+			audio.currentTime = curtime;
+		}
+	</script>
+ </body>
+</html>

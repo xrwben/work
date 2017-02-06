@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>图片无缝滚动 - LB</title>
+  <style type="text/css">
+		*{margin:0;padding:0;}
+		body{background:url("images/bg.jpg")no-repeat;background-size:100%;}
+		.box{width:808px;height:152px;border:1px dotted blue;margin:100px auto;
+				overflow:hidden;position:relative;}
+		.box ul.pic{height:150px;width:2550px;
+				position:absolute;
+				left:0;
+				top:0;
+				/*兼容火狐浏览器*/
+				-moz-animation:move;
+				-moz-animation-duration:15s;
+				-moz-animation-iteration-count:infinite;
+				-moz-animation-timing-function:linear;
+				}
+		.box ul.pic{
+				-webkit-animation:move 10s infinite linear;/*兼容谷歌浏览器*/
+				}
+		/*鼠标滑上去暂停*/
+		.box ul:hover{
+				-moz-animation-play-state:paused;
+				}
+		.box ul li{list-style:none;width:200px;height:150px;float:left;
+				border:1px solid #fff;margin-right:3px;}
+		.box ul li img{width:200px;height:150px;}
+
+		/*css3动画  并且一定要使要移动目标position定位*/
+		@-moz-keyframes move
+		{
+			0% {left:0px;}
+			100% {left:-1635px;}
+		}
+		@-webkit-keyframes move
+		{
+			0% {left:0px;}
+			100% {left:-1635px;}
+		}
+  </style>
+ </head>
+ <body>
+	<div class="box">
+		<ul class="pic">
+			<li><img src="images/1.jpg"/></li>
+			<li><img src="images/2.jpg"/></li>
+			<li><img src="images/3.jpg"/></li>
+			<li><img src="images/4.jpg"/></li>
+			<li><img src="images/5.jpg"/></li>
+			<li><img src="images/6.jpg"/></li>
+			<li><img src="images/7.jpg"/></li>
+			<li><img src="images/8.jpg"/></li>
+			<li><img src="images/1.jpg"/></li>
+			<li><img src="images/2.jpg"/></li>
+			<li><img src="images/3.jpg"/></li>
+			<li><img src="images/4.jpg"/></li>
+		</ul>
+	</div>
+ </body>
+</html>

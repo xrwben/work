@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>弹幕</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:url(images/yyg.jpg);background-size:100%;}
+	.DM_open{color:#fff;cursor:pointer;}
+	#DM{
+		width:100%;
+		height:100%;
+		position:absolute;
+		top:0;
+		left:0;
+		display:none;
+		}
+	.D_screen{
+		width:100%;
+		height:100%;
+		background:rgba(0,0,0,0.7);
+		position:relative;
+		z-index:0;
+		}
+	.D_show div{
+		color:#fff;
+		font-size:24px;
+		position:absolute;
+		display:none;
+		}
+	.DM_close{
+		width:40px;
+		height:40px;
+		border:2px solid #fff;
+		text-decoration:none;
+		border-radius:50%;
+		color:#fff;
+		line-height:40px;
+		text-align:center;
+		font-size:24px;
+		background:#ff0000;
+		position:absolute;
+		top:20px;
+		right:20px;
+		cursor:pointer;
+		z-index:1;
+		opacity:0.7;
+		}
+	.DM_close:hover{background:#cc0000;}
+	.Send{
+		width:100%;
+		height:76px;
+		background:#000;
+		position:absolute;
+		left:0;
+		bottom:0;
+		z-index:1;
+		}
+	.s_con{
+		width:710px;
+		height:36px;
+		margin:20px auto 0;
+		position:relative;
+		}
+	.d_text{
+		width:585px;
+		height:16px;
+		border:0;
+		border-radius:3px 0 0 3px;
+		padding:10px;
+		font-size:14px;
+		}
+	.d_button{
+		width:100px;
+		height:36px;
+		border:0;
+		border-radius:0 3px 3px 0;
+		display:block;
+		position:absolute;
+		top:0;
+		left:605px;
+		background:#65C33D;
+		color:#fff;
+		font-family:"微软雅黑";
+		font-size:14px;
+		}
+	.d_button:hover{background:#329209;}
+  </style>
+ </head>
+ <body>
+	<div class="DM_open">弹幕>></div>
+	<div id="DM">
+		<a href="#"class="DM_close">X</a>
+		<div class="D_screen"></div>
+		<div class="D_show">
+			<div>你好！</div>
+			<div>简直太棒了！</div>
+			<div>就是这么叼！！</div>
+			<div>帅帅帅！！</div>
+			<div>信了你的邪！！</div>
+			<div>爱你的虎口我脱离了危险！</div>
+			<div>从明天起，我要孤独一人！</div>
+			<div>让着纷乱的世界变得简单！!</div>
+			<div>在我垂暮的心灵湖泊，倒影你天真灿烂的笑！</div>
+		</div>
+		<div class="Send">
+			<form class="s_con">
+				<input type="text"class="d_text">
+				<input type="button"class="d_button"value="发表评论">
+			</form>
+		</div>
+	</div>
+	
+	<script type="text/javascript"src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			init_screen();
+			//打开关闭弹幕
+			$(".DM_open,.DM_close").click(function(){
+				$("#DM").toggle(1000);
+			});
+
+			//发表评论
+			$(".d_button").click(function(){
+				var text = $(".d_text").val();
+				var txt = "<div>"+text+"</div>";
+				$(".D_show").append(txt);
+				init_screen();
+			});
+
+			//初始化弹幕
+			function init_screen(){
+				var _top=0;
+				$(".D_show").find("div").show().each(function(){
+					var _left=$(window).width()-$(this).width();
+					var _height=$(window).height();
+					_top = _top + 70;
+					if(_top>_height-100)
+					{
+						_top=10;
+					}
+					//初始化文字
+					var time=15000;
+					/*if($(this).index()%3==0)
+					{
+						time=20000;
+					}*/
+					if($(this).index())//随机数跑
+					{
+						time=Math.random()*50000;
+					}
+					$(this).css({left:_left,top:_top,color:getRandomColor()});
+					//让文字动起来
+					$(this).animate({left:"-"+_left+"px"},time,function(){
+						$(this).remove();
+					});
+				});
+			};
+		});
+		//随机获取颜色值
+		function getRandomColor(){
+			return "#"+(function(h){
+				return new Array(7-h.length).join("0")+h
+			})((Math.random()*0x1000000 << 0).toString(16))
+		}
+	</script>
+ </body>
+</html>

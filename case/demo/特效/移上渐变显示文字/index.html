@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{margin:0;padding:0;}
+	.list{width:1200px;
+		height:290px;
+		background:#ddd;
+		margin:100px auto;
+		}
+	.list ul li{list-style:none;
+		float:left;
+		width:290px;
+		height:200px;
+		margin:5px 4px 0;
+		position:relative;
+		}
+	.img{height:160px;}
+	.list ul li p{width:290px;
+		height:40px;
+		font-size:14px;
+		line-height:40px;
+		text-align:center;
+		background:#ccffff;
+		border-bottom:1px solid #ccc;
+		}
+	.text{position:absolute;
+		top:20px;
+		left:50px;
+		color:#fff;
+		display:none;
+		}
+	.list ul li:hover p{border-bottom:2px solid #cc33cc;}
+	
+  </style>
+ </head>
+ <body>
+	<div class="list">
+		<ul>
+			<li>
+				<div class="img">
+					<img src="images/1.jpg"width="290px"height="160px"/>
+				</div>
+				<p>入住时间：随时入住</p>
+				<div class="text">
+					<h3>布丁狂日艺夏</h3>
+					<hr width="120"size="2"color="white">
+					<span>限时特惠五折起</span>
+				</div>
+			</li>
+			<li>
+				<div class="img">
+					<img src="images/2.jpg"width="290px"height="160px"/>
+				</div>
+				<p>入住时间：3.24-12.31</p>
+				<div class="text">
+					<h3>早定早惠</h3>
+					<hr width="120"size="2"color="white">
+					<span>提前预定七折起</span>
+				</div>
+			</li>
+			<li>
+				<div class="img">
+					<img src="images/3.jpg"width="290px"height="160px"/>
+				</div>
+				<p>活动日期：6.12-10.7</p>
+				<div class="text">
+					<h3>上海旅游大放送</h3>
+					<hr width="120"size="2"color="white">
+					<span>住滩江两岸酒店送景区门票</span>
+				</div>
+			</li>
+			<li>
+				<div class="img">
+					<img src="images/4.jpg"width="290px"height="160px"/>
+				</div>
+				<p>活动日期：7.20-8.31</p>
+				<div class="text">
+					<h3>布丁狂日艺夏</h3>
+					<hr width="120"size="2"color="white">
+					<span>预付房费最高立减30元</span>
+				</div>
+			</li>
+		</ul>
+	</div>
+ </body>
+ <script type="text/javascript"src="js/jquery-1.11.1.min.js"></script>
+ <script type="text/javascript">
+	var _index=0;
+	$(".list ul li").hover(function(){
+		_index=$(this).index();
+		$(".list ul li .text").eq(_index).slideToggle();
+	})
+ </script>
+</html>

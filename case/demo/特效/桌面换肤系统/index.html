@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>桌面换肤系统</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:url("images/1.jpg");}
+	#Menu{height:250px;width:200px;background:#fff;
+			position:absolute;top:200px;left:300px;
+			box-shadow:0 0 10px #fff;display:none;}
+	#Menu ul li{width:200px;height:34px;border-bottom:2px solid #ddd;
+			list-style-type:none;font-size:14px;color:#666;
+			font-family:"微软雅黑";line-height:35px;}
+	#Menu ul li img{margin:0 5px 0 20px;}
+	#Menu ul li.hover{background:#00cccc;color:#fff;}
+
+	#bg{width:730px;height:360px;background:rgba(0,0,0,0.5);
+		position:absolute;left:200px;top:150px;display:none;}
+	#bg h3{height:46px;background:url(images/title_bg.jpg);
+		color:#fff;font-size:18px;font-family:"微软雅黑";
+		line-height:46px;text-indent:10px;font-weight:100;}
+	#bg h3 img.close{float:right;margin:10px 10px 0 0;}
+	#bg ul li{width:200px;height:125px;border:5px solid #fff;list-style-type:none;
+		float:left;margin:10px 15px 10px 15px;}
+  </style>
+ </head>
+ <body>
+	<div id="Menu">
+		<ul>  
+			<li><img src="images/ico1.jpg" align="absmiddle"/>添加应用</li>
+			<li><img src="images/ico2.jpg" align="absmiddle"/>获取课程</li>
+			<li class="hover"><img src="images/ico3.jpg" align="absmiddle"/>添加笔记</li>
+			<li><img src="images/ico4.jpg" align="absmiddle"/>刷新</li>
+			<li><img src="images/ico5.jpg" align="absmiddle"/>上传资料</li>
+			<li><img src="images/ico6.jpg" align="absmiddle"/>更换背景</li>
+			<li><img src="images/ico7.jpg" align="absmiddle"/>注销</li>
+		</ul>
+	</div>
+	
+	<!--z桌面背景-->
+	<div id="bg">
+		<h3>桌面背景墙<img src="images/close.png" class="close"/></h3>
+		<ul>
+			<li><img src="images/s_1.jpg" dataSrc="images/1.jpg"/></li>
+			<li><img src="images/s_2.jpg" dataSrc="images/2.jpg"/></li>
+			<li><img src="images/s_3.jpg" dataSrc="images/3.jpg"/></li>
+			<li><img src="images/s_4.jpg" dataSrc="images/4.jpg"/></li>
+			<li><img src="images/s_5.jpg" dataSrc="images/5.jpg"/></li>
+			<li><img src="images/s_6.jpg" dataSrc="images/6.jpg"/></li>
+		</ul>
+	</div>
+
+
+	<!--引用外部jquery类库文件-->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+
+		//禁止浏览器右键菜单功能
+		document.oncontextmenu=function(){return false;}
+
+		//点击右键时弹出菜单
+		$(document).mousedown(function(e){
+			var key=e.which;
+			if(key==3){
+				var _top=e.clientY;//鼠标与浏览器上边的距离
+				var _left=e.clientX;
+				$("#Menu").show().css({left:_left,top:_top});
+			}
+		});
+		//点击任意位置菜单消失
+		$(document).click(function(){
+			$("#Menu").hide();
+		});
+
+		//当鼠标滑到对应菜单，改变背景颜色
+		$("#Menu ul li").mouseover(function(){
+			$(this).addClass("hover").siblings("li").removeClass("hover");
+		});
+
+		//点击弹出背景墙
+		$("#Menu ul li").click(function(){
+			var _index=$(this).index();
+			if(_index==5){
+				$("#bg").show();
+			}
+		});
+
+		//点击关闭按钮
+		$("img.close").click(function(){
+			$("#bg").hide();
+		});
+		//点击更换背景
+		$("#bg ul li").click(function(){
+			var bimg=$(this).find("img").attr("dataSrc");
+			$("body").css("background","url("+bimg+")");
+		});
+	</script>
+ </body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en"onselectstart="return false">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	html{height:100%;}
+	body{height:100%;background:#000 url(images/bg.png) no-repeat center;
+		perspective:1000px;overflow:hidden;}
+	li{list-style:none;}
+	.box{width:0;height:0;position:absolute;left:50%;top:50%;
+		transform-style:preserve-3d;transform:translateZ(-2500px);}
+	ul.box li{width:120px;height:160px;border:1px solid rgba(127,255,255,0.25);
+		background:rgba(0,127,127,0.5);box-shadow:0 0 12px rgba(0,255,255,0.5);
+		cursor:pointer;position:absolute;left:-60px;top:-80px;}
+	ul.box li:hover{box-shadow:0 0 12px rgba(0,255,255,0.75);
+		border:1px solid rgba(127,255,255,0.75);}
+
+
+	ul.button{width:290px;height:40px;position:fixed;left:15px;bottom:15px;}
+	ul.button li{border:1px solid rgba(127,255,255,0.75);
+		color:rgba(127,255,255,0.75);font-size:12px;font-weight:bold;
+		font-family:"微软雅黑";float:left;padding:8px 12px;border-radius:3px;
+		margin:0px 5px;cursor:pointer;}
+	ul.button li:hover{background:rgba(0,255,255,0.5);}
+	ul.button li.on{color:#fff;background:rgba(0,255,255,0.5);}
+  </style>
+ </head>
+ <body>
+	<ul class="box"></ul>
+	<ul class="button">
+		<li>Table</li>
+		<li>Sphere</li>
+		<li>Helix</li>
+		<li class="on">Grid</li>
+	</ul>
+	<script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
+	<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			for(var i=0;i<125;i++){
+				$li = $("<li></li>");
+				$("ul.box").append($li);
+				var x = (Math.random()-0.5)*5000;
+				var y = (Math.random()-0.5)*5000;
+				var z = (Math.random()-0.5)*5000;
+				$li.css({
+					"transform" : "translate3d("+x+"px,"+y+"px,"+z+"px)"
+				});
+			}
+			setTimeout(function(){
+				Grid();
+			},300)
+
+			function Grid(){
+				$("ul.box li").each(function(i){
+					var disX = 300;
+					var disY = 300;
+					var disZ = 500;
+					var firstX = (i%25)%5;
+					var firstY = parseInt((i%25)/5);
+					var firstZ = parseInt(i/25);
+					$(this).css({
+						"transform" : "translate3d("+(firstX*disX-600)+"px,"+(firstY*disY-600)+"px,"+(firstZ*disZ-1000)+"px)",
+						"transition" : "4s ease-in-out"
+					});
+				});
+			};
+			function Helix(){
+				$("ul.box li").each(function(i){
+					var roY = 15;
+					var middleLength = Math.floor($("ul.box li").length/2);
+					var firstTransY = -10*middleLength;
+					$(this).css({
+						"transform" : "rotateY("+(i*roY)+"deg) translateZ(1000px) translateY("+(i*10+firstTransY)+"px)"
+					});
+				})
+			};
+
+			$("ul.button li").click(function(){
+				var _index = $(this).index();
+				$(this).addClass("on").siblings().removeClass("on");
+				switch(_index){
+					case 0:
+						Table();
+						break;
+					case 1:
+						Sphere();
+						break;
+					case 2:
+						Helix();
+						break;
+					case 3:
+						Grid();
+						break;
+				}
+			});
+			
+			//拖拽
+			(function(){
+				var sumX=0,sumY=0,tlZ=-2500;
+				$(document).mousedown(function(ev){
+					var lastX = ev.clientX;
+					var lastY = ev.clientY;
+					$(this).mousemove(function(ev){
+						var nowX = ev.clientX;
+						var nowY = ev.clientY;
+						var _x = nowX - lastX;
+						var _y = nowY - lastY;
+						sumX += _x*0.2;
+						sumY += _y*0.2;
+						$("ul.box").css({
+							"transform" : "translateZ("+tlZ+"px) rotateX("+(-sumY)+"deg) rotateY("+(sumX)+"deg)"
+						});
+						lastX = nowX;
+						lastY = nowY;
+					})
+				}).mouseup(function(){
+					$(this).unbind("mousemove");
+					//惯性方法
+					var timer = setInterval(function(){
+						//方法同《3D相册拖拽》案例
+					},30);
+				}).mousewheel(function(e,d){ //向上滚为负数，向下滚为正数
+					tlZ += d*50;
+					tlZ = Math.min(0,tlZ);
+					tlZ = Math.max(-5000,tlZ);
+					$("ul.box").css({
+						"transform" : "translateZ("+tlZ+"px) rotateX("+(-sumY)+"deg) rotateY("+sumX+"deg)"
+					});
+				})
+			})();
+
+		})
+	</script>
+ </body>
+</html>

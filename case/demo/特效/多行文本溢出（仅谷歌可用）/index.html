@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>单行、多行文本溢出</title>
+  <style type="text/css">
+	.one{border:1px solid blue;width:250px;height:20px;
+		white-space:nowrap;/*不换行*/
+		overflow:hidden;/*超出的隐藏*/
+		text-overflow:ellipsis; /*超出的文本用三点表示*/
+		}
+	.more{margin-top:30px;width:250px;border:1px solid red;
+		display:-moz-box!important;
+		display:-webkit-box!important;
+		overflow:hidden; 
+		text-overflow:ellipsis;
+		word-break:break-all;
+		-moz-box-orient:vertical;
+		-webkit-box-orient:vertical;
+		-moz-line-clamp:4;
+		-webkit-line-clamp:4;
+		}
+  </style>
+ </head>
+ <body>
+	<div class="one">
+		单行文本溢出单行文本溢出单行文本溢出单行文本溢出单行文本溢出单行文本溢出
+	</div>
+	<div class="more">
+		多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出多行文本溢出
+	</div>
+	<script type="text/javascript"></script>
+ </body>
+</html>

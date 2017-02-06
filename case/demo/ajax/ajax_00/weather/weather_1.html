@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>天气预报</title>
+  <style type="text/css">
+	
+  </style>
+ </head>
+ <body>
+	<h2>jsonp实现跨域 获取天气预报</h2>
+	
+	<script type="text/javascript" src="https://api.thinkpage.cn/v3/weather/now.json?location=beijing&ts=1443079775&ttl=30&uid=[your_uid]&sig=[your_signature]&callback=showWeather"></script>
+	<script type="text/javascript">
+		var oScript = document.createElement("script");
+		oScript.src = "";
+		document.body.appendChild(oScript);
+
+		var xhr = new XMLHttpRequest();
+		//利用本域的PHP代理
+		xhr.open("get","./weather_0.php");
+		xhr.send(null);
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4){
+				if(xhr.status == 200 || xhr.status == 304){
+					var data = JSON.parse(xhr.responseText);
+					(data.result.week);
+				}
+			}
+		}
+	</script>
+ </body>
+</html>

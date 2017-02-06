@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>数字时钟</title>
+  <style type="text/css">
+	body{background:#f9f9f9;}
+	.clock{width:1010px;margin:150px auto 0;}
+  </style>
+ </head>
+ <body>
+	<div id="clock" class="clock">
+		<img class="timer" src="images/0.JPG" />
+		<img class="timer"src="images/0.jpg" />
+		<img src="images/colon.jpg" />
+		<img class="timer"src="images/0.jpg" />
+		<img class="timer"src="images/0.jpg" />
+		<img src="images/colon.jpg" />
+		<img class="timer"src="images/0.jpg"/>
+		<img class="timer"src="images/0.jpg" />
+	</div>
+	<script type="text/javascript">
+
+		var timer = document.getElementsByClassName("timer");
+		timerShow();
+
+		function timerShow(){
+			var time = new Date();
+			var h = time.getHours();
+			var m = time.getMinutes();
+			var s = time.getSeconds();
+			console.log(h+"-"+m+"-"+s);
+			
+			var str = ""+zero(h)+zero(m)+zero(s);
+			console.log(str);
+
+			var len = timer.length;
+			for(var i=0;i<len;i++){
+				//console.log(timer[i].src);
+				//timer[i].src = "images/"+str[i]+".jpg";
+				timer[i].src = "images/"+str.charAt(i)+".jpg"; //效果同上
+			}
+		}
+		setInterval(timerShow,1000);
+		
+
+		//补0函数
+		function zero(num){
+			/*
+			if(num<10){
+				num = "0"+num;
+			}
+			return num;
+			*/
+			return num<10 ? "0"+num : num;
+		}
+	</script>
+ </body>
+</html>

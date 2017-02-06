@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>音频</title>
+  <style type="text/css">
+	
+  </style>
+ </head>
+ <body>
+	<audio id="audio" controls>
+		<source src="gril.mp3" type="audio/ogg">
+	</audio>
+	<button onclick="play()">播放</button>
+	<button onclick="pause()">暂停</button>
+	<button onclick="fast()">加速</button>
+	<button onclick="slow()">慢放</button>
+	<button onclick="muted()">静音</button>
+	<script type="text/javascript">
+		var audio = document.getElementById("audio");
+		function play(){
+			audio.play();
+			audio.playbackRate=1;
+		}
+		function pause(){
+			audio.pause();
+		}
+		function fast(){
+			audio.playbackRate+=0.5;
+		}
+		function slow(){
+			audio.playbackRate-=0.5;
+		}
+		function muted(){
+			if(audio.muted==false){
+				audio.muted=true;
+			}else{
+				audio.muted=false;
+			}
+		}
+	</script>
+ </body>
+</html>

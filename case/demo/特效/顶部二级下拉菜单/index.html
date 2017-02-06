@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>顶部二级下拉菜单</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	#Menu{width:100%;
+		height:45px;
+		background:#F18A75;
+		margin-top:80px;
+		box-shadow:0 5px 6px rgba(0,0,0,0.1); 
+		}
+	#Menu ul{width:1000px;
+		height:100%;
+		margin:0 auto;
+		}
+	#Menu ul li{list-style:none;
+		float:left;
+		height:45px;
+		line-height:45px;
+		font-family:"微软雅黑";
+		position:relative;
+		}
+	#Menu ul li.one{background:#EC755D;}
+	#Menu ul li.hover{background:#EC755D;}
+	#Menu ul li a.mainnav{text-decoration:none;
+		color:#fff;
+		border-right:1px solid #E87058;
+		text-shadow:0px -1px 0px #D7573D; 
+		padding:0 25px;
+		}
+	#Menu ul li .list{opacity:0;
+		line-height:28px;
+		background:#EC755D;
+		padding:9px 17px;
+		position:absolute;
+		left:0;
+		top:0;
+		}
+	#Menu ul li .list a{color:#fff;
+		text-decoration:none;
+		display:inline-block;
+		font-size:14px;
+		margin:0 9px;
+		}
+	#Menu ul li .list a:hover{text-decoration:underline;}
+	#Menu ul li .list span{color:#fff;
+		font-size:14px;
+		}
+  </style>
+ </head>
+ <body>
+	<div id="Menu">
+		<ul>
+			<li class="one">
+				<a class="mainnav"href="">首页</a>
+			</li>
+			<li>
+				<a class="mainnav"href="">上装</a>
+				<div class="list"style="width:330px">
+					<a href="">棉服</a>
+					<span>|</span>
+					<a href="">毛呢大衣</a>
+					<span>|</span>
+					<a href="">卫衣</a>
+					<span>|</span>
+					<a href="">吊带</a>
+					<span>|</span>
+					<a href="">蕾丝衫</a>
+					<a href="">雪纺衫</a>
+					<span>|</span>
+					<a href="">开衫</a>
+					<span>|</span>
+					<a href="">内衣</a>
+					<span>|</span>
+					<a href="">泳衣</a>
+				</div>
+			</li>
+			<li>
+				<a class="mainnav"href="">裤子</a>
+				<div class="list"style="width:297px">
+					<a href="">打底裤</a>
+					<span>|</span>
+					<a href="">九分裤</a>
+					<span>|</span>
+					<a href="">牛仔裤</a>
+					<span>|</span>
+					<a href="">小脚裤</a>
+					<span>|</span>
+					<a href="">休闲裤</a>
+					<a href="">哈伦裤</a>
+					<span>|</span>
+					<a href="">连体裤</a>
+				</div>
+			</li>
+			<li>
+				<a class="mainnav"href="">裙子</a>
+				<div class="list"style="width:269px">
+					<a href="">连衣裙</a>
+					<span>|</span>
+					<a href="">背心裙</a>
+					<span>|</span>
+					<a href="">仔裙</a>
+					<span>|</span>
+					<a href="">短裙</a>
+					<span>|</span>
+					<a href="">长裙</a>
+					<a href="">半身裙</a>
+					<span>|</span>
+					<a href="">雪纺裙</a>
+				</div>
+			</li>
+			<li>
+				<a class="mainnav"href="">鞋子</a>
+				<div class="list"style="width:330px">
+					<a href="">单鞋</a>
+					<span>|</span>
+					<a href="">凉鞋</a>
+					<span>|</span>
+					<a href="">平底鞋</a>
+					<span>|</span>
+					<a href="">鱼嘴鞋</a>
+					<span>|</span>
+					<a href="">高跟鞋</a>
+					<a href="">运动鞋</a>
+					<span>|</span>
+					<a href="">帆布鞋</a>
+					<span>|</span>
+					<a href="">坡跟鞋</a>
+					<span>|</span>
+					<a href="">厚底鞋</a>
+				</div>
+			</li>
+			<li>
+				<a class="mainnav"href="">包包</a>
+				<div class="list"style="width:236px">
+					<a href="">手提包</a>
+					<span>|</span>
+					<a href="">斜挎包</a>
+					<span>|</span>
+					<a href="">单肩包</a>
+					<span>|</span>
+					<a href="">双肩包</a>
+					<span>|</span>
+					<a href="">钱包</a>
+				</div>
+			</li>
+			<li>
+				<a class="mainnav" style="border:none"href="">配饰</a>
+				<div class="list"style="width:255px">
+					<a href="">项链</a>
+					<span>|</span>
+					<a href="">手链</a>
+					<span>|</span>
+					<a href="">戒指</a>
+					<span>|</span>
+					<a href="">太阳镜</a>
+					<span>|</span>
+					<a href="">棒球帽</a>
+					<a href="">耳环</a>
+					<span>|</span>
+					<a href="">袜子</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!--滑动特效-->
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		var t="";
+		$("#Menu ul li").hover(function(){//鼠标滑上去
+			var _this=$(this);
+			t=setTimeout(function(){
+				_this.addClass("hover");
+				_this.find(".list").animate({opacity:1,"top":"45px"},300);
+			},300);
+			
+		},function(){//鼠标移开
+			clearTimeout(t);
+			$(this).removeClass("hover");
+			$(this).find(".list").animate({opacity:0,"top":"0px"},300);
+		});
+	</script>
+ </body>
+</html>

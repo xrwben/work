@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <title>音乐FM_小人物</title>
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">  
+    <link rel="stylesheet" href="./css/index.css">
+	<style type="text/css">
+		body{height:100%;background:url("images/bg.jpg")no-repeat;
+			background-size:cover;}
+	</style>
+</head>
+<body>
+
+<div class="layout">
+    <div class="music"><i class="fa fa-music" aria-hidden="true"></i></div>
+    <audio id="media" src="" autoplay="autoplay">
+        not support the audio tag
+    </audio>
+    <div class="music-ct cur">
+        <div class="cover">
+            <div class="func-ct">
+                <header class="top justify">
+                    <i class="fa fa-music small open" aria-hidden="true"></i>
+                    <div class="coder-info">
+                        <i class="fa fa-info-circle small" aria-hidden="true"></i>
+                        <div class="author"><a href="#" class="under-line">小人物</a></div>
+                    </div>
+                </header>
+
+                <div class="music-info">
+                    <div class="music-title small"></div>
+                    <div class="singer"></div>
+                </div>
+                <div class="music-ctrl">
+                    <ul>
+                        <!--<li class="small"><a href="javascript:void (0);"><i class="fa fa-backward" aria-hidden="true"></i></a></li>-->
+                        <li class="big"><a href="javascript:void (0);"><i id="switch" class="fa fa-pause-circle pause" aria-hidden="true"></i></a></li>
+                        <li class="small"><a href="javascript:void (0);"><i class="fa fa-forward next" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+                <!--歌词-->
+                <div class="music-lyric">
+                    <ul class="lyric">
+                    </ul>
+                </div>
+                <!--  声音 -->
+                <div class="music-volume justify">
+                <span class="volume">
+                    <i class="fa fa-volume-up small" aria-hidden="true"></i>
+                    <div class="slider-volume" >
+                        <div class="slider">
+                            <div class="slider-range">
+                            </div>
+                            <a href="javascript:void(0)" class="slider-handle" draggable="true"></a>
+                        </div>
+                    </div>
+                </span>
+
+                <span class="display-Lyric" title="歌词开关">
+                    <!--<i class="fa fa-toggle-on" aria-hidden="true"></i>
+                    <i class="fa fa-refresh" aria-hidden="true"  title="单曲循环"></i>
+                    -->
+                    <i class="fa fa-toggle-on small" aria-hidden="true" ></i>
+                </span>
+                </div>
+
+                <!--进度-->
+                <div class="music-progress">
+                    <div class="progress-wrap">
+                        <ul>
+                            <li class="currentTime"></li>
+                            <li>
+                                <div class="progress">
+                                    <div class="progress-range">
+                                    </div>
+                                    <a href="javascript:void(0)" class="progress-handle" draggable="true"></a>
+                                </div>
+                            </li>
+                            <li class="duration"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="channel">
+            <i class="fa fa-arrow-circle-left close" aria-hidden="true"></i>
+            <ul>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript" src="./js/jquery-1.11.3.min.js"></script>
+<script src="./js/drag_slider.js"></script>
+<script src="./js/player.js"></script>
+<script>
+    $(function () {
+        player.init({
+            switch:$('#switch'),
+            media: $('#media').get(0),
+            loop:false,
+            lyricCT:$('.lyric'),
+            progressBar:$('.progress-handle'),
+            volumeBar:$('.slider-handle')
+        }).setURL('http://api.jirengu.com/fm/getSong.php');
+
+        $('.music').drag($('.layout'))
+    });
+</script>
+
+</body>
+</html>

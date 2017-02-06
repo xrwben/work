@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>文字滚动</title>
+  <style>
+	*{margin:0;padding:0;}
+	.screen{
+		width:1000px;
+		height:50px;
+		border:1px solid red;
+		background:rgba(0,0,0,0.5);
+		margin:50px auto;
+		line-height:50px;
+		position:relative;
+		}
+	.content{
+		width:200%;
+		height:50px;
+		background:#00ffcc;
+		}
+	.content span{
+		display:block;
+		width:520px;
+		background:#9900ff;
+		color:#fff;
+		position:absolute;
+		top:0px;
+		right:0px;
+		-moz-animation:move 30s linear infinite;
+		}
+	@-moz-keyframes move
+	{
+		0% {left:1000px;}
+		100% {left:-500px;}
+	}
+  </style>
+ </head>
+ <body>
+	<div class="screen">
+		<div class="content">
+			<span>如果我们能过把生活经营的不在苟且，也就有能力带她去看看诗和远方！</span>
+		</div>
+	</div>
+	<div class="s"></div>
+ </body>
+</html>

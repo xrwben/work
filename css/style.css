@@ -1,0 +1,253 @@
+
+html,body{height: 100%;
+	width: 100%;
+	color:#fff;
+	font-family:"inherit";
+	}
+h1,h2,h3,h4,h5{
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration:none;
+	color: #FFFFFF;
+}
+li{
+	list-style:none;
+}
+.clearfix:after{
+	display:block;
+	clear:both;
+	content:".";
+	line-height:0;
+	font-size:0;
+	}
+
+/* 头部导航栏 */
+#HeaderNav{
+	padding:20px 0;
+	transition:all 0.5s ease-in-out;
+}
+#HeaderNav.navbar{
+	margin-bottom: 0px;
+	border:none;
+	background: transparent;
+}
+#HeaderNav .navbar-brand{
+	max-width: 150px;
+	padding-top: 3px;
+}
+#navbarContent ul li{
+	overflow: hidden;
+}
+#navbarContent ul li a{
+	color:#fff;
+	font-size:16px;
+	font-weight:700;
+	text-shadow:5px 5px 5px #000;
+	transition:all 0.2s ease;
+}
+#navbarContent ul li a:hover{
+	transform:scale(1.2);
+	text-shadow:3px 3px 5px #fff;
+}
+#HeaderNav.fixedTop{
+	padding:3px;
+	background:radial-gradient(#61617b,#2f2f52 80%);
+	z-index:1;
+}
+
+#Home{
+	height:100%;
+	position:relative;
+	overflow:hidden;
+	background:radial-gradient(#61617b,#2f2f52 80%);
+}
+.layer_shadows{height:100%;}
+/* 头部星空 */
+.layer_shadows > div{
+	width:100%;
+	height:100%;
+	background:url("../images/shadow.png")no-repeat center top;
+	background-size:cover;
+	position:absolute;
+}
+.shadow_1{left:0;animation:shadows_move 50s linear infinite;}
+.shadow_2{left:100%;animation:shadows_move 50s linear infinite;}
+
+/* 头部星星 */
+.layer_stars > div{
+	width:21px;
+	height:21px;
+	background:url("../images/star.png");
+	position:absolute;
+	background-size:contain;
+	animation:stars 1s infinite;
+}
+.star_1{left:20%;top:20%;}
+.star_2{left:55%;top:10%;}
+.star_3{left:80%;top:40%;}
+.star_4{left:25%;top:70%;}
+.star_5{left:65%;top:45%;}
+
+/* 头部流星 */
+.layer_meteors > div{width:128px;height:128px;
+	background:url("../images/meteor.png")no-repeat;position:absolute;}
+.meteor_1{left:500px;top:0;animation:meteors1 8s linear infinite;}
+.meteor_2{right:100px;top:0;animation:meteors2 5s linear infinite;}
+
+/* 头部山峰 */
+.layer_mountains > div{width:110%;height:100%;position:absolute;left:0;bottom:0;
+	margin-left:-5%;margin-bottom:-20px;background-size:100% 50%;}
+.mountain_3{background:url("../images/mountain3.png")no-repeat center bottom;}
+.mountain_2{background:url("../images/mountain2.png")no-repeat center bottom;}
+.mountain_1{background:url("../images/mountain1.png")no-repeat center bottom;}
+
+/* 头部头像 */
+.layer_photo{width:100%;height:100%;
+	background:url("../images/header_logo.png")no-repeat center;
+	position:absolute;top:0;left:0;}
+.pic{width:180px;height:180px;border:5px solid #ccc;position:absolute;left:0;top:0;
+	right:0;bottom:0;margin:auto;border-radius:50%;box-shadow:0px 0px 10px #000;
+	background:url("../images/myself.png")no-repeat left top;}
+.info{width:50%;height:35%;position:absolute;
+	bottom:0px;left:50%;transform:translateX(-50%);text-align:center;
+	text-shadow:5px 5px 5px #000;}
+.info h3{font-size:3em;}
+.info h1{font-size:4em;font-weight:300;}
+.info h1 span{font-weight:700;}
+.info p{font-size:24px;}
+
+/* 天气 */
+.layer_weather{width:225px;height:90px;position:absolute;
+	right:20px;top:90px;}
+
+/* About */
+#About{
+	background:#2f2f51 url("../images/intro_star.png")no-repeat center;
+	padding: 50px 0px;
+}
+.container.border_container{
+	border:1px solid #eee;margin:0 auto;
+	box-shadow:0 0 5px #000;
+	padding: 0;
+}
+.section_title{
+	background:url("../images/dott.png");
+	text-align:center;
+	position: relative;
+	}
+.line{
+	background: url("../images/subheader_line.png") no-repeat center;
+	background-size: 85% 8px;
+	background-position-y: 50%;
+}
+.section_title .title{
+	width:250px;
+	margin:0px auto;
+	padding-top:10px;
+	background:#2f2f51 url("../images/dott.png");
+}
+.section_title .title h2{
+	font-size:40px;
+	font-weight:700;
+}
+.view_more a{color:#ccc;font-size:20px;line-height:50px;}
+.section_content.about_content{padding-top:20px;}
+.section_content.about_content p{color:#ccc;}
+
+/* projects */
+#projects{
+	background:#252545;
+	padding: 50px 0px;
+}
+#projects .section_title .title{
+	background:#252545 url("../images/dott.png");
+}
+.section_content .row{
+	margin: 0px;
+}
+.project_list{
+	height: 220px;
+	border:5px solid #fff;
+	margin:10px 20px;
+	position:relative;
+	overflow:hidden;
+}
+.project_list a{height:100%;display:block;color:#fff;}
+.project_list a img{width:100%;height:100%;transition:all 0.5s linear;}
+
+.img_shadow{width:100%;height:100%;
+	background:rgba(0,0,0,0.7);padding:20px 45px;overflow:hidden;opacity:0;
+	position:absolute;left:0;top:0;box-sizing:border-box;transition:all 0.3s linear;}
+.img_shadow h3{font-size:2em;padding:15px 0;position:relative;opacity:0;
+	transition:all 0.5s;}
+.img_shadow h3 span{margin-left:5px;}
+.img_shadow h3:after{width:100%;height:2px;background:#fff;position:absolute;
+	left:0;bottom:0;content:'';transform:translateX(-100%);transition:all 0.35s;}
+.img_shadow p{letter-spacing:2px;padding-top:10px;line-height:20px;
+	transform:translateX(100%);opacity:0;transition:all 0.35s;}
+
+.project_list:hover img{transform:scale(1.2);}
+.project_list:hover .img_shadow{opacity:1;}
+.project_list:hover .img_shadow h3{opacity:1;}
+.project_list:hover .img_shadow h3:after{opacity:1;transform:translateX(0);}
+.project_list:hover .img_shadow p{opacity:1;transform:translateX(0);}
+
+/* skills */
+#Skills{
+	background:url("../images/skills_bg.jpg")no-repeat center;
+	background-size:cover;
+	padding: 50px 0px;
+}
+#Skills .section_title .title{
+	background:#1a1533 url("../images/dott.png");
+}
+#Skills .section_content{
+	padding: 30px 0px 10px;
+}
+#Skills .section_content .row div.circles-text{
+	font-size: 65px !important;
+}
+#Skills .section_content h3{
+	margin: 20px 0px;
+}
+
+/*Contact部分*/
+#Contact{
+	padding-top:50px;
+	padding-bottom: 20px;
+	background:#252545;
+	color:#eee;
+}
+#Contact p a{color:#eee;padding:0px 35px;position:relative;}
+#Contact p a.weixin img{position:absolute;top:-115px;left:80px;display:none;}
+#Contact p a.weixin:hover img{display:block;}
+#Contact p.teh{line-height:50px;}
+#Contact p span{padding:0px 20px;}
+#Contact p span i.fa-mobile-phone{font-size: 18px;}
+
+/*Footer部分*/
+#Footer{
+	background:#1A1A36;
+}
+.copyright{line-height:35px;background:#1A1A36;font-size:12px;}
+.copyright span{margin:0px 5px;}
+
+/* Top */
+.top{
+	width:30px;
+	height:30px;
+	display:none;
+	position:fixed;
+	bottom:50px;
+	right:30px;
+	text-align:center;
+	line-height:30px;
+	cursor:pointer;
+}
+.top i{text-shadow:0 5px 5px #fff;animation:top 2s linear infinite;}
+@keyframes top{
+	0%{transform:translateY(5px);}
+	100%{transform:translateY(0px);}
+}

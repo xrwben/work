@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>八音盒</title>
+  <style>
+	*{margin:0;padding:0;}
+	body{background:url(images/bj.jpg);}
+	.box{width:310px;
+		height:310px;
+		margin:320px auto 0;
+		perspective:1000px;/*视距*/
+		}
+	.scene{transform-style:preserve-3D;
+		width:250px;
+		height:250px;
+		-moz-animation:slide 15s linear infinite;
+		}
+	.scene ul li{list-style:none;
+		width:240px;
+		height:240px;
+		border:5px solid #ff99ff;
+		position:absolute;
+		}
+	.scene li:nth-child(1){transform:rotateY(0deg)translateZ(210px);}
+	.scene li:nth-child(2){transform:rotateY(60deg)translateZ(210px);}
+	.scene li:nth-child(3){transform:rotateY(120deg)translateZ(210px);}
+	.scene li:nth-child(4){transform:rotateY(180deg)translateZ(210px);}
+	.scene li:nth-child(5){transform:rotateY(240deg)translateZ(210px);}
+	.scene li:nth-child(6){transform:rotateY(300deg)translateZ(210px);}
+	/*css3动画*/
+	@-moz-keyframes slide{
+		from{transform:rotateY(0deg);}
+		to{transform:rotateY(360deg);}
+	}
+	.xin{position:absolute;
+		-moz-animation:xin 10s linear infinite;
+		}
+	@-moz-keyframes xin{
+		0%{bottom:10%;left:2%;opacity:1;}
+		20%{bottom:50%;left:12%;opacity:0;}
+		40%{bottom:80%;left:33%;opacity:1;}
+		60%{bottom:50%;left:53%;opacity:0;}
+		80%{bottom:20%;left:70%;opacity:1;}
+		100%{bottom:-10%;left:60%;opacity:0;}
+	}
+  </style>
+ </head>
+ <body>
+	<div class="xin">
+		<img src="images/xin.png"/>
+	</div>
+	<div class="box">
+		<div class="scene">
+			<ul>
+				<li><img src="images/1.jpg"width="240"height="240"/></li>
+				<li><img src="images/2.jpg"width="240"height="240"/></li>
+				<li><img src="images/3.jpg"width="240"height="240"/></li>
+				<li><img src="images/4.jpg"width="240"height="240"/></li>
+				<li><img src="images/5.jpg"width="240"height="240"/></li>
+				<li><img src="images/6.jpg"width="240"height="240"/></li>
+			</ul>
+		</div>
+		<!--添加歌曲-->
+		<audio src="images/king.mp3" autoplay loop>
+	</div>
+ </body>
+</html>

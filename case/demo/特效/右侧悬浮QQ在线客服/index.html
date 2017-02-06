@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>右侧QQ悬浮</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	html,body{
+		width:100%;
+		height:100%;
+		background:url("images/body_bg.jpg")no-repeat;
+		background-size:cover;
+		}
+	#QQ{width:158px;position:fixed;top:100px;right:0px;}
+	.qq_show{position:relative;}
+	.qq_show img{display:block;}
+	.con{width:100%;background:url("images/bg.jpg");}
+	.con img.ewm{margin:0px auto;padding-top:10px;}
+	.con p{border-bottom:1px solid #fff;margin-top:10px;
+		line-height:35px;text-align:center;}
+	.con p img.qqzx{display:inline-block;}
+	.con p a{text-decoration:none;color:#fff;font-family:"微软雅黑";}
+	.yc{position:absolute;top:0;left:158px;}
+  </style>
+ </head>
+ <body>
+	<div id="QQ">
+		<div class="qq_show">
+			<img src="images/top.png" />
+			<div class="con">
+				<img class="ewm"src="images/ewm.jpg"width="105"height="105"/>
+				<p>
+					<a href="http://wpa.qq.com/msgrd?v=3&uin=452703235&site=qq&menu=yes" target="_blank">
+						<img class="qqzx"src="images/qq.jpg"align='absmiddle'/>
+						&nbsp;QQ咨询
+					</a>
+				</p>
+			</div>
+			<img class="close"src="images/bot.png" />
+		</div>
+		<img class="yc" src="images/small.png"/>
+	</div>
+	
+	<script src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(".close").click(function(){
+			$(".qq_show").animate({"right":"-158px"},500,function(){
+				$(".yc").animate({"left":"125px"},500);
+			});
+		});
+		$(".yc").click(function(){
+			$(".yc").animate({left:"158px"},500,function(){
+				$(".qq_show").animate({right:"0px"},500);
+			});
+		});
+	</script>
+ </body>
+</html>

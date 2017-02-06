@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>抽屉式效果 - LB</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:url("images/bg.jpg") no-repeat;background-size:100%;}
+	h1{text-align:center;color:#0066ff;}
+	.Nav{width:1194px;height:407px;margin:50px auto;overflow:hidden;}
+	.Nav ul{width:2000px;height:100%;}
+	.Nav ul li{list-style:none;width:107px;height:405px;float:left;
+			border:1px solid #fff;overflow:hidden;position:relative;
+			}
+	.Nav ul li.hover{width:538px;}
+	.Nav ul li.hover p.gray{opacity:0;}
+	.Nav ul li p{width:100%;height:405px;background:rgba(0,0,0,0.7);
+			position:absolute;left:0;top:0;}
+  </style>
+ </head>
+ <body>
+	<h1>仿瑞丽女性网抽屉式效果</h1>
+	<div class="Nav">
+		<ul>
+			<li class="hover">
+				<img src="images/1.jpg"width="538"height="405"/>
+				<p class="gray"></p>
+			</li>
+			<li>
+				<img src="images/2.jpg"width="538"height="405"/>
+				<p></p>
+			</li>
+			<li>
+				<img src="images/3.jpg"width="538"height="405"/>
+				<p></p>
+			</li>
+			<li>
+				<img src="images/4.jpg"width="538"height="405"/>
+				<p></p>
+			</li>
+			<li>
+				<img src="images/5.jpg"width="538"height="405"/>
+				<p></p>
+			</li>
+			<li>
+				<img src="images/6.jpg"width="538"height="405"/>
+				<p></p>
+			</li>
+			<li>
+				<img src="images/7.jpg"width="538"height="405"/>
+				<p></p>
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(".Nav ul li").hover(function(){
+			$(this).stop(true).animate({width:"538px"},300).siblings().stop(true).animate({width:"107px"},300);
+			$(this).find("p").css("opacity","0");
+			$(this).siblings().find("p").css("opacity","0.8");
+		});
+	</script>
+
+ </body>
+</html>

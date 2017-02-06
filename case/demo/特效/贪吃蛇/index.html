@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>贪吃蛇</title>
+  <style type="text/css">
+	body{margin:0;padding:0;}
+  </style>
+ </head>
+ <body>
+	<script type="text/javascript">
+		//绘制界面
+		function Map(){
+			var w = 800;
+			var h = 400;
+			this.showmap = function(){
+				var boundary = document.createElement("div");
+				boundary.style.width = w + 'px';
+				boundary.style.height = h + 'px';
+				boundary.style.backgroundColor = "lightblue";
+				boundary.style.backgroundImage = "url(./bg.jpg)";
+				document.body.appendChild(boundary);
+			}
+		}
+		//绘制食物
+		function Food(){
+			var len = 20;
+			this.foodX = 0;
+			this.foodY = 0;
+			this.foods = null;
+			this.showfood = function(){
+				if(this.foods == null){
+					this.foods = document.createElement("div");
+					this.foods.style.width = len + 'px';
+					this.foods.style.height = len + 'px';
+					this.foods.style.backgroundColor = "green";
+					this.foods.style.position = "absolute";
+					document.body.appendChild(this.foods);
+				}
+				this.foodX = Math.floor(Math.random()*40);
+				this.foodY = Math.floor(Math.random()*20);
+				this.foods.style.left = this.foodX*len + "px";
+				this.foods.style.top = this.foodY*len + "px";
+			} 
+		}
+		//绘制蛇
+		function Snake(){
+			var len = 20;
+			this.redirect = "right";
+			this.snakeArr = [[0,1,"green",null],[1,1,"green",null],[2,1,"green",null],[3,1,"red",null]];
+			//初始化蛇
+			this.showsnake = function(){
+				for(var i=0;i<this.snakeArr.length;i++){
+					if(this.snakeArr[i][3] == null){
+						this.snakeArr[i][3] = document.createElement("div");
+						this.snakeArr[i][3].style.width = len + "px";
+						this.snakeArr[i][3].style.height = len + "px";
+						this.snakeArr[i][3].style.backgroundColor = this.snakeArr[i][2];
+						this.snakeArr[i][3].style.position = "absolute";
+						document.body.appendChild(this.snakeArr[i][3]);
+					}
+					this.snakeArr[i][3].style.left = this.snakeArr[i][0]*len + "px";
+					this.snakeArr[i][3].style.top = this.snakeArr[i][1]*len + "px";
+				}
+			}
+			//小蛇移动
+			this.movesnake = function(){
+				for(var j=0;j<this.snakeArr.length-1;j++){
+					this.snakeArr[j][0] = this.snakeArr[j+1][0];
+					this.snakeArr[j][1] = this.snakeArr[j+1][1];
+				}
+				//蛇头
+				if(this.redirect == "right"){
+					this.snakeArr[this.snakeArr.length-1][0] += 1;
+				}
+				if(this.redirect == "left"){
+					this.snakeArr[this.snakeArr.length-1][0] -= 1;
+				}
+				if(this.redirect == "down"){
+					this.snakeArr[this.snakeArr.length-1][1] += 1;
+				}
+				if(this.redirect == "up"){
+					this.snakeArr[this.snakeArr.length-1][1] -= 1;
+				}
+				/*switch(redirect){
+					case "right":
+						this.snakeArr[this.snakeArr.length-1][0] += 1;
+						break;
+					case "left":
+						this.snakeArr[this.snakeArr.length-1][0] -= 1;
+						break;
+					case "down":
+						this.snakeArr[this.snakeArr.length-1][1] += 1;
+						break;
+					case "up":
+						this.snakeArr[this.snakeArr.length-1][1] -= 1;
+						break;
+				} */
+
+				//小蛇吃食物
+				var snakeX = this.snakeArr[this.snakeArr.length-1][0];
+				var snakeY = this.snakeArr[this.snakeArr.length-1][1];
+				if(snakeX == food.foodX && snakeY == food.foodY){
+					var newjie = [this.snakeArr[0][0],this.snakeArr[0][0],"green",null];
+					this.snakeArr.unshift(newjie);
+					food.showfood();
+				}
+				//控制小蛇移动范围
+				if(snakeX<0 || snakeX>39 || snakeY<0 || snakeY>19){
+					alert("Game Over !!");
+					clearInterval(timer);
+					return false;
+				}
+				//小蛇不能迟到自己
+				for(var i=0;i<this.snakeArr.length-1;i++){
+					if(snakeX == this.snakeArr[i][0] && snakeY == this.snakeArr[i][1]){
+						alert("Game Over !!");
+						clearInterval(timer);
+						return false;
+					}
+				}
+
+				//重新绘制小蛇
+				this.showsnake();
+			}
+		}
+		window.onload = function(){
+			var map = new Map();
+			map.showmap();
+
+			food = new Food();
+			food.showfood();
+
+			snake = new Snake();
+			snake.showsnake();
+			snake.movesnake();
+			timer = setInterval("snake.movesnake()",200);
+			
+			//控制蛇头的方向
+			document.onkeydown = function(ev){
+				var num = ev.keyCode;
+				if(num == 37){
+					snake.redirect = "left";
+				}
+				if(num == 38){
+					snake.redirect = "up";
+				}
+				if(num == 39){
+					snake.redirect = "right";
+				}
+				if(num == 40){
+					snake.redirect = "down";
+				}
+			}
+		}
+	</script>
+ </body>
+</html>

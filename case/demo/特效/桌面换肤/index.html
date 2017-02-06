@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>换肤系统</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:url("images/16.jpg");background-size:100%;}
+	.button{width:50px;height:50px;position:fixed;top:0;right:0px;
+			background:url(images/upseek.png);z-index:3;}
+	.button:hover{background-position:bottom;}
+	.Top{width:100%;height:120px;background:rgba(0,0,0,0.5);position:fixed;
+			box-shadow:0 0 10px #cc9999;}
+	.Top .box{width:840px;height:100px;margin:0 auto;
+			padding:10px 0px;overflow:hidden;position:relative;}
+	.Top .box ul{width:300%;position:absolute;}
+	.Top .box ul li{list-style:none;float:left;margin:10px;}
+	.Top .box ul li img{width:138px;height:75px;display:block;
+			border:5px solid #fff;cursor:pointer;}
+	.Top span{width:20px;height:50px;border:1px solid #fff;color:#fff;
+			font-size:30px;line-height:50px;
+			box-shadow:0 0 15px #fff;cursor:pointer;}
+	.Top .left_button{position:absolute;top:35px;left:230px;}
+	.Top .right_button{position:absolute;top:35px;right:230px;}
+  </style>
+ </head>
+ <body>
+	<a href="#" class="button"></a>
+	<div class="Top">
+		<div class="box">
+			<ul>
+				<li><img src="images/1-1.jpg"/></li>
+				<li><img src="images/2-2.jpg"/></li>
+				<li><img src="images/3-3.jpg"/></li>
+				<li><img src="images/4-4.jpg"/></li>
+				<li><img src="images/5-5.jpg"/></li>
+				<li><img src="images/6-6.jpg"/></li>
+				<li><img src="images/7-7.jpg"/></li>
+				<li><img src="images/8-8.jpg"/></li>
+				<li><img src="images/9-9.jpg"/></li>
+				<li><img src="images/10-10.jpg"/></li>
+				<li><img src="images/11-11.jpg"/></li>
+				<li><img src="images/12-12.jpg"/></li>
+				<li><img src="images/13-13.jpg"/></li>
+				<li><img src="images/14-14.jpg"/></li>
+				<li><img src="images/16-16.jpg"/></li>
+			</ul>
+		</div>
+		<span href="#"class="left_button">&lt;</span>
+		<span href="#"class="right_button">&gt;</span>
+	</div>
+
+	<script type="text/javascript"src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//点击顶部照片弹出
+			$(".button").click(function(){
+				$(".Top").slideToggle("slow");
+			});
+
+			//点击左边按钮左移动画
+			var i=0;      //定义一个变量控制移动
+			$(".left_button").click(function(){
+				i++;
+				if(i>=2)
+				{
+					i=2;
+				}
+				$(".Top .box ul").animate({left:"-"+i*840+"px"},1000);
+			});
+
+			//点击右边按钮
+			$(".right_button").click(function(){
+				i--;
+				if(i<=0)
+				{
+					i=0
+				}
+				$(".Top .box ul").animate({left:"-"+i*840+"px"},1000);
+			});
+
+			//点击换肤
+			$(".Top .box ul li").click(function(){
+				var _src=$(this).find("img").attr("src");
+				var _replace=_src.replace(/-\d*/,"");
+				/*
+					1、"//"表示要替换的字符
+					2、- 是要替换掉的
+					3、\d表示匹配的是数字
+					4、*表示重复0次或多次
+				*/
+				$("body").css({"background":"url("+_replace+")","background-size":"100%"});
+			});
+
+		})
+	</script>
+ </body>
+</html>

@@ -1,0 +1,96 @@
+body{
+	width:100%;
+	height:100%;
+	background:#1e243a;
+	color:#ddd;
+}
+
+#Re_Header{
+	width: 100%;
+	height: 400px;
+	background:url("../images/resume_bg.jpg")no-repeat;
+	background-size:cover;
+	position:relative;
+}
+.jumbotron{
+	height:100%;
+	background:rgba(30,36,58,0.4);
+	text-align:center;
+}
+.header_text{width:100%;color:#c9cdd6;letter-spacing:2px;position:absolute;top:120px;}
+.header_text h3{font-size:40px;}
+.header_text span{font-size:70px;font-weight:700;}
+.header_pic{width:180px;height:180px;border:10px solid #1e243a;border-radius:50%;
+	position:absolute;left:50%;bottom:-90px;margin-left:-90px;
+	background:url("../images/myself1.jpg")no-repeat left top;}
+
+#Re_Main .container{
+	border:1px solid #fff;
+	margin:90px auto 35px;
+	padding:10px;
+}
+.section_first{padding-bottom:50px;}
+.section{text-indent:10px;}
+.section h5{color:#3af9d8;font-weight:700;background:url("../images/dott.png");
+	border-radius:10px;font-size:20px;line-height:35px;padding:5px 0px;}
+.section p a{color:#fff;}
+.section p a:hover{color:#3af9d8;}
+
+.section_second {height:100%;}
+.section_second .main{
+	padding-top:35px;
+}
+.section_second .main > .section > h5 {
+		display: none;
+	}
+.work_items{padding:10px;}
+.item_title h3{float:left;display:inline-block;font-size:20px;font-weight:700;
+	color:#999900;}
+.item_title span{float:right;display:inline-block;}
+.work_items p{line-height:25px;}
+.work_items a{border:1px solid #eee;padding:3px 5px;display:inline-block;
+	border-radius:5px;color:#fff;}
+.work_items a:hover{color:#3af9d8;}
+
+
+.section_second .sider{
+	height:600px;
+	position:relative;
+}
+.sider_line{
+	width:10px;
+	height:100%;
+	background:url("../images/work_item_line.png");
+}
+.sider .section h5{
+	width:140px;
+	border:3px solid #3af9d8;
+	font-size:40px;
+	text-align:center;
+	line-height:48px;
+	text-indent:0;
+	padding:20px;
+	position:absolute;
+	left:50px;
+	top:40px;
+}
+.section h6{
+	font-size:16px;
+	font-weight:700;
+}
+
+.section_third .section p{
+	text-indent: 25px;
+}
+
+@media screen and (max-width: 768px) {
+	.section_second .main > .section > h5 {
+		display: block;
+	}
+	.section_first{
+		padding-bottom:0px;
+	}
+	.sider{
+		display: none;
+	}
+}

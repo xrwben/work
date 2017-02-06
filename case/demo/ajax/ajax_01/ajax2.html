@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>ajax</title>
+  <style type="text/css">
+	
+  </style>
+ </head>
+ <body>
+	<p id="p"></p>
+	<input type="submit" id="btn">
+	<script type="text/javascript">
+		window.onload = function(){
+	
+			var obtn = document.getElementById("btn");
+			var op = document.getElementById("p");
+			obtn.onclick = function(){
+				
+				var xhr;
+				if(window.XMLHttpRequest){
+					xhr = new XMLHttpRequest();
+				}else{
+					xhr = new ActiveXObject("Microsofr.XMLHTTP");
+				}
+	
+				xhr.open("get","teacher.php",true);
+				xhr.send();
+	
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState == 4 && xhr.status == 200){
+						var t = eval(xhr.responseText);
+						var pHTML = "";
+						for(var i=0;i<t.length;i++){
+							pHTML+="姓名："+t[i].name+"；年龄："+t[i].age+"<br />";
+							op.innerHTML=pHTML;
+						}
+					}
+				};
+			};
+			
+		}
+	</script>
+ </body>
+</html>

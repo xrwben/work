@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>水平翻转 - LB</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	.Box{
+		width:1160px;
+		height:560px;
+		margin:20px auto;
+		}
+	.Box ul li{
+		list-style:none;
+		float:left;
+		width:260px;
+		height:260px;
+		border:3px solid blue;
+		box-shadow:0 0 10px #000;
+		margin:5px;
+		position:relative;
+		perspective:500px;/*元素和视图的距离*/
+		transform-style:preserve-3d;
+		}
+	.Box ul li img{
+		width:260px;
+		height:260px;
+		position:absolute;
+		left:0;
+		top:0;
+		transform-origin:0;
+		backface-visibility:hidden;/*隐藏旋转了的内容*/
+		transition:all 0.8s linear;
+		}
+	.Box ul li div.text{
+		width:260px;
+		height:260px;
+		background:rgba(0,0,0,0.5);
+		position:absolute;
+		left:0px;
+		top:0;
+		transform-origin:0;
+		-moz-transform:rotateY(180deg);
+		backface-visibility:hidden;/*隐藏旋转了的内容*/
+		transition:all 0.8s linear;
+		}
+	
+	.Box ul li .text p{
+		color:#fff;
+		font-size:24px;
+		text-align:center;
+		font-weight:bold;
+		line-height:50px;
+		margin-top:80px;
+		} 
+	.Box ul li:hover img{-moz-transform:rotateY(180deg);}
+	.Box ul li:hover div.text{-moz-transform:rotateY(360deg);}
+  </style>
+ </head>
+ <body>
+	<div class="Box">
+		<ul>
+			<li>
+				<img class="pix_fz"src="images/2.jpg"/>
+				<div class="text">
+					<p>
+						你很优秀<br/>
+						但我也不差
+					</p>
+				</div>
+			</li>
+			<li>
+				<img class="pix_fz"src="images/3.jpg"/>
+				<div class="text">
+					<p>
+						你很优秀<br/>
+						但我也不差
+					</p>
+				</div>
+			</li>
+			<li>
+				<img class="pix_fz"src="images/4.jpg"/>
+				<div class="text">
+					<p>
+						你很优秀<br/>
+						但我也不差
+					</p>
+				</div>
+			</li>
+			<li>
+				<img class="pix_fz"src="images/5.jpg"/>
+				<div class="text">
+					<p>
+						你很优秀<br/>
+						但我也不差
+					</p>
+				</div>
+			</li>
+			<li>
+				<img class="pix_fz"src="images/6.jpg"/>
+				<div class="text">
+					<p>
+						你很优秀<br/>
+						但我也不差
+					</p>
+				</div>
+			</li>
+			<li>
+				<img class="pix_fz"src="images/7.jpg"/>
+				<div class="text">
+					<p>
+						你很优秀<br/>
+						但我也不差
+					</p>
+				</div>
+			</li>
+			<li>
+				<img class="pix_fz"src="images/8.jpg"/>
+				<div class="text">
+					<p>
+						你很优秀<br/>
+						但我也不差
+					</p>
+				</div>
+			</li>
+			<li>
+				<img class="pix_fz"src="images/9.jpg"/>
+				<div class="text">
+					<p>
+						你很优秀<br/>
+						但我也不差
+					</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+ </body>
+</html>

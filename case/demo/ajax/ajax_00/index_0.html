@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+	
+  </style>
+ </head>
+ <body>
+	<script type="text/javascript">
+		var xhr = new XMLHttpRequest();
+		xhr.open("get","test.txt",true);
+		xhr.send(null);
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4){
+				if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+					alert(xhr.responseText);
+				}else{
+					alert("不好意思，出错啦！");
+				}
+			}
+		}
+	</script>
+ </body>
+</html>

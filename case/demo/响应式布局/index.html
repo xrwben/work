@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>响应式布局</title>
+  <style type="text/css">
+	*{margin:0;padding:0;margin:0 auto;}
+	body{text-align:center;color:#fff;}
+	#clearboth:after{clear:both;line-height:0;font-size:0;}
+	
+	/* 公共样式结束 */
+	#header,#footer{height:100px;background:#333;margin-top:10px;}
+	.left,.center,.right{background:#333;}
+	/* 公共样式结束 */
+	/* 手机开始 */
+	@media screen and (max-width:600px){
+		#header,#wrapper,#footer{width:400px;}
+		#wrapper{height:420px;}
+		.left,.center,.right{margin-top:10px;}
+		.left,.right{height:100px;}
+		.center{height:200px;}
+	}
+	/* 平板开始 */
+	@media screen and (min-width:600px) and (max-width:960px){
+		#header,#wrapper,#footer{width:600px;}
+		#wrapper{height:400px;margin-top:10px;}
+		.left,.center{height:400px;float:left;}
+		.left{width:200px;margin-right:10px;}
+		.center{width:390px;}
+		.right{display:none;}
+	}
+	/* PC开始 */
+	@media screen and (min-width:960px){
+		#header,#wrapper,#footer{width:960px;}
+		#wrapper{height:400px;margin-top:10px;}
+		.left,.center,.right{height:400px;float:left;}
+		.left,.center{margin-right:10px;}
+		.left,.right{width:200px;}
+		.center{width:540px;}
+	}
+  </style>
+ </head>
+ <body>
+	<div id="header">Header</div>
+	<div id="wrapper">
+		<div class="left">Left</div>
+		<div class="center">Center</div>
+		<div class="right">Right</div>
+	</div>
+	<div id="footer">Footer</div>
+ </body>
+</html>

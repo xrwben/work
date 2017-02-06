@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>ajax向服务器发送数据</title>
+  <style type="text/css">
+	
+  </style>
+ </head>
+ <body>
+	<input type="submit" id="btn">
+	<script type="text/javascript">
+		window.onload = function(){
+	
+			var obtn = document.getElementById("btn");
+			obtn.onclick = function(){
+				
+				var xhr;
+				if(window.XMLHttpRequest){
+					xhr = new XMLHttpRequest();
+				}else{
+					xhr = new ActiveXObject("Microsofr.XMLHTTP");
+				}
+	
+				xhr.open("get","get.php?user=黎奔&pwd=123456&"+Math.random(),true);
+				xhr.send();
+	
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState == 4 && xhr.status == 200){
+						alert(xhr.responseText);
+					}
+				}
+			}
+			
+		}
+	</script>
+ </body>
+</html>

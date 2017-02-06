@@ -1,0 +1,54 @@
+@media screen and (max-width: 767px){
+	#navbarContent{
+		background: rgba(0,0,0,0.3);
+	}
+	#HeaderNav .navbar-toggle{
+		border-radius: 0px;
+	}
+	#HeaderNav .navbar-toggle .icon-bar{
+		background: #FFFFFF;
+	}
+	#HeaderNav .navbar-toggle:focus{
+		background: transparent;
+	}
+	#HeaderNav .navbar-toggle:hover{
+		background: rgba(0,0,0,0.5);
+	}
+	#navbarContent ul li:hover{
+		background: rgba(0,0,0,0.5);
+	}
+	#navbarContent ul li:hover a{
+		transform: translateX(30px);
+		text-shadow:3px 3px 5px #fff;
+	}
+	#Home{
+		height: 70%;
+	}
+	.info{
+		width:80%;
+		padding-top: 35px;
+	}
+	.info h3{
+		font-size:2em;
+	}
+	.info h1{
+		font-size:2em;
+	}
+	.line{
+		background-size: 100% 8px;
+	}
+}
+@media screen and (max-width: 414px){
+	#Contact p a{
+		padding: 0px 20px;
+	}
+	#Contact p span{
+		display: block;
+	}
+}
+@media screen and (max-width: 320px){
+	#Footer .copyright span:last-child{
+		display: block;
+		margin-top: -15px;
+	}
+}

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>导航切换效果</title>
+  <style>
+	*{margin:0;padding:0;}
+	.con{width:780px;
+		height:365px;
+		border:1px solid blue;
+		margin:100px auto 0;
+		}
+	.pic{width:100%;
+		height:270px;
+		overflow:hidden;
+		}
+	.nav{width:100%;
+		height:95px;
+		}
+	.nav ul li{list-style:none;
+		width:260px;
+		height:95px;
+		background:#1a1a1a;
+		float:left;
+		text-align:center;
+		line-height:85px;
+		color:#fff;
+		font-family:"微软雅黑";
+		}
+	.nav ul li p{margin-top:-65px;
+		font-size:14px;
+		}
+	.nav ul li.one{background:#ec3642;}
+  </style>
+ </head>
+ <body>
+	<div class="con">
+		<div class="pic">
+			<div id="one">
+				<img src="images/2.jpg"width="780"height="270"/>
+			</div>
+			<div id="one">
+				<img src="images/3.jpg"width="780"height="270"/>
+			</div>
+			<div id="one">
+				<img src="images/5.jpg"width="780"height="270"/>
+			</div>
+		</div>
+		<div class="nav">
+			<ul>
+				<li class="one">
+					<h3>网页制作零基础课</h3>
+					<p>晚上8点半开始上课</p>
+				</li>
+				<li>
+					<h3>网页制作项目实战</h3>
+					<p>晚上8点半开始上课</p>
+				</li>
+				<li>
+					<h3>网页制作js零基础课</h3>
+					<p>晚上8点半开始上课</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+ </body>
+	<script type="text/javascript"src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		$(".nav ul li").click(function(){
+			var _index=$(this).index();
+			$(this).addClass("one").siblings().removeClass("one");
+			$(".con .pic #one").eq(_index).show().siblings().hide();
+		})
+	</script>
+</html>

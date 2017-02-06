@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>音乐播放器</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:url(images/bg.jpg)center;}
+	.box{width:536px;
+		height:524px;
+		margin:50px auto 0;
+		background:url(images/yybw.png);
+		position:relative;
+		}
+	.box img{position:absolute;
+		left:11%;
+		top:12%;
+		}
+	#yyjd{width:415px;
+		height:415px;
+		position:absolute;
+		left:60px;
+		top:60px;
+		background:url(images/bsy.png);
+		}
+	#yyjd img{position:absolute;
+		left:0;
+		top:0;
+		}
+	#yyjd.zq{-moz-animation:zq 20s infinite linear;}/*速度 循环*/
+		@-moz-keyframes zq{
+			from{-moz-transform:rotate(0deg);}
+			to{-moz-transform:rotate(360deg);}
+		}
+	.con{width:415px;
+		height:415px;
+		position:absolute;
+		left:60px;
+		top:60px;
+		}
+	.con p#name{color:#fff;
+		text-align:center;
+		font-family:"微软雅黑";
+		margin-top:50px;
+		}
+	.con p#music{color:#33cc99;
+		text-align:center;
+		font-size:25px;
+		font-family:"微软雅黑";
+		}
+	#people{width:120px;
+		height:120px;
+		border-radius:50%;
+		left:150px;
+		top:150px;
+		}
+	#people.zqq{-moz-animation:zqq 10s infinite linear;}/*速度 循环*/
+		@-moz-keyframes zqq{
+			from{-moz-transform:rotate(0deg);}
+			to{-moz-transform:rotate(360deg);}
+		}
+	#play{width:55px;
+		height:55px;
+		left:183px;
+		top:183px;
+		}
+	.button{width:100px;
+		height:50px;
+		margin:200px auto 0;
+		}
+	.button .good{display:block;
+		width:30px;
+		height:30px;
+		background:url(images/ht.png)no-repeat center;
+		float:left;
+		}
+	.button p{display:block;
+		color:#fff;
+		font-size:12px;
+		text-decoration:none;
+		margin-top:30px;
+		text-align:center;
+		}
+	.button .next{display:block;
+		width:30px;
+		height:30px;
+		background:url(images/next.png)no-repeat center;
+		float:right;
+		cursor:pointer;
+		}
+  </style>
+ </head>
+ <body>
+	<div class="box">
+		<img id="zsy"src="images/zsy.png"/>
+		<div id="yyjd">
+			<img src="images/yyjd.png"/>
+		</div>
+		<div class="con">
+			<p id="name">刘德华</p>
+			<p id="music">爱你一万年</p>
+			<img id="people"src="images/0.jpg"/>
+			<img id="play"src="images/play.png"/>
+			<div class="button">
+				<a class="good"href="#">
+					<p>好听</p>
+				</a>
+				<span class="next"href="">
+					<p>切歌</p>
+				</span>
+			</div>
+		</div>
+	</div>
+	<audio src="mp3/爱你一万年.mp3"></audio>
+	<script type="text/javascript"src="js/jquery.js"></script>
+	<script type="text/javascript">
+		var mark=1;//暂停、播放(全局函数，必须放在外面)
+		var i=0;//存放数组坐标
+		var mz = new Array();
+			mz[0]="刘德华";
+			mz[1]="张学友";
+			mz[2]="邓紫棋";
+			mz[3]="Beyond";
+			mz[4]="陈奕迅";
+			mz[5]="谭咏麟";
+			mz[6]="周华健";
+			mz[7]="庄心妍";
+		var gm = new Array();
+			gm[0]="爱你一万年";
+			gm[1]="想和你去吹吹风";
+			gm[2]="你把我灌醉";
+			gm[3]="海阔天空";
+			gm[4]="因为爱情";
+			gm[5]="讲不出再见";
+			gm[6]="让我欢喜让我忧";
+			gm[7]="给你机会诚实";
+		$("#play").click(function(){	
+			if(mark==1){
+				$("#play").attr("src","images/pause.png");
+				$("#yyjd").addClass("zq");
+				$("#people").addClass("zqq");
+				$("audio").get(0).play();
+				mark=0;
+			}
+			else{
+				$("#play").attr("src","images/play.png");
+				$("#yyjd").removeClass("zq");
+				$("#people").removeClass("zqq");
+				$("audio").get(0).pause();
+				mark=1;
+			}	
+		});
+		$(".next").click(function(){
+			i++;
+			if(i>7)
+				i=0;
+			$("#name").text(mz[i]);
+			$("#music").text(gm[i]);
+			$("#people").attr("src",'images/'+i+'.jpg');
+			$("#yyjd").addClass("zq");
+			$("#people").addClass("zqq");
+			$("audio").attr("src",'mp3/'+gm[i]+'.mp3');
+			$("audio").get(0).play();
+			mark=0;
+		});
+	</script>
+ </body>
+</html>

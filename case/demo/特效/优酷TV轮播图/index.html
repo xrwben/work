@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>优酷TV电视剧首页轮播图</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	.con{width:1190px;height:310px;border:1px solid red;margin:20px auto 0;
+		position:relative;overflow:hidden;}
+	.pic_box{height:270px;position:relative;}
+	.pic_box ul li{width:0;height:0;list-style:none;position:absolute;
+		top:135px;left:595px;background:#000;}
+	.pic_box ul li img{width:100%;height:100%;opacity:0.5;}
+	.pic_box ul li.one{width:640px;height:270px;top:0px;
+		left:275px;z-index:5;}
+	.pic_box ul li.one img{opacity:1;}
+	.pic_box ul li.two{width:530px;height:224px;top:23px;
+		left:660px;z-index:4}
+	.pic_box ul li.three{width:530px;height:100px;top:85px;
+		left:1190px;z-index:3}
+	.pic_box ul li.eleven{width:530px;height:100px;top:85px;
+		left:-530px;z-index:3}
+	.pic_box ul li.twelve{width:530px;height:224px;top:23px;
+		left:0px;z-index:4;}
+
+	.button{width:45px;height:45px;position:absolute;top:50%;margin-top:-40px;
+		z-index:10;cursor:pointer;}
+	.prev{background:url("images/left.png")no-repeat;left:0;}
+	.next{background:url("images/right.png")no-repeat;right:0;}
+	.btn{width:100%;height:10px;text-align:center;padding-top:10px;}
+	.btn ul li{list-style:none;width:10px;height:10px;border-radius:50%;
+		background:#ccc;margin:0 5px;display:inline-block;vertical-align:top;
+		cursor:pointer;}
+	.btn ul li.on{background:#69aaec;}
+  </style>
+ </head>
+ <body>
+	<div class="con">
+		<div class="pic_box">
+			<ul>
+				<li class="one"><img src="images/1.jpg"/></li>
+				<li class="two"><img src="images/2.jpg"/></li>
+				<li class="three"><img src="images/3.jpg"/></li>
+				<li><img src="images/4.jpg"/></li>
+				<li><img src="images/5.jpg"/></li>
+				<li><img src="images/6.jpg"/></li>
+				<li><img src="images/7.jpg"/></li>
+				<li><img src="images/8.jpg"/></li>
+				<li><img src="images/9.jpg"/></li>
+				<li><img src="images/10.jpg"/></li>
+				<li class="eleven"><img src="images/11.jpg"/></li>
+				<li class="twelve"><img src="images/12.jpg"/></li>
+			</ul>
+		</div>
+		<div class="prev button"></div>
+		<div class="next button"></div>
+		<div class="btn">
+			<ul>
+				<li class="on"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var arrW=[],arrH=[],arrL=[],arrT=[],arrZ=[],arrO=[];
+			var _index = 0;
+			var nowTime = new Date();
+			var timer;
+			$(".next").click(function(){
+				if(new Date() - nowTime > 500){
+					move(1);
+					//alert(new Date()-nowTime);
+					nowTime = new Date();
+				}
+				
+			});
+			$(".prev").click(function(){
+				if(new Date() - nowTime > 500){
+					move(0);
+					//alert(new Date()-nowTime);
+					nowTime = new Date();
+				}
+			});
+
+			function move(direction){
+				$(".pic_box ul li").each(function(i){
+					arrW[i] = $(this).width();
+					arrH[i] = $(this).height();
+					arrL[i] = $(this).css("left");
+					arrT[i] = $(this).css("top");
+					arrZ[i] = $(this).css("z-index");
+					arrO[i] = $(this).find("img").css("opacity");
+				});
+				$(".pic_box ul li").each(function(i){
+					if(direction == 1){
+						_index = i-1;
+						if(_index<0){_index=11}
+					}
+					if(direction == 0){
+						_index = i+1;
+						_index = _index>11?0:_index;
+					}
+					
+					$(this).css({zIndex:arrZ[_index]}).animate({
+						width : arrW[_index],
+						height : arrH[_index],
+						left : arrL[_index],
+						top : arrT[_index]
+					},500);
+					$(this).find("img").animate({opacity:arrO[_index]},500);
+				});
+			}
+			
+			//自动播放
+			function autoplay(){
+				timer=setInterval(function(){
+					move(1);
+				},2000)
+			}
+			//鼠标划上去停止滚动
+			$(".con").hover(function(){
+				clearInterval(timer);
+			},function(){
+				autoplay();
+			})
+			//底部轮播按钮
+			$(".btn ul li").click(function(){
+				_index = $(this).index();
+				$(this).addClass("on").siblings().removeClass("on");
+				$(".pic_box ul li").eq(_index).show();
+			})
+		})
+	</script>
+ </body>
+</html>

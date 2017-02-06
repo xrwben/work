@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>jsonp跨域问题</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:#abcdef;font-family:"微软雅黑";font-size:16px;}
+	.search{width:640px;height:40px;margin:50px 0 0 50px;
+		position:relative;border:1px solid #aaa;}
+	input{height:100%;border:none;float:left;outline:none;}
+	#txt{width:530px;font-size:16px;padding-left:10px;}
+	#btn{width:100px;cursor:pointer;}
+	.search ul{position:absolute;left:-1px;top:40px;
+		border:1px solid #aaa;background:#fff;/* display:none; */}
+	.search ul li{width:530px;padding-left:10px;
+		list-style:none;}
+	.search ul li:hover{background:#fcc;}
+	.search ul li a{line-height:30px;text-decoration:none;display:block;}
+  </style>
+ </head>
+ <body>
+	<div class="search">
+		<input type="text"id="txt">
+		<input type="button" value="search" id="btn">
+		<ul id="list">
+		</ul>
+	</div>
+	
+	<script type="text/javascript">
+		window.onload = function(){
+			var oTxt = document.getElementById("txt");
+			var oBtn = document.getElementById("btn");
+			
+			/*oBtn.onclick = function(){
+				var oScript=document.createElement("script");
+				oScript.src = "jsonp.lb";
+				document.body.appendChild(oScript);
+			}
+			oBtn.onclick=function(){
+				var value = oTxt.value;
+				var oScript=document.createElement("script");
+				oScript.src="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+value+"&cb=lb";
+				document.body.appendChild(oScript);
+				document.body.removeChild(oScript);
+			}*/
+			oTxt.onkeyup=function(){
+				var value = this.value;
+				var oScript=document.createElement("script");
+				oScript.src="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+value+"&cb=lb";
+				document.body.appendChild(oScript);
+				document.body.removeChild(oScript);
+			}
+		}
+		function lb(data){
+			var html="";
+			var oList = document.getElementById("list");
+			if(data.s.length>0){
+				for(var i=0;i<data.s.length;i++){
+					html+="<li><a href='https://www.baidu.com/s?&wd="+data.s[i]+"'target='_blank'>"+data.s[i]+"</a></li>"
+				}
+				oList.innerHTML = html;
+				oList.style.display="block";
+			}else{
+				oList.style.display="none";
+			}
+		}
+
+	</script>
+ </body>
+</html>

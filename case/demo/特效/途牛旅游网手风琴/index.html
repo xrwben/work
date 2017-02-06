@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>途牛旅游网手风琴效果</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	.con{width:735px;height:150px;border:1px solid red;margin:100px						auto;overflow:hidden;}
+	.con ul li{list-style:none;width:100px;height:150px;float:left;
+			overflow:hidden;position:relative;}
+	.con ul{width:800px;}
+	.con ul li.last{width:135px;}
+	.con ul li img{position:absolute;left:0;top:0;}
+	.con ul li img.left{left:-100px;}
+  </style>
+ </head>
+ <body> 
+	<div class="con">
+		<ul>
+			<li><img src="images/1.jpg"/></li>
+			<li><img src="images/2.jpg"/></li>
+			<li class="last"><img src="images/3.jpg"class="left"/></li>
+			<li><img src="images/4.jpg"/></li>
+			<li><img src="images/5.jpg"/></li>
+			<li><img src="images/6.jpg"/></li>
+			<li><img src="images/7.jpg"/></li>
+		</ul>
+	</div>
+
+	<script type="text/javascript"src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(".con ul li").hover(function(){
+			$(this).stop(true).animate({width:"135px"},500).siblings().stop(true).animate({width:"100px"},500);
+			//$(this).find("img").addClass("left").parent().siblings().find("img").removeClass("left");                             //parent()表示父级
+			$(this).find("img").stop(true).animate({left:"-100px"},500).parent().siblings().find("img").stop(true).animate({left:"0px"});
+		},function(){
+			
+		});
+	</script>
+ </body>
+</html>

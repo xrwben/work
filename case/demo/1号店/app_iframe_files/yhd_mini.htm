@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>1号店迷你充值</title>
+    <script src="yhd_mini_data/jquery-1.js"></script>
+    <link href="yhd_mini_data/css.css" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            font-size: 12px;
+            margin: 0 auto;
+            font-family: Arial, Helvetica,"宋体", "黑体";
+        }
+        /*网游点卡*/
+        .wydk {
+            width: 190px;
+            height: 187px; 
+            padding:1px 5px 1px 5px;
+           /* margin: 0 auto;*/
+		    margin-left:10px; 
+        }
+
+        .wydk-line {
+            height: auto;
+            float: left;
+            padding: 2px 0;
+        }
+
+            .wydk-line .gg {
+                width: 100%;
+                height: 20px;
+                overflow: hidden;
+                /*color: #ff5f5f;*/
+                color: #E60014;
+                text-align: center;
+            }
+
+                .wydk-line .gg a {
+                    /*color: #ff5f5f;*/
+                    color: red;
+                }
+
+            .wydk-line .if-title {
+                width: 65px;
+                text-align: right;
+                float: left;
+                line-height: 28px;
+                color: #333;
+            }
+
+            .wydk-line .if-txt {
+                width: 95px;
+                height: 26px;
+                float: left;
+                cursor: pointer;
+                line-height: 28px;
+                border: 0;
+                background: url(images/wydk.gif) no-repeat;
+                color: #333;
+                padding-left: 6px;
+                font-size: 12px;
+            }
+
+            .wydk-line .sj {
+                width: 18px;
+                height: 28px;
+                float: left;
+                cursor: pointer;
+                background: url(images/wydk.gif) no-repeat left bottom;
+                border: 0;
+            }
+
+            .wydk-line .radio-txt {
+                float: left;
+                margin-right: 10px;
+                height: 28px;
+                line-height: 28px;
+            }
+
+        .if_gamenamesel {
+            float: left;
+        }
+
+        .if_gamemianzhi {
+            float: left;
+        }
+
+        .if_buty {
+            width: 78px;
+            height: 28px;
+            float: left;
+            margin-left: 6px;
+            background: url(images/if_red.png) no-repeat;
+            color: white;
+            cursor: pointer;
+            display: inline;
+            text-align: center;
+            line-height: 28px;
+        }
+
+        .if_butn {
+            width: 95px;
+            height: 28px;
+            float: left;
+            margin-left: 8px;
+            background: url(images/if_white.png) no-repeat;
+            cursor: pointer;
+            display: inline;
+            text-align: center;
+            line-height: 28px;
+            color: #333;
+        }
+
+
+
+        .wydk-line label {
+            display: -moz-inline-block;
+            display: inline-block;
+            cursor: pointer;
+            padding-left: 20px;
+            line-height: 28px;
+            background: url(images/input-img.png) no-repeat left top;
+            height: 28px;
+            float: left;
+            /*margin-right: 10px;*/
+            margin-left: 4px;
+            color: #333;
+        }
+
+            .wydk-line label.checked {
+                background-position: left bottom;
+            }
+
+        #RadioGroup3_0, #RadioGroup3_1 {
+            display: none;
+        }
+
+        .gamearea {
+            width: 117px;
+            float: left;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #d2d2d7;
+        }
+
+            .gamearea .wz:hover {
+                cursor: pointer;
+                background: #fff7d1;
+            }
+
+            .gamearea .wz {
+                width: 107px;
+                height: 22px;
+                float: left;
+                line-height: 22px;
+                overflow: hidden;
+                cursor: pointer;
+                padding-left: 4px;
+                font-family: "宋体";
+                color: #444;
+            }
+    </style>
+</head>
+<body>
+    <div class="wydk">
+        <div class="wydk-line">
+            <div class="if-title">选择商品：</div>
+            <!--<div id="if_gamenamesel" class="if_gamenamesel">-->
+            <input class="if-txt" id="if_gamename" value="Q_Q币" readonly="true" type="text"><input class="sj" id="gamenamesel" type="button">
+            <!--</div>-->
+        </div>
+        <div isshow="false" id="SPDiv" style="display: none;" class="gamearea">
+        </div>
+        <div class="wydk-line">
+            <div class="if-title">选择面值：</div>
+            <!--<div id="if_gamemianzhi" class="if_gamemianzhi">-->
+            <input class="if-txt" id="if_gameprice" value="100元" readonly="true" type="text"><input class="sj" id="gamemianzhi" type="button">
+            <!--</div>-->
+        </div>
+        <div id="MZDiv" style="display: none;" class="gamearea"><a href="javascript:void(0)"><div class="wz">100元</div></a></div>
+        <!-- <div class="wydk-line">
+            <div class="if-title">折扣价：</div>
+            <span style="color: red; line-height: 28px; float: left; width: 118px; font-weight: bold;" id="showprice1">¥ 0</span>
+        </div>-->
+        <div class="wydk-line" id="male">
+            <label class="checked">
+                <input data-producttype="0" name="RadioGroup3" value="单选" id="RadioGroup3_0" type="radio"><div class="radio-txt">自动充值</div>
+            </label>
+            <label>
+                <input data-producttype="0" name="RadioGroup3" value="单选" id="RadioGroup3_1" type="radio"><div class="radio-txt">购买卡密</div>
+            </label>
+            <script type="text/javascript">
+               
+            </script>
+        </div>
+        <div class="wydk-line" style="color: #333; width: 100%;margin-top:4px;" id="divZK">&nbsp; 折扣价：<strong id="showprice" style="color: red;">¥ 96.00</strong></div>
+        <div class="wydk-line" id="divGG" style="width: 100%;margin-top:4px;">
+            <span class="gg">
+                <!--<a href="http://yhd.bm724.com/forms/order.html?ExtProductSN=wm0002&ProductID=258&DefaultFaceValue=30" target="_blank">低价来袭 &nbsp;&nbsp;&nbsp;&nbsp;完美疯狂抢</a>-->
+                <!-- &nbsp;&nbsp;&nbsp;&nbsp;-->
+            <a onclick="javascript: record('一号店入口页面', '点击 广告链接（万部热播电影免费看，0广告，月仅需10元） 按钮');" href="http://yhd.bm724.com/forms/order.html?ExtProductSN=aqy001&amp;ProductID=455&amp;DefaultFaceValue=20" target="_blank">万部热播电影免费看，0广告，月仅需10元</a></span>
+        </div>
+        <div class="wydk-line" id="divTS" style="display: none;margin-top:4px;">
+            <span class="gg" style=""></span>
+        </div>
+        <div class="wydk-line" id="divCZ" style="margin-top:4px;"><span class="if_buty" id="chongzhi">立即充值</span><span class="if_butn" onclick="javascript: record('一号店入口页面', '点击 查看全部商品 按钮,将访问主页');window.open('index.html');">查看全部商品</span></div>
+    </div>
+
+
+<script type="text/javascript">
+    ///初始化选择产品类型函数
+    function initSelectProType() {
+        var labels = $("label", $("#male"));
+        for (i = 0, j = labels.length ; i < j ; i++) {
+            $(labels[i]).click(function () {
+                if (this.className == '') {
+                    var othersLabels = $("label", $(this).parent());
+                    for (k = 0; k < othersLabels.length ; k++) {
+                        othersLabels[k].className = '';
+                        $("input", $(othersLabels[k])).removeAttr("checked");
+                    }
+                    this.className = 'checked';
+                    try {
+                        $("input", $(this)).attr("checked", "checked");
+                    } catch (e) { }
+                }
+                if ($("#if_gamename").val() == "选择游戏名称") {
+                    //$("#divTS").find("span")[0].innerHTML = "&nbsp;请选择游戏名称";
+                    //$("#divTS").show();
+                    return;
+                }
+                rdoChanged(this);
+
+            });
+        }
+    }
+    function rdoChanged(obj) {
+        if (!obj) {
+            $("#divCZ").show();//充值按钮
+            $("#divZK").show();//折扣
+            return;
+        }
+        obj = $(obj);
+        var productType = $("input", $(obj)).attr("data-producttype") + "";
+        var rdo_ProductType = "";
+
+        if ($("input", $(obj)).attr("id") == "RadioGroup3_0") {
+            rdo_ProductType = "0";
+        } else if ($("input", $(obj)).attr("id") == "RadioGroup3_1") {
+            rdo_ProductType = "1";
+        }
+        var divTS = $("#divTS");//商品有无提示
+        var divCZ = $("#divCZ");//充值按钮
+        var divZK = $("#divZK");//折扣
+        if (rdo_ProductType == $.trim(productType)) {
+            divTS.hide();
+            divCZ.show();
+            divZK.show();
+        } else {
+            if (rdo_ProductType == "1") {
+                divTS.find("span")[0].innerHTML = "&nbsp;暂无此游戏卡密，请选择自动充值";
+            } else {
+                divTS.find("span")[0].innerHTML = "&nbsp;不支持自动充值，请选择卡密充值";
+            }
+            divTS.show();
+            divCZ.hide();
+            divZK.hide();
+        }
+    }
+    function GGCenter() {
+        var spanO = $("span", $("#divGG"));
+        var parentWidth = $("#divGG").parent().width();
+        var spanWidth = spanO.width();
+        var paddingLeft = (parentWidth - spanWidth) / 2;
+        $("span", $("#divGG")).css({ "padding-left": paddingLeft + 'px' });
+    }
+    $(function () {
+        //初始化选择产品类型按钮
+        initSelectProType();
+
+
+        // GGCenter()
+        var time_stamp = new Date().getTime();//时间戳
+        var exsn;
+        var price;
+        var faceprice;
+        var productid;
+        var zk;
+        initProduct("55");
+        //Ajax获取小窗口商品
+        $("#if_gamename,#gamenamesel").click(function () {
+            if ($("#SPDiv").attr("IsShow") == "true") {
+                $("#SPDiv").attr("IsShow", "false")
+                $("#SPDiv").hide();
+                return;
+            }
+            $.ajax({
+                url: "/DataHandle1.ashx",
+                type: "get",
+                data: { module: "Product", action: "GetYHDShow", TimeStamp: time_stamp },
+                dataType: "json",
+                success: function (resulthtml) {
+                    var pos = $("#if_gamename").position();
+                    if (resulthtml.length > 0) {
+                        var lis = "";
+                        for (var i = 0; i < resulthtml.length; i++) {
+                            lis += '<a href=\'javascript:void(0)\'><div class=\'wz\' data-sn=\'' + resulthtml[i].ProductSN + '\' data-productid=\'' + resulthtml[i].ProductID + '\' data-exsn=\'' + resulthtml[i].ExtProductSN + '\' data-faceprice=\'' + resulthtml[i].FacePrice + '\'  data-zk=\'' + resulthtml[i].Price + '\' data-producttype=\'' + resulthtml[i].ProductType + '\'>' + resulthtml[i].label + '</div></a>';//组合li
+                        }
+                        $("#SPDiv").html(lis);
+                        $("#SPDiv").show();
+                        $("#SPDiv").attr("IsShow", "true");
+                        $(".wz", $("#SPDiv")).click(function () {
+                            var gamename = $(this).text();
+                            faceprice = $(this).data("faceprice") + "";
+                 
+                            zk = $(this).data("zk") + "";
+                            var productType = $(this).data("producttype") + "";
+                            var sn = $(this).data("sn");
+                            exsn = $(this).data("exsn");
+                            productid = $(this).data("productid");
+                            var pricelist = "";
+
+                            if (faceprice.indexOf(',') > -1) {
+                                var arr = faceprice.split(",");
+
+                                for (var i = 0; i < arr.length; i++) {
+                                    pricelist += "<a href='javascript:void(0)'><div class='wz'>" + arr[i] + "元</div></a>";
+                                }
+                            } else {
+                                pricelist = "<a href='javascript:void(0)'><div class='wz'>" + faceprice + "元</div></a>";
+                            }
+                            $("#if_gamename").val(gamename);
+                            $("#SPDiv").hide();
+                            $("#SPDiv").attr("IsShow", "false");
+                            $("#MZDiv").html(pricelist);
+                            $("#MZDiv").hide();
+                            var priceDiv = $(".wz", $("#MZDiv")).first();
+                            var priceMZ = priceDiv.text();
+                            if (!priceMZ) {
+                                $("#if_gameprice").val("选择面值");
+                            } else {
+                                $("#if_gameprice").val(priceMZ);
+                                faceprice = priceMZ;
+                                var newFacePrice = priceMZ.split('元')[0];
+                                var sumprice = (zk * newFacePrice).toFixed(2);
+                                $("#showprice").html("¥ " + sumprice);
+                            }
+                            var selectLabel_1 = $("#RadioGroup3_0", $("#male"));
+                            selectLabel_1.attr("data-producttype", productType);
+                            var selectLabel_2 = $("#RadioGroup3_1", $("#male"));
+                            selectLabel_2.attr("data-producttype", productType);
+                            if (!productType || $.trim(productType) == "") {
+                                $("#male").hide();
+                            } else {
+                                //if (this.className == '') {
+                                //    for (k = 0, l = labels.length ; k < l ; k++) {
+                                //        labels[k].className = '';
+                                //        radios[k].checked = false;
+                                //    }
+                                //    this.className = 'checked';
+                                //    try {
+                                //        document.getElementById(this.name).checked = true;
+                                //    } catch (e) { }
+                                //}
+                                ///显示单选框
+                                if ($.trim(productType) == '0') {
+                                    selectLabel_1.parent().addClass('checked');
+                                    selectLabel_2.parent().removeClass('checked');
+                                    selectLabel_1.attr("checked", "checked");
+                                    selectLabel_2.removeAttr("checked");
+                                    rdoChanged(selectLabel_1.parent());
+                                    $("#male").show();
+                                } else if ($.trim(productType) == '1') {
+                                    selectLabel_1.parent().removeClass('checked');
+                                    selectLabel_2.parent().addClass('checked');
+                                    selectLabel_1.removeAttr("checked");
+                                    selectLabel_2.attr("checked", "checked");
+                                    rdoChanged(selectLabel_2.parent());
+                                    $("#male").show();
+
+                                } else {
+                                    selectLabel_1.removeClass("checked");
+                                    selectLabel_2.removeClass("checked");
+                                    selectLabel_1.parent().removeAttr('checked');
+                                    selectLabel_2.parent().removeAttr('checked');
+                                    $("#male").hide();
+                                }
+
+
+                            }
+                        })
+                    }
+
+                    //设置样式
+                    //var pos = $("#if_gamename").position();
+                    var top = pos.top;
+                    var left = pos.left;
+                    var height = $("#if_gamename").height();
+                    $("#SPDiv").css({ top: top + height, left: left, height: '100px', 'overflow-y': 'scroll', 'overflow-x': 'hidden' });//'overflow-y':'scroll'
+
+                }
+            });
+        });
+        var showMZ = function (e) {
+            if ($("#MZDiv").attr("IsShow") == "true") {
+                $("#MZDiv").hide();
+                $("#MZDiv").attr("IsShow", "false");
+                return;
+            }
+            if ($("#MZDiv a").length > 0) {
+                $("#MZDiv").show();
+                $("#MZDiv").attr("IsShow", "true");
+                //设置样式
+                var pos = $("#if_gameprice").position();
+                var top = pos.top;
+                var left = pos.left;
+                var height = $("#if_gameprice").height();
+                $("#MZDiv").css({ top: top + height, left: left, height: '80px', 'overflow-y': 'scroll', 'overflow-x': 'hidden' });
+
+                $(".wz", $("#MZDiv")).click(function () {
+                    faceprice = $(this).text();
+                    $("#if_gameprice").val(faceprice);
+                    $("#MZDiv").hide();
+                    $("#MZDiv").attr("IsShow", "false");
+                });
+            }
+        };
+        $("#gamemianzhi,#if_gameprice").click(function (e) {
+            showMZ(e);
+        });
+        $("#chongzhi").click(function () {
+            if (!exsn || !productid) return;
+            record('一号店入口页面', '点击 立即充值 按钮，充值产品：产品ID=' + productid + (!faceprice ? "" : (",面值=" + faceprice)));
+            window.open("order.html?ExtProductSN=" + exsn + "&ProductID=" + productid + "&FaceValue=" +
+                (!faceprice ? "" : faceprice.split('元')[0]));
+        });
+
+        $("#MZDiv").on("click", ".wz", function () {
+            var newFacePrice = faceprice.split('元')[0];
+            var sumprice = (zk * newFacePrice).toFixed(2);
+            $("#showprice").html("¥ " + sumprice);
+        });
+
+
+        //页面其他部分点击 去除自动搜索显示
+        $(document).click(function (e) {
+            if ($(e.target).attr("id") != "if_gamename" && $(e.target).attr("id") != "gamenamesel") {
+                $("#SPDiv").hide();
+                $("#SPDiv").attr("IsShow", "false");
+            }
+            if ($(e.target).attr("id") != "gamemianzhi" && $(e.target).attr("id") != "if_gameprice") {
+                $("#MZDiv").hide();
+                $("#MZDiv").attr("IsShow", "false");
+            }
+        });
+        //加载广告链接
+        $.ajax({
+            url: "/DataHandle1.ashx",
+            type: "get",
+            data: { action: "GetYHDAd", TimeStamp: time_stamp },
+            dataType: "json",
+            success: function (obj) {
+                if (!obj) return;
+                for (var item in obj) {
+                    var a = ' <a  onclick="javascript: record(\'一号店入口页面\', \'点击 广告链接（' +
+                        $.trim(obj[item]["Context"] + "").replace(/\s/g, '&nbsp;') + '） 按钮\');" href="' + obj[item]["URL"] + '" ' +
+                    'target="_blank">' + (obj[item]["Context"] + "").replace(/\s/g, '&nbsp;') + '</a>';
+                    $("#divGG span").append($(a));
+                    //$("divGG span").append($("&nbsp;&nbsp;&nbsp;&nbsp;"));
+                }
+            }
+        });
+
+        function initProduct(pid) {
+            $.ajax({
+                url: "/DataHandle1.ashx",
+                type: "get",
+                data: { module: "Product", action: "GetYHDShow", TimeStamp: time_stamp },
+                dataType: "json",
+                success: function (resulthtml) {
+                    if (resulthtml) {
+                        for (var i = 0; i < resulthtml.length; i++) {
+                            if (resulthtml[i]["ProductID"] && resulthtml[i]["ProductID"] == pid) {
+                                ShowDefaultProduct(resulthtml[i]["ProductID"], resulthtml[i]["label"], resulthtml[i]["ExtProductSN"], resulthtml[i]["FacePrice"], resulthtml[i]["Price"], resulthtml[i]["ProductType"], resulthtml[i]["DefaultFaceValue"]);
+                            }
+                        }
+
+                    }
+                }
+            });
+
+        }
+
+        //显示默认产品默认选中产品    
+        function ShowDefaultProduct(pid, pname, supproductno, fp, discount, producttype, defaultfp) {
+            $("#if_gamename").val("" + pname);
+            productid = pid;
+            $("#if_gameprice").val(defaultfp + "元");
+            var pricelist = "";
+            if (fp.indexOf(',') > -1) {
+                var arr = fp.split(",");
+
+                for (var i = 0; i < arr.length; i++) {
+                    pricelist += "<a href='javascript:void(0)'><div class='wz'>" + arr[i] + "元</div></a>";
+                }
+            } else {
+                pricelist = "<a href='javascript:void(0)'><div class='wz'>" + fp + "元</div></a>";
+            }
+            // faceprice = ;
+            $("#SPDiv").hide();
+            $("#SPDiv").attr("IsShow", "false");
+            $("#MZDiv").html(pricelist);
+            exsn = supproductno;
+            zk = discount;
+            ///计算价格
+            var newFacePrice = parseInt(defaultfp);
+            var d = parseFloat(discount);
+            var sumprice = (d * newFacePrice).toFixed(2);
+            $("#showprice").html("¥ " + sumprice);
+            //$("#chongzhi").unbind("click");
+            //$("#chongzhi").click(function () {
+            //    if (!exsn || !productid) return;
+            //    record('一号店入口页面', '点击 立即充值 按钮，充值产品：产品ID=' + productid + (!faceprice ? "" : (",面值=" + faceprice)));
+            //    window.open("order.html?ExtProductSN=" + exsn + "&ProductID=" + productid + "&FaceValue=" +
+            //        (!defaultfp ? "" : faceprice.split[]));
+            //});
+           
+            //产品类型
+            $("#male label").removeClass("checked");
+            if ($.trim(producttype) == '0') {
+                $("#male label .radio-txt").each(function (e) {
+                    if ($(this).text() == "自动充值") {
+                        $(this).parents("label").addClass("checked");
+                    }
+                });
+            } else {
+                $("#male label .radio-txt").each(function (e) {
+                    if ($(this).text() == "购买卡密") {
+                        $(this).parents("label").addClass("checked");
+                    }
+                });
+            }
+            var selectLabel_1 = $("#RadioGroup3_0", $("#male"));
+            selectLabel_1.attr("data-producttype", producttype);
+            var selectLabel_2 = $("#RadioGroup3_1", $("#male"));
+            selectLabel_2.attr("data-producttype", producttype);
+
+            faceprice = defaultfp + "元";
+        }
+    });
+
+    function record(product, content) {
+        $.ajax({
+            url: "/DataHandle1.ashx",
+            data: {
+                "action": "CustomerVisitRecord", "proudct": encodeURI($.trim(product)),
+                "content": encodeURI($.trim(content)), "isquit": "false", "ordersource": "yhd"
+            },
+            type: "post",
+            dataType: "html",
+            success: function (resulthtml) {
+            }
+        });
+    }
+
+</script>
+
+</body></html>

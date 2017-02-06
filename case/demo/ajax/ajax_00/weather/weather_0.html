@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>天气预报</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{text-align:center;background:rgba(188,150,201,0.7);font-size:12px;}
+	.wt{width:90px;border:1px solid #fff;background:#ccff66;opacity:0.8;}
+  </style>
+ </head>
+ <body>
+	<h2>php代理天气预报接口</h2>
+	<div id="weather_info">
+		<div class="wt" id="day_1">
+			<div class="wt1">
+				<span class="wtpic"><font style="color: rgb(0, 32, 96);" class="day red f1" color="">今天</font>星期一</span>
+			</div>
+	        <div class="img">
+				<img class="pngtqico" src="http://img.tianqi.com/static/images/tqicon1/b1.png" style="border:0;width:46px;height:46px" align="absmiddle">
+			</div>
+	        <div class="wtpath">多云</div>
+			<div class="wtwt">
+				<font style="color: rgb(0, 32, 96);" class="cf00 f1">33℃</font>～<font style="color: rgb(0, 32, 96);" class="blue f1">24℃</font>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+
+		var xhr = new XMLHttpRequest();
+		//利用本域的PHP代理
+		xhr.open("get","./weather_0.php");
+		xhr.send(null);
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4){
+				if(xhr.status == 200 || xhr.status == 304){
+					var data = JSON.parse(xhr.responseText);
+
+					//document.getElementById("weather_info").innerHTML = data.result.week;
+				}
+			}
+		}
+	</script>
+ </body>
+</html>

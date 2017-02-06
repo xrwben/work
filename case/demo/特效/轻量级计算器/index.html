@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>计算器</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:url("images/bg.jpg")no-repeat;}
+	#jsq{
+		width:540px;
+		height:500px;
+		background:rgba(0,0,0,0.7);
+		margin:50px auto;
+		border-radius:5px;
+		box-shadow:0 0 5px #fff;
+		position:relative;
+		}
+	.title{
+		height:55px;
+		color:#fff;
+		font-size:24px;
+		font-weight:bold;
+		font-family:"微软雅黑";
+		line-height:55px;
+		text-indent:20px;
+		padding-top:10px;
+		}
+	#screen{
+		width:480px;
+		height:55px;
+		margin:10px auto 0;
+		background:rgba(241,237,78,0.6);
+		border-radius:8px;
+		font-size:38px;
+		line-height:55px;
+		text-align:right;
+		padding:0 10px;
+		}
+	.button{
+		width:500px;
+		height:300px;
+		margin:20px auto 0;
+		}
+	.button ul li{
+		list-style:none;
+		width:75px;
+		height:50px;
+		border-radius:5px;
+		box-shadow:0 0 5px #fff;
+		float:left;
+		margin:11px;
+		color:#fff;
+		font-size:30px;
+		text-align:center;
+		line-height:50px;
+		cursor:pointer;
+		}
+	.button ul li:hover{box-shadow:0 0 10px #fff;}
+	.button ul li.number{background:#000;}
+	.button ul li.character{background:#fa6c36;}
+	.copyright{
+		width:500px;
+		height:20px;
+		color:#fff;
+		font-size:14px;
+		text-indent:25px;
+		}
+  </style>
+ </head>
+ <body>
+	<div id="jsq">
+		<div class="title">轻量级计算器</div>
+		<div id="screen">0</div>
+		<div class="button">
+			<ul>
+				<li class="number" onclick="command(7)">7</li>
+				<li class="number" onclick="command(8)">8</li>
+				<li class="number" onclick="command(9)">9</li>
+				<li class="character" onclick="backspace()">←</li>
+				<li class="character" onclick="clearZero()">c</li>
+				<li class="number" onclick="command(4)">4</li>
+				<li class="number" onclick="command(5)">5</li>
+				<li class="number" onclick="command(6)">6</li>
+				<li class="character" onclick="operate('*')">*</li>
+				<li class="character" onclick="operate('/')">÷</li>
+				<li class="number" onclick="command(3)">3</li>
+				<li class="number" onclick="command(2)">2</li>
+				<li class="number" onclick="command(1)">1</li>
+				<li class="character" onclick="operate('+')">+</li>
+				<li class="character" onclick="operate('-')">－</li>
+				<li class="number" onclick="command(0)">0</li>
+				<li class="number" onclick="command(0)">00</li>
+				<li class="number" onclick="dian('.')">.</li>
+				<li class="character" onclick="operate('%')">%</li>
+				<li style="background:#fec516" onclick="equal()">=</li>
+			</ul>
+		</div>
+		<div class="copyright">欢迎使用计算器！开发者：小人物.</div>
+	</div>
+	
+	<!--使用原生态的javascript代码-->
+	<script type="text/javascript">
+		//数字
+		var result=document.getElementById("screen");
+		function command(num){
+			var str=result.innerHTML; //获取内容
+			//innerText只有在IE内核中才能用，可以用textContent代替
+			str=(str=="0"?"":str);
+			if(str.length<22){
+				str=str+num;
+			}
+			//str=str+num;
+			result.innerHTML=str;
+			mark=true;
+		}
+		//小数点
+		var dianmark=true;//设一个标记
+		function dian(d){
+			var str=result.innerHTML;
+			if(dianmark){
+				str=str+d;
+				result.innerHTML=str;
+				dianmark=false;
+			}
+		}
+		//运算符
+		var mark=true;//设一个标记
+		function operate(op){
+			var str=result.innerHTML;
+			if(mark){
+				str=str+op;
+				result.innerHTML=str;
+				mark=false;
+				dianmark=true;
+			}
+		}
+		//清零操作
+		function clearZero(){
+			result.innerHTML=0;
+			dianmark=true;
+		}
+		//删除
+		function backspace(){
+			var str=result.innerHTML;
+			
+		}
+		//等于
+		function equal(){
+			var str=result.innerHTML;
+			var r=eval(str);
+			result.innerHTML=r;
+			mark=true;
+		}
+	</script>
+ </body>
+</html>

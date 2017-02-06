@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>小人物_后台登录</title>
+  <link rel="stylesheet" href="css/login.css">
+  <style type="text/css">
+	
+  </style>
+ </head>
+ <body>
+	<div class="login">
+		<div class="top">登录</div>
+		<hr />
+		<form method="post"action="">
+			<p>
+				<b>用户名：</b>
+				<input class="user text"type="text" placeholder="请输入用户名/邮箱/ID号"/>
+			</p>
+			<p>
+				<b>密&nbsp;码：</b>
+				<input onkeyup="checkStrong(this.value)"class="pwd text"type="password" placeholder="请输入密码"/>
+			</p>
+			<ul>
+				<li id="info0">弱</li>
+				<li id="info1">一般</li>
+				<li id="info2">强</li>
+				<li id="info3">很强</li>
+			</ul>
+			<p>
+				<input class="remenber"id="remenber"type="checkbox"/>
+				<label class="txt"for="remenber">记住我的登录信息</label>
+			</p>
+			<div style="clear:both;"></div>
+			<p class="button">
+				<input class="but"id="but"type="submit"value="登录"/>
+			</p>
+		</form>
+	</div>
+ </body>
+ <script type="text/javascript">
+	function checkStrong(pass){
+		var level = -1;
+		var colors = ["red","orange","blue","green"];
+		for(var i=0;i<4;i++){
+			document.getElementById("info"+i).style.background="";
+		}
+		if(pass.length<6){
+			return false;
+		}
+		//包含数字
+		if(/[0-9]/.test(pass)){
+			level++;
+		}
+		//包含小写字母
+		if(/[a-z]/.test(pass)){
+			level++;
+		}
+		//包含大写字母
+		if(/[A-Z]/.test(pass)){
+			level++;
+		}
+		//包含特殊字符
+		if(/\W/.test(pass)){
+			level++;
+		}
+		for(var i=0;i<=level;i++){
+			var info = document.getElementById("info"+i);
+			info.style.background=colors[i];
+		}
+	}
+ </script>
+</html>

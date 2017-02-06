@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>ajax向服务器发送数据</title>
+  <style type="text/css">
+	
+  </style>
+ </head>
+ <body>
+	<input type="submit" id="btn">
+	<script type="text/javascript" src="ajax.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+	
+			var obtn = document.getElementById("btn");
+			obtn.onclick = function(){
+				/*ajax({
+					method : "post",
+					url : "post.php",
+					data : "user=黎奔&pwd=123456",
+					async : "true",
+					success : function( response ){
+						alert(response);
+					}
+				});*/
+				ajax({
+					url : "test.txt",
+					success : function(response){
+						alert(response)
+					}
+				});
+			}
+			
+		}
+	</script>
+ </body>
+</html>

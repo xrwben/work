@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>发牌程序</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:#000;}
+	.start{position:fixed;bottom:30px;left:50%;}
+  </style>
+ </head>
+ <body id="body">
+ 	<button class="start" onclick="shuffle()">洗牌</button>
+ 
+	<script type="text/javascript" src="js/jquery.js"></script>
+ 	<script type="text/javascript">
+		
+ 		var arr = ["黑桃3","黑桃4","黑桃5","黑桃6","黑桃7","黑桃8","黑桃9","黑桃10","黑桃J","黑桃Q","黑桃K","黑桃A","黑桃2","红桃3","红桃4","红桃5","红桃6","红桃7","红桃8","红桃9","红桃10","红桃J","红桃Q","红桃K","红桃A","红桃2","梅花3","梅花4","梅花5","梅花6","梅花7","梅花8","梅花9","梅花10","梅花J","梅花Q","梅花K","梅花A","梅花2","方块3","方块4","方块5","方块6","方块7","方块8","方块9","方块10","方块J","方块Q","方块K","方块A","方块2","小王","大王"];
+		var img;
+ 		for(var i=0;i<arr.length;i++){
+			img = $("<img src='images/"+arr[i]+".jpg'width='60'/>");
+			$("body").append(img);
+			if((i+1)%13==0){
+				$("body").append($("<br />"));
+			}
+		}
+		function shuffle(){
+			
+			var arrNew = [];
+			while(arr.length>0){
+				var num = Math.round(Math.random()*arr.length);
+				//console.log(num);
+				
+				img = $("<img src='images/"+arr[num]+".jpg'width='60'/>");
+				$("body").append(img);
+				arr.splice(num,1);
+				//alert(arr.length);
+				console.log(arr.length);
+			}
+
+			/* var num = Math.round(Math.random()*arr.length);
+			console.log(num);
+			
+			
+			arrNew.push();
+			
+			for(var i=0;i<arrNew.length;i++){
+				var img = $("<img src='images/"+arrNew[i]+".jpg'width='60'/>");
+				$("body").append(img);
+			} */
+
+			
+			
+
+		}
+ 	</script>
+ </body>
+</html>

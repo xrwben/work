@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>飞机大战 - 小人物</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:#000;}
+	#box{width:350px;height:500px;border:10px solid #999;margin:50px auto 0;
+		position:relative;overflow:hidden;}
+	#box .title{color:#fff;font-size:24px;text-align:center;font-weight:bold;
+		margin-top:100px;}
+	#box .difficult p{width:150px;color:#000;background:#ddd;line-height:25px;
+		text-align:center;margin:50px auto 0;}
+	#box .difficult p.on{background:#abcdef;color:#fff;cursor:pointer;}
+
+	.plane{width:60px;height:36px;position:absolute;}
+  </style>
+ </head>
+ <body>
+	<div id="box"></div>
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			game.init();
+		});
+
+		var game = {
+			box : $("#box"),
+			init : function(){
+				var $title = $("<div>");
+				$title.addClass("title");
+				$title.html("打灰机 v1.0 - 内测版");
+				game.box.append($title);
+				var $difficult = $("<div>");
+				$difficult.addClass("difficult");
+				$difficult.append("<p>简单</p><p>一般</p><p>困难</p><p>变态</p>");
+				game.box.append($difficult);
+
+				$("#box .difficult p").hover(function(){
+					$(this).addClass("on");
+				},function(){
+					$(this).removeClass("on");
+				});
+
+				$("#box .difficult p").click(function(e){
+					var e = e || window.event;
+					var eX = e.clientX;
+					var eY = e.clientY;
+					var XY = {x:eX,y:eY};
+					game.start(XY);
+				});
+			},
+			start : function(XY){
+				game.box.empty();
+				game.plane(XY);
+			},
+			plane : function(XY){
+				var $plane = $("<img src='img/plane.png'>");
+				$plane.addClass("plane");
+				game.box.append($plane);
+				var cssTop = game.box.offset().top+10+$(".plane").height()/2;
+				var cssLeft = game.box.offset().left+10+$(".plane").width()/2;
+				
+				var maxTop = game.box.height()-$(".plane").height();
+				var minLeft = -$(".plane").width()/2;
+				var maxLeft = game.box.width()-$(".plane").width()/2;
+
+				$plane.css({
+					top : XY.y-cssTop +'px',
+					left: XY.x-cssLeft +'px'
+				});
+				$(document).mousemove(function(e){
+					var mvTop = e.clientY - cssTop;
+					var mvLeft = e.clientX -cssLeft;
+					if(mvTop<0){
+						mvTop = 0;
+					}
+					if(mvTop>maxTop){
+						mvTop = maxTop;
+					}
+					if(mvLeft<0){
+						mvLeft = minLeft;
+					}
+					if(mvLeft>maxLeft){
+						mvLeft = maxLeft;
+					}
+					$plane.css({
+						top : mvTop +"px",
+						left : mvLeft +"px"
+					});
+				})
+			},
+		}
+	</script>
+ </body>
+</html>
