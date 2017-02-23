@@ -19,6 +19,7 @@ $(document).ready(function(){
 			$(".top").css({"display":"none"},500);
 		}
 	});
+	
 
 	//锚点下滑
 	/*
@@ -50,7 +51,7 @@ $(document).ready(function(){
 	var circles = [];
 	for (var i = 1; i <= 4; i++) {
 		var child = document.getElementById('circle_svg' + i);
-		var percentage = 50 + (i * 10);
+		var percentage = 96 - (i * 1);
 
 		circles.push(Circles.create({
 			id: child.id,

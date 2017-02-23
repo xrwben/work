@@ -178,7 +178,7 @@ li{
 .project_list a img{width:100%;height:100%;transition:all 0.5s linear;}
 
 .img_shadow{width:100%;height:100%;
-	background:rgba(0,0,0,0.7);padding:20px 45px;overflow:hidden;opacity:0;
+	background:rgba(0,0,0,0.8);padding:20px 45px;overflow:hidden;opacity:0;
 	position:absolute;left:0;top:0;box-sizing:border-box;transition:all 0.3s linear;}
 .img_shadow h3{font-size:2em;padding:15px 0;position:relative;opacity:0;
 	transition:all 0.5s;}

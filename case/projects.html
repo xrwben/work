@@ -63,10 +63,133 @@
 	#detail .main .content p{width:90%;height:68%;font-size:20px;
 		line-height:30px;padding:5%;}
 	#detail .main .content p:before{content:'实现：';}
+
+	/* 菜单 */
+	#menu_list{width:200px;height:75%;position:fixed;left:0;top:0;padding:20px;
+		z-index:5;color:#eee;}
+	#menu_list ul{height:100%;border:1px solid #eee;overflow:auto;}
+	#menu_list ul li{list-style:none;}
+	#menu_list ul li b{margin:0px 5px;}
+	.menu_btn{border:1px solid #fff;padding:10px;font-weight:bold;
+		cursor:pointer;text-align:center;position:relative;}
+	.menu_btn span{display:inline-block;
+		position:absolute;top:17px;right:25px;
+		}
+	.btn_show{
+		border:10px solid #eee;
+		border-left:10px solid transparent;
+		border-right:10px solid transparent;
+		border-bottom:10px solid transparent;
+		}
+	.btn_hide{
+		border:10px solid #eee;
+		border-left:10px solid transparent;
+		border-right:10px solid transparent;
+		border-top:10px solid transparent;
+		}
   </style>
  </head>
  <body>
-	<div id="container"></div>
+	<div id="menu_list">
+		<div class="menu_btn">案例清单按钮<span></span></div>
+		<ul>
+			<li><b>H→</b><a href="demo/VOGUE时尚网/index.html" target="_blank">VOGUE时尚网</a></li>
+			<li><b>He→</b><a href="demo/1号店/index.html" target="_blank">1号店首页</a></li>
+			<li><b>Li→</b><a href="demo/湖南海外旅游/index.html" target="_blank">湖南海外旅游网</a></li>
+			<li><b>Be→</b><a href="demo/当当网/index.html" target="_blank">当当网首页</a></li>
+			<li><b>B→</b><a href="demo/潭州官网/index.html" target="_blank">潭州官网首页</a></li>
+			<li><b>C→</b><a href="demo/Ecshop商城开发/index.html" target="_blank">Ecshop商城开发</a></li>
+			<li><b>N→</b><a href="demo/播放器/index.html" target="_blank">FM音乐播放器</a></li>
+			<li><b>O→</b><a href="demo/特效/简易时钟/index.html" target="_blank">简易时钟</a></li>
+			<li><b>F→</b><a href="demo/特效/懒加载/index.html" target="_blank">懒加载</a></li>
+			<li><b>Ne→</b><a href="demo/特效/虎牙轮播图/index.html" target="_blank">虎牙轮播图</a></li>
+			<li><b>Na→</b><a href="demo/特效/发牌程序/index.html" target="_blank">简易发牌</a></li>
+			<li><b>Mg→</b><a href="demo/特效/雪花飘落/index.html" target="_blank">雪花飘落</a></li>
+			<li><b>Si→</b><a href="demo/360安全换机首页/index.html" target="_blank">360安全换机</a></li>
+			<li><b>P→</b><a href="demo/特效/太平洋时尚官网图片随机切换/index.html" target="_blank">太平洋时尚官网图片随机切换</a></li>
+			<li><b>S→</b><a href="demo/特效/网格特效/index.html" target="_blank">网格特效</a></li>
+			<li><b>Cl→</b><a href="demo/特效/3D拖拽相册/index.html" target="_blank">3D拖拽相册</a></li>
+			<li><b>Ar→</b><a href="demo/特效/抽奖活动/index.html" target="_blank">抽奖游戏</a></li>
+			<li><b>K→</b><a href="demo/特效/进度条加载轮播图/index.html" target="_blank">进度条加载轮播图</a></li>
+			<li><b>Ca→</b><a href="demo/特效/彩虹圈/index.html" target="_blank">彩虹圈</a></li>
+			<li><b>Sc→</b><a href="demo/特效/烟花特效/index.html" target="_blank">烟花特效</a></li>
+			<li><b>Ti→</b><a href="demo/特效/高德地图API_LBS/index.html" target="_blank">高德地图API_LBS</a></li>
+			<li><b>V→</b><a href="demo/特效/飞机大战/index.html" target="_blank">飞机大战</a></li>
+			<li><b>Cr→</b><a href="demo/特效/CSS3百叶窗/index.html" target="_blank">CSS3百叶窗</a></li>
+			<li><b>Mn→</b><a href="demo/特效/放大镜/index.html" target="_blank">放大镜</a></li>
+			<li><b>Fe→</b><a href="demo/特效/京东楼梯导航/index.html" target="_blank">京东楼梯导航</a></li>
+			<li><b>Co→</b><a href="demo/特效/自制特色滚动条/index.html" target="_blank">自定义滚动条</a></li>
+			<li><b>Ni→</b><a href="demo/特效/吸顶盒/index.html" target="_blank">吸顶盒</a></li>
+			<li><b>Cu→</b><a href="demo/响应式布局/index.html" target="_blank">响应式布局</a></li>
+			<li><b>Zn→</b><a href="demo/特效/视频音频/index.html" target="_blank">视频音频</a></li>
+			<li><b>Ga→</b><a href="demo/特效/桌面换肤系统/index.html" target="_blank">桌面换肤系统</a></li>
+			<li><b>Ge→</b><a href="demo/特效/图片动态渐变放大缩小/index.html" target="_blank">图片动态渐变放大缩小</a></li>
+			<li><b>As→</b><a href="demo/特效/百度首页图片布局/index.html" target="_blank">百度首页图片布局</a></li>
+			<li><b>Se→</b><a href="demo/特效/制作导航栏/index.html" target="_blank">制作导航栏</a></li>
+			<li><b>Br→</b><a href="demo/特效/节日礼物/index.html" target="_blank">节日礼物</a></li>
+			<li><b>Kr→</b><a href="demo/特效/网站简单登录/index.html" target="_blank">网站登录</a></li>
+			<li><b>Rb→</b><a href="demo/特效/空间相册左右切换/index.html" target="_blank">空间相册左右切换</a></li>
+			<li><b>Sr→</b><a href="demo/特效/影视剧照网页/index.html" target="_blank">影视剧照网页</a></li>
+			<li><b>Y→</b><a href="demo/特效/时装秀展示/index.html" target="_blank">时装秀展示</a></li>
+			<li><b>Zr→</b><a href="demo/特效/八音盒/index.html" target="_blank">八音盒</a></li>
+			<li><b>Nb→</b><a href="demo/特效/导航栏/index.html" target="_blank">导航栏</a></li>
+			<li><b>Mo→</b><a href="demo/特效/移上渐变显示文字/index.html" target="_blank">渐变显示文字</a></li>
+			<li><b>Tc→</b><a href="demo/特效/导航切换效果/index.html" target="_blank">导航切换效果</a></li>
+			<li><b>Ru→</b><a href="demo/音乐播放器/index.html" target="_blank">音乐播放器</a></li>
+			<li><b>Rh→</b><a href="demo/特效/左侧二级导航/index.html" target="_blank">左侧二级导航</a></li>
+			<li><b>Pd→</b><a href="demo/特效/模特全屏拖动展示/index.html" target="_blank">模特全屏拖动展示</a></li>
+			<li><b>Ag→</b><a href="demo/特效/浪漫七夕广播电台/index.html" target="_blank">浪漫七夕广播电台</a></li>
+			<li><b>Cd→</b><a href="demo/特效/百度播放器/index.html" target="_blank">百度播放器</a></li>
+			<li><b>In→</b><a href="demo/特效/优酷TV轮播图/index.html" target="_blank">优酷TV轮播图</a></li>
+			<li><b>Sn→</b><a href="demo/特效/顶部二级下拉菜单/index.html" target="_blank">顶部二级下拉菜单</a></li>
+			<li><b>Sb→</b><a href="demo/特效/精美相册/index.html" target="_blank">精美相册</a></li>
+			<li><b>Te→</b><a href="demo/特效/自定义视频播放器/index.html" target="_blank">自定义视频播放器</a></li>
+			<li><b>I→</b><a href="demo/特效/百度音乐随心听/index.html" target="_blank">百度音乐随心听</a></li>
+			<li><b>Xe→</b><a href="demo/特效/爱奇艺首页导航轮播特效/index.html" target="_blank">爱奇艺首页导航轮播</a></li>
+			<li><b>Cs→</b><a href="demo/特效/弹幕/index.html" target="_blank">弹幕</a></li>
+			<li><b>Ba→</b><a href="demo/特效/桌面换肤/index.html" target="_blank">桌面换肤</a></li>
+			<li><b>La→</b><a href="demo/特效/百度换肤/index.html" target="_blank">百度换肤</a></li>
+			<li><b>Ce→</b><a href="demo/特效/图片旋转360°显示/index.html" target="_blank">图片旋转显示</a></li>
+			<li><b>Pr→</b><a href="demo/特效/芒果TV视频点播器/index.html" target="_blank">芒果TV视频点播器</a></li>
+			<li><b>Nd→</b><a href="demo/特效/全屏楼梯式滚动特效/index.html" target="_blank">全屏楼梯式滚动特效</a></li>
+			<li><b>Pm→</b><a href="demo/特效/图片无缝滚动小案例/index.html" target="_blank">无缝滚动</a></li>
+			<li><b>Sm→</b><a href="demo/特效/瑞丽女性网抽屉式效果/index.html" target="_blank">抽屉式效果</a></li>
+			<li><b>Eu→</b><a href="demo/特效/手风琴/index.html" target="_blank">手风琴</a></li>
+			<li><b>Gd→</b><a href="demo/特效/途牛旅游网手风琴/index.html" target="_blank">途牛旅游网手风琴</a></li>
+			<li><b>Tb→</b><a href="demo/特效/水平翻转/index.html" target="_blank">水平翻转</a></li>
+			<li><b>Dy→</b><a href="demo/特效/倒影/index.html" target="_blank">倒影</a></li>
+			<li><b>Ho→</b><a href="demo/特效/阿里图标的应用/index.html" target="_blank">阿里图标</a></li>
+			<li><b>Er→</b><a href="demo/特效/仿电子显示屏滚动效果/index.html" target="_blank">电子显示屏滚动效果</a></li>
+			<li><b>Tm→</b><a href="demo/特效/潭州官网左侧课程导航/index.html" target="_blank">潭州官网左侧课程导航</a></li>
+			<li><b>Yb→</b><a href="demo/特效/移动事件/index.html" target="_blank">移动事件</a></li>
+			<li><b>Lu→</b><a href="demo/特效/注册界面/index.html" target="_blank">注册界面</a></li>
+			<li><b>Hf→</b><a href="demo/特效/潭州课程展示切换效果/index.html" target="_blank">潭州课程展示切换效果</a></li>
+			<li><b>Ta→</b><a href="demo/特效/立体水晶3D相册/index.html" target="_blank">立体水晶3D相册</a></li>
+			<li><b>W→</b><a href="demo/特效/手风琴css3/index.html" target="_blank">手风琴css3</a></li>
+			<li><b>Re→</b><a href="demo/特效/轻量级计算器/index.html" target="_blank">轻量级计算器</a></li>
+			<li><b>Os→</b><a href="demo/特效/css3实现QQ空间相册旋转功能/index.html" target="_blank">QQ空间相册旋转功能</a></li>
+			<li><b>Ir→</b><a href="demo/特效/右侧悬浮QQ在线客服/index.html" target="_blank">QQ在线客服</a></li>
+			<li><b>Pt→</b><a href="demo/特效/瀑布流jQuery/index.html" target="_blank">瀑布流jQuery</a></li>
+			<li><b>Au→</b><a href="demo/特效/后台登录界面/index.html" target="_blank">后台登录界面</a></li>
+			<li><b>Hg→</b><a href="demo/特效/倒计时/index.html" target="_blank">倒计时</a></li>
+			<li><b>Tl→</b><a href="demo/特效/banner切换/index.html" target="_blank">Banner切换</a></li>
+			<li><b>Pb→</b><a href="demo/特效/瀑布流/index.html" target="_blank">瀑布流</a></li>
+			<li><b>Bi→</b><a href="demo/特效/太极八卦阵/index.html" target="_blank">太极八卦阵</a></li>
+			<li><b>Po→</b><a href="demo/特效/两端对齐/index.html" target="_blank">两端对齐</a></li>
+			<li><b>At→</b><a href="demo/特效/三角形制作/index.html" target="_blank">三角形制作</a></li>
+			<li><b>Rn→</b><a href="demo/特效/贪吃蛇/index.html" target="_blank">贪吃蛇</a></li>
+			<li><b>No→</b><a href="demo/tencent_ke/index.html" target="_blank">移动端腾讯课堂</a></li>
+			<li><b>Lr→</b><a href="demo/Designmodo/index.html" target="_blank">Designmodo官网</a></li>
+			<li><b>Uut→</b><a href="demo/ajax/ajax_01/jsonp/index.html" target="_blank">百度接口搜索</a></li>
+			<li><b>Fl→</b><a href="demo/ajax/ajax_01/pbl/index.html" target="_blank">瀑布流加载更多</a></li>
+			<li><b>Uup→</b><a href="demo/ajax/ajax_00/pbl/index.html" target="_blank">瀑布流</a></li>
+			<li><b>Lv→</b><a href="demo/ajax/ajax_00/fileUpload/index.html" target="_blank">文件上传</a></li>
+			<li><b>Uus→</b><a href="demo/ajax/ajax_00/weather/index.html" target="_blank">天气预报</a></li>
+			<li><b>Uuo→</b><a href="demo/ajax/ajax_00/省市区三级联动/index.html" target="_blank">省市区三级联动</a></li>
+		</ul>
+	</div>
+	<div id="container">
+	</div>
 	<div id="mask">
 	</div>
 	<div id="detail">
@@ -216,6 +339,17 @@
 	<script src="js/TrackballControls.js"></script>
 	<script src="js/CSS3DRenderer.js"></script>
 	<script type="text/javascript" src="js/project.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".menu_btn span").addClass("btn_show");
+			alert("由于有些效果IE6/7/8不能显示，请尽量使用Firefox或Chrome浏览器查看！！");
+			
+			$(".menu_btn").click(function(){
+				$("#menu_list ul").slideToggle();
+			});
+		})
+		
+	</script>
 
  </body>
 </html>

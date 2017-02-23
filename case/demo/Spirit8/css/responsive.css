@@ -1,0 +1,23 @@
+@media (max-width:603px){
+	#header_nav.navbar-default{
+		background-color: rgba(0,0,0,0.79);
+	}
+	#Footer .pull-left,#Footer .pull-right{
+		float: none !important;
+	}
+	.section_title h2{
+		line-height: 35px;
+	}
+}
+@media (max-width:768px){
+	.home_content{
+		padding-top: 40%;
+	}
+	#Portfolio .pull-left,#Portfolio .pull-right{
+		float: none !important;
+	}
+	#Footer .pull-left,#Footer .pull-right{
+		float: none !important;
+		text-align: center;
+	}
+}
